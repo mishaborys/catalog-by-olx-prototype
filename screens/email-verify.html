@@ -9,26 +9,34 @@
     <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
                 padding:3rem 2.5rem;max-width:480px;width:100%;text-align:center;">
 
-      <div style="font-size:4rem;margin-bottom:1rem;line-height:1;">📧</div>
+      <div style="margin-bottom:1.25rem;">
+        <i class="bi bi-envelope-check-fill" style="font-size:3rem;color:var(--olx-teal-dark);"></i>
+      </div>
 
       <h3 class="fw-bold mb-3"
-        data-ua="Підтвердіть вашу електронну пошту"
+        data-ua="Підтвердіть електронну пошту"
         data-en="Verify your email address"></h3>
 
-      <p class="text-muted mb-4" style="line-height:1.65;">
-        <span data-ua="Ми надіслали листа на " data-en="We sent a verification email to "></span>
-        <strong id="verifyEmailDisplay">user@example.com</strong>
-        <span data-ua=". Перевірте пошту та папку «Спам» і перейдіть за посиланням для завершення реєстрації."
-              data-en=". Please check your inbox and spam folder, then follow the link to complete registration."></span>
-      </p>
+      <div class="info-block info-block-success text-start mb-4">
+        <i class="bi bi-check-circle me-1"></i>
+        <strong>
+          <span data-ua="Листа для підтвердження надіслано на "
+                data-en="Verification email sent to "></span><span id="verifyEmailDisplay">user@example.com</span><span data-ua="." data-en="."></span>
+        </strong><br>
+        <span data-ua="Перейдіть за посиланням у листі, щоб завершити реєстрацію."
+              data-en="Follow the link in the email to complete registration."></span><br>
+        <span data-ua="Не отримали? Перевірте папку «Спам»."
+              data-en="Didn't get it? Check your spam folder."></span>
+      </div>
 
-      <div class="cb-host" style="display:inline-block;margin-bottom:1.25rem;">
-        <button class="btn-outline-olx" style="width:auto;padding:.55rem 1.5rem;"
-          onclick="toast(currentLang==='ua'?'Лист надіслано повторно':'Email resent')">
+      <div class="cb-host" style="display:inline-block;margin-bottom:.5rem;">
+        <button id="emailVerifyResendBtn" class="btn-outline-olx" style="width:auto;padding:.55rem 1.5rem;"
+          disabled onclick="resendVerificationEmail()">
           <span data-ua="Надіслати повторно" data-en="Resend email"></span>
         </button>
         <button class="cb" onclick="showComment('emailVerify_locked')"><i class="bi bi-chat-fill"></i></button>
       </div>
+      <p id="emailVerifyCountdown" class="text-muted mb-3" style="font-size:.82rem;"></p>
 
       <hr style="margin:1.5rem 0;">
 

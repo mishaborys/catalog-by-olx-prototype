@@ -121,6 +121,7 @@ function showScreen(id, tab) {
   applyLang();
   document.getElementById('nav-panel').classList.remove('open');
   closeDrop();
+  if (id === 3) startEmailVerifyCountdown();
   if (id === 6 && tab) switchDashTab(tab);
   if (id === 7) startImportProgress();
 }
@@ -242,6 +243,36 @@ function submitRegister() {
 /* ════════════════════════════════
    SCREEN 3 — EMAIL VERIFICATION
 ════════════════════════════════ */
+let emailVerifyCountdownInterval = null;
+
+function startEmailVerifyCountdown() {
+  if (emailVerifyCountdownInterval) clearInterval(emailVerifyCountdownInterval);
+  let secs = 90;
+  const btn       = document.getElementById('emailVerifyResendBtn');
+  const countdown = document.getElementById('emailVerifyCountdown');
+  if (!btn || !countdown) return;
+  btn.disabled = true;
+  const tick = () => {
+    const ua = currentLang === 'ua';
+    countdown.textContent = ua
+      ? `Повторний лист можна надіслати через ${secs} с`
+      : `You can resend in ${secs}s`;
+    secs--;
+    if (secs < 0) {
+      clearInterval(emailVerifyCountdownInterval);
+      btn.disabled = false;
+      countdown.textContent = '';
+    }
+  };
+  tick();
+  emailVerifyCountdownInterval = setInterval(tick, 1000);
+}
+
+function resendVerificationEmail() {
+  toast(currentLang === 'ua' ? 'Лист надіслано повторно' : 'Email resent');
+  startEmailVerifyCountdown();
+}
+
 function simulateEmailConfirm() {
   toast(currentLang === 'ua' ? '✓ Акаунт підтверджено' : '✓ Account confirmed');
   setTimeout(() => showScreen(4), 900);
@@ -581,7 +612,7 @@ function renderAppHeader(screenId) {
   const dropId = `drop${screenId}`;
   return `
   <div class="app-header">
-    <span class="app-logo">catalog<span class="dot">.</span><span class="by"> by OLX</span></span>
+    <span class="app-logo">Content manager<span class="dot">.</span><span class="by"> by OLX</span></span>
     <div class="hdr-dropdown">
       <button class="hdr-dropdown-btn" onclick="toggleDrop('${dropId}')">
         <span data-ua="Мій профіль" data-en="My Profile"></span>
