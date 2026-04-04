@@ -4,32 +4,19 @@
 <div id="screen-6" class="screen">
   <div class="app-header">
     <span class="app-logo">catalog<span class="dot">.</span><span class="by"> by OLX</span></span>
-    <nav class="d-flex align-items-center gap-4">
-      <a class="hdr-nav-link" onclick="toast(currentLang==='ua'?'Цей розділ не є частиною прототипу':'This section is not part of the prototype')"
-        data-ua="Мої оголошення" data-en="My Listings"></a>
-      <a class="hdr-nav-link" onclick="toast(currentLang==='ua'?'Цей розділ не є частиною прототипу':'This section is not part of the prototype')"
-        data-ua="Авторозбірка" data-en="Auto Parts"></a>
-      <a class="hdr-nav-link" onclick="toast(currentLang==='ua'?'Цей розділ не є частиною прототипу':'This section is not part of the prototype')"
-        data-ua="Експорт" data-en="Export"></a>
-    </nav>
-    <div class="d-flex align-items-center gap-3">
-      <div class="hdr-dropdown">
-        <button class="hdr-dropdown-btn" onclick="toggleDrop('drop6')">
-          <span data-ua="Мій профіль" data-en="My Profile"></span>
-          <i class="bi bi-chevron-down" style="font-size:.7rem;"></i>
-        </button>
-        <div class="hdr-dropdown-menu" id="drop6">
-          <div class="hdr-drop-item" onclick="showScreen(9);closeDrop()">
-            <i class="bi bi-gear me-2"></i><span data-ua="Налаштування" data-en="Settings"></span>
-          </div>
-          <div class="hdr-drop-item" onclick="showScreen(1);closeDrop()">
-            <i class="bi bi-box-arrow-right me-2"></i><span data-ua="Вийти" data-en="Sign out"></span>
-          </div>
+    <div class="hdr-dropdown">
+      <button class="hdr-dropdown-btn" onclick="toggleDrop('drop6')">
+        <span data-ua="Мій профіль" data-en="My Profile"></span>
+        <i class="bi bi-chevron-down" style="font-size:.7rem;"></i>
+      </button>
+      <div class="hdr-dropdown-menu" id="drop6">
+        <div class="hdr-drop-item" onclick="showScreen(9);closeDrop()">
+          <i class="bi bi-gear me-2"></i><span data-ua="Налаштування" data-en="Settings"></span>
+        </div>
+        <div class="hdr-drop-item" onclick="showScreen(1);closeDrop()">
+          <i class="bi bi-box-arrow-right me-2"></i><span data-ua="Вийти" data-en="Sign out"></span>
         </div>
       </div>
-      <button class="btn-teal" style="font-size:.85rem;padding:.4rem 1rem;"
-        onclick="toast(currentLang==='ua'?'Цей розділ не є частиною прототипу':'This section is not part of the prototype')"
-        data-ua="Додати оголошення" data-en="Add Listing"></button>
     </div>
   </div>
 
@@ -117,36 +104,70 @@
       </div>
     </div>
 
-    <!-- TAB: IMPORT -->
-    <div id="tab6_imp" style="display:none;max-width:700px;">
+    <!-- TAB: IMPORT (3-step wizard) -->
+    <div id="tab6_imp" style="display:none;max-width:680px;">
 
-      <div class="cb-host mb-1">
-        <h6 class="fw-600 mb-3" style="font-size:.95rem;"
-          data-ua="Оберіть платформу" data-en="Select platform"></h6>
-        <div class="d-flex gap-3 mb-1">
-          <div id="plt_prom" class="platform-card" onclick="s6SelectPlatform('prom')">
-            <div style="font-size:1.3rem;font-weight:800;color:#7b1fa2;margin-bottom:.3rem;">PROM.ua</div>
-            <div style="font-size:.82rem;color:#888;"
-              data-ua="Імпорт з Prom.ua" data-en="Import from Prom.ua"></div>
-          </div>
-          <div id="plt_avto" class="platform-card" onclick="s6SelectPlatform('avto')">
-            <div style="font-size:1.3rem;font-weight:800;color:#1565c0;margin-bottom:.3rem;">AVTO.pro</div>
-            <div style="font-size:.82rem;color:#888;"
-              data-ua="Імпорт з Avto.pro" data-en="Import from Avto.pro"></div>
-          </div>
+      <!-- Stepper indicator -->
+      <div class="s6-stepper">
+        <div class="s6-step-item active" id="s6_dot_1">
+          <div class="s6-step-circle">1</div>
+          <div class="s6-step-label" data-ua="Платформа" data-en="Platform"></div>
         </div>
-        <button class="cb" style="top:2px;right:2px;" onclick="showComment('s6_platforms')"><i class="bi bi-chat-fill"></i></button>
+        <div class="s6-step-line" id="s6_line_1"></div>
+        <div class="s6-step-item" id="s6_dot_2">
+          <div class="s6-step-circle">2</div>
+          <div class="s6-step-label" data-ua="Файл" data-en="File"></div>
+        </div>
+        <div class="s6-step-line" id="s6_line_2"></div>
+        <div class="s6-step-item" id="s6_dot_3">
+          <div class="s6-step-circle">3</div>
+          <div class="s6-step-label" data-ua="Підтвердження" data-en="Confirm"></div>
+        </div>
       </div>
 
-      <div id="s6_after" style="display:none;margin-top:1.25rem;">
+      <!-- ── STEP 1: Platform ── -->
+      <div id="s6_step_1" style="background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
+        <h6 class="fw-bold mb-1" style="font-size:1rem;"
+          data-ua="Оберіть платформу" data-en="Select platform"></h6>
+        <p class="text-muted mb-4" style="font-size:.85rem;"
+          data-ua="Звідки ви хочете імпортувати оголошення на OLX?"
+          data-en="From which platform do you want to import listings to OLX?"></p>
+
+        <div class="cb-host mb-4">
+          <div class="d-flex gap-3">
+            <div id="plt_prom" class="platform-card" onclick="s6SelectPlatform('prom')" style="flex:1;">
+              <div style="font-size:1.3rem;font-weight:800;color:#7b1fa2;margin-bottom:.3rem;">PROM.ua</div>
+              <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Prom.ua" data-en="Import from Prom.ua"></div>
+            </div>
+            <div id="plt_avto" class="platform-card" onclick="s6SelectPlatform('avto')" style="flex:1;">
+              <div style="font-size:1.3rem;font-weight:800;color:#1565c0;margin-bottom:.3rem;">AVTO.pro</div>
+              <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Avto.pro" data-en="Import from Avto.pro"></div>
+            </div>
+          </div>
+          <button class="cb" style="top:2px;right:2px;" onclick="showComment('s6_platforms')"><i class="bi bi-chat-fill"></i></button>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button id="s6_next_1" class="btn-teal" disabled onclick="s6Step(2)"
+            data-ua="Далі →" data-en="Next →"></button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: File upload ── -->
+      <div id="s6_step_2" style="display:none;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
+        <h6 class="fw-bold mb-1" style="font-size:1rem;"
+          data-ua="Завантажте файл" data-en="Upload file"></h6>
+        <p class="text-muted mb-4" style="font-size:.85rem;">
+          <span data-ua="Платформа:" data-en="Platform:"></span>
+          &nbsp;<strong id="s6_plt_name"></strong>
+        </p>
 
         <div class="cb-host mb-3">
           <div style="background:#fffde7;border:1px solid #f9a825;border-radius:8px;
                       padding:.7rem 1rem;font-size:.88rem;color:#5d4037;">
             <i class="bi bi-exclamation-triangle me-1" style="color:#f57f17;"></i>
-            <span data-ua="Щоб імпортувати оголошення, спочатку завантажте файл з "
-                  data-en="To import listings, first download a file from "></span>
-            <strong id="s6_plt_name"></strong>.
+            <span data-ua="Спочатку завантажте файл з платформи."
+                  data-en="First download the export file from the platform."></span>
             <a href="#" onclick="openInstModal();return false;"
                style="color:var(--olx-teal-dark);text-decoration:none;font-weight:500;"
                data-ua=" Переглянути інструкцію →" data-en=" View instructions →"></a>
@@ -212,13 +233,70 @@
           </div>
         </div>
 
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-between mt-2">
+          <button class="btn-outline-olx" style="width:auto;padding:.5rem 1.25rem;"
+            onclick="s6Step(1)"
+            data-ua="← Назад" data-en="← Back"></button>
+          <button id="s6_next_2" class="btn-teal" disabled onclick="s6GoToStep3()"
+            data-ua="Далі →" data-en="Next →"></button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Confirm ── -->
+      <div id="s6_step_3" style="display:none;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
+        <h6 class="fw-bold mb-1" style="font-size:1rem;"
+          data-ua="Підтвердження імпорту" data-en="Confirm import"></h6>
+        <p class="text-muted mb-4" style="font-size:.85rem;"
+          data-ua="Перевірте параметри і запустіть імпорт."
+          data-en="Review the settings and start the import."></p>
+
+        <div style="border:1px solid #e0e0e0;border-radius:10px;padding:.5rem 1rem;margin-bottom:1.5rem;">
+          <div class="s6-summary-row">
+            <i class="bi bi-collection s6-summary-icon"></i>
+            <div>
+              <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
+                data-ua="Платформа" data-en="Platform"></div>
+              <div id="s6_sum_platform"></div>
+            </div>
+          </div>
+          <div class="s6-summary-row">
+            <i class="bi bi-file-earmark-excel s6-summary-icon" style="color:#217346;"></i>
+            <div>
+              <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
+                data-ua="Файл" data-en="File"></div>
+              <div id="s6_sum_file" style="font-weight:500;"></div>
+              <div style="font-size:.8rem;color:#888;"
+                data-ua="146 оголошень" data-en="146 listings"></div>
+            </div>
+          </div>
+          <div class="s6-summary-row">
+            <i class="bi bi-image s6-summary-icon"></i>
+            <div>
+              <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
+                data-ua="Фото" data-en="Photos"></div>
+              <div id="s6_sum_nophoto" style="font-size:.9rem;"></div>
+            </div>
+          </div>
+          <div class="s6-summary-row" id="s6_sum_desc_wrap" style="display:none;">
+            <i class="bi bi-text-left s6-summary-icon"></i>
+            <div style="flex:1;">
+              <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
+                data-ua="Опис" data-en="Description"></div>
+              <div id="s6_sum_desc" style="font-size:.88rem;color:#444;white-space:pre-wrap;word-break:break-word;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button class="btn-outline-olx" style="width:auto;padding:.5rem 1.25rem;"
+            onclick="s6Step(2)"
+            data-ua="← Назад" data-en="← Back"></button>
           <button class="btn-teal" onclick="s6StartImport()"
             data-ua="Імпортувати на OLX →" data-en="Import to OLX →"></button>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
 

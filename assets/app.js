@@ -315,23 +315,79 @@ function switchDashTab(t) {
     document.getElementById('tab6_' + id).style.display = id === t ? 'block' : 'none';
     document.getElementById('tab6_' + id + '_btn').classList.toggle('active-tab', id === t);
   });
+  if (t === 'imp') {
+    s6Platform = null;
+    s6FileReady = false;
+    document.getElementById('plt_prom').classList.remove('selected');
+    document.getElementById('plt_avto').classList.remove('selected');
+    document.getElementById('s6_drop_empty').style.display = 'block';
+    document.getElementById('s6_drop_done').style.display  = 'none';
+    document.getElementById('s6_drop').classList.remove('has-file');
+    document.getElementById('s6_avto_extra').style.display = 'none';
+    s6Step(1);
+  }
+  applyLang();
+}
+
+function s6Step(n) {
+  [1, 2, 3].forEach(i => {
+    document.getElementById('s6_step_' + i).style.display = i === n ? 'block' : 'none';
+    const dot  = document.getElementById('s6_dot_'  + i);
+    const line = document.getElementById('s6_line_' + i);
+    if (dot) {
+      dot.classList.toggle('active', i === n);
+      dot.classList.toggle('done',   i <  n);
+    }
+    if (line) line.classList.toggle('done', i < n);
+  });
+  if (n === 3) s6BuildSummary();
+  applyLang();
+}
+
+function s6BuildSummary() {
+  const ua = currentLang === 'ua';
+  document.getElementById('s6_sum_platform').innerHTML =
+    `<span class="badge-platform ${s6Platform}">${s6Platform === 'prom' ? 'PROM.ua' : 'AVTO.pro'}</span>`;
+  const fname = s6Platform === 'prom' ? 'prom_export.xlsx' : 'avto_export.xlsx';
+  document.getElementById('s6_sum_file').textContent = fname;
+  const noPhoto = document.getElementById('s6_nophoto').checked;
+  document.getElementById('s6_sum_nophoto').textContent = noPhoto
+    ? (ua ? 'Пропускати оголошення без фото' : 'Skip listings without photos')
+    : (ua ? 'Завантажувати всі оголошення'   : 'Upload all listings');
+  const descWrap = document.getElementById('s6_sum_desc_wrap');
+  if (s6Platform === 'avto') {
+    const desc = document.getElementById('s6_desc').value.trim();
+    document.getElementById('s6_sum_desc').textContent = desc || (ua ? '(не вказано)' : '(not set)');
+    descWrap.style.display = 'flex';
+  } else {
+    descWrap.style.display = 'none';
+  }
+}
+
+function s6GoToStep3() {
+  if (s6Platform === 'avto' && !document.getElementById('s6_desc').value.trim()) {
+    toast(currentLang === 'ua' ? 'Введіть опис оголошень' : 'Enter a listing description', 'error');
+    return;
+  }
+  s6Step(3);
 }
 
 function s6SelectPlatform(p) {
   s6Platform = p;
   document.getElementById('plt_prom').classList.toggle('selected', p === 'prom');
   document.getElementById('plt_avto').classList.toggle('selected', p === 'avto');
-  document.getElementById('s6_after').style.display = 'block';
   document.getElementById('s6_plt_name').textContent = p === 'prom' ? 'PROM.ua' : 'AVTO.pro';
   s6FileReady = false;
   document.getElementById('s6_drop_empty').style.display = 'block';
   document.getElementById('s6_drop_done').style.display  = 'none';
   document.getElementById('s6_drop').classList.remove('has-file');
   document.getElementById('s6_avto_extra').style.display = 'none';
+  document.getElementById('s6_next_1').disabled = false;
   applyLang();
 }
 
 function s6SimulateFile() {
+  if (!s6Platform) return;
   s6FileReady = true;
   const fname = s6Platform === 'prom' ? 'prom_export.xlsx' : 'avto_export.xlsx';
   document.getElementById('s6_fname').textContent = fname;
@@ -341,6 +397,7 @@ function s6SimulateFile() {
   if (s6Platform === 'avto') {
     document.getElementById('s6_avto_extra').style.display = 'block';
   }
+  document.getElementById('s6_next_2').disabled = false;
   applyLang();
 }
 
@@ -351,14 +408,6 @@ function s6SetCur(c) {
 }
 
 function s6StartImport() {
-  if (!s6FileReady) {
-    toast(currentLang === 'ua' ? 'Спочатку оберіть файл' : 'Please select a file first', 'error');
-    return;
-  }
-  if (s6Platform === 'avto' && !document.getElementById('s6_desc').value.trim()) {
-    toast(currentLang === 'ua' ? 'Введіть опис оголошень' : 'Enter a listing description', 'error');
-    return;
-  }
   showScreen(7);
 }
 

@@ -378,3 +378,23 @@ body { background: #f8f9fa; margin: 0; }
 
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 .spinning { animation:spin 1.2s linear infinite; }
+
+/* ─── IMPORT STEPPER (Screen 6) ─── */
+.s6-stepper { display:flex; align-items:center; margin-bottom:2rem; }
+.s6-step-item { display:flex; flex-direction:column; align-items:center; gap:.35rem; }
+.s6-step-circle {
+  width:34px; height:34px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:600; font-size:.88rem;
+  background:#e0e0e0; color:#999; transition:all .25s;
+}
+.s6-step-item.active .s6-step-circle { background:var(--olx-teal-dark); color:#fff; }
+.s6-step-item.done   .s6-step-circle { background:#2e7d32; color:#fff; }
+.s6-step-label { font-size:.73rem; color:#aaa; white-space:nowrap; font-weight:500; }
+.s6-step-item.active .s6-step-label { color:var(--olx-teal-dark); }
+.s6-step-item.done   .s6-step-label { color:#2e7d32; }
+.s6-step-line { flex:1; height:2px; background:#e0e0e0; margin:0 .5rem; margin-bottom:1.2rem; transition:background .25s; }
+.s6-step-line.done { background:#2e7d32; }
+.s6-summary-row { display:flex; align-items:flex-start; gap:.75rem; padding:.65rem 0; border-bottom:1px solid #f0f0f0; font-size:.9rem; }
+.s6-summary-row:last-child { border-bottom:none; }
+.s6-summary-icon { width:20px; color:#888; flex-shrink:0; margin-top:1px; }
