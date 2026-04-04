@@ -1,0 +1,107 @@
+<!-- ═══════════════════════════════════════
+     SCREEN 2 — ЛОГІН
+════════════════════════════════════════ -->
+<div id="screen-2" class="screen">
+  <div class="split-layout">
+
+    <div class="split-left">
+      <div class="icon-grid" id="iconGrid2"></div>
+      <div class="left-content">
+        <div class="logo-text">catalog<span class="dot">.</span></div>
+        <div class="logo-by">by OLX</div>
+        <div class="left-tagline"
+          data-ua="Перенесіть свої оголошення на OLX"
+          data-en="Transfer your listings to OLX"></div>
+        <div class="left-sub"
+          data-ua="Міграція каталогу запчастин з AVTO.pro та PROM.ua прямо на OLX — швидко та без ручної роботи."
+          data-en="Migrate your auto parts catalog from AVTO.pro and PROM.ua directly to OLX — fast, without manual work."></div>
+        <ul class="left-features">
+          <li>
+            <i class="bi bi-check-circle-fill"></i>
+            <span data-ua="Завантажте файл з платформи конкурента"
+                  data-en="Upload a file from the competitor platform"></span>
+          </li>
+          <li>
+            <i class="bi bi-check-circle-fill"></i>
+            <span data-ua="Ми опублікуємо ваші оголошення на OLX"
+                  data-en="We will publish your listings on OLX"></span>
+          </li>
+          <li>
+            <i class="bi bi-check-circle-fill"></i>
+            <span data-ua="Слідкуйте за прогресом в особистому кабінеті"
+                  data-en="Track progress in your personal cabinet"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="split-right">
+      <div class="form-card">
+
+        <h3 class="fw-bold mb-1"
+          data-ua="Увійдіть у свій профіль"
+          data-en="Sign in to your account"></h3>
+
+        <p class="text-muted mb-4" style="font-size:.88rem;">
+          <span data-ua="Немає акаунта?" data-en="Don't have an account?"></span>
+          <a href="#" onclick="showScreen(1);return false;"
+             style="color:var(--olx-teal-dark);text-decoration:none;font-weight:500;"
+             data-ua=" Зареєструйтесь" data-en=" Register"></a>
+        </p>
+
+        <div class="mb-2">
+          <label class="form-label fw-500 mb-1" data-ua="Email" data-en="Email"></label>
+          <input type="email" id="s2_email" class="form-control" placeholder="your@email.com">
+        </div>
+
+        <div class="cb-host mb-3">
+          <div class="info-block">
+            <i class="bi bi-info-circle me-1"></i>
+            <span data-ua="Обліковий запис Content Manager не пов'язаний з обліковим записом OLX. Якщо ви ще не мали акаунту — зареєструйтесь."
+                  data-en="The Content Manager account is not linked to your OLX account. If you haven't had an account yet — register."></span>
+          </div>
+          <button class="cb" onclick="showComment('s2_infoblock')"><i class="bi bi-chat-fill"></i></button>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-500 mb-1" data-ua="Пароль" data-en="Password"></label>
+          <div class="input-group">
+            <input type="password" id="s2_pw" class="form-control"
+              data-ua-placeholder="Введіть пароль"
+              data-en-placeholder="Enter password"
+              placeholder="Введіть пароль">
+            <button class="btn btn-outline-secondary" type="button" onclick="togglePw('s2_pw',this)">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <div class="form-check mb-0">
+            <input class="form-check-input" type="checkbox" id="s2_remember">
+            <label class="form-check-label" for="s2_remember" style="font-size:.88rem;"
+              data-ua="Запам'ятати мене" data-en="Remember me"></label>
+          </div>
+          <a href="#" style="color:var(--olx-teal-dark);font-size:.88rem;text-decoration:none;"
+            data-ua="Забули пароль?" data-en="Forgot password?"></a>
+        </div>
+
+        <button class="btn-dark-olx mb-2" onclick="showScreen(6)"
+          data-ua="Увійти" data-en="Sign in"></button>
+
+        <div class="or-divider"><span data-ua="або" data-en="or"></span></div>
+
+        <button class="google-btn" onclick="toast(currentLang==='ua'?'Симуляція: Google OAuth':'Simulation: Google OAuth')">
+          <svg width="18" height="18" viewBox="0 0 48 48">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+          <span data-ua="Увійти через Google" data-en="Continue with Google"></span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<!-- ═══════════════════════════════════════
+     SCREEN 5 — ОНБОРДИНГ: КОНТАКТИ
+════════════════════════════════════════ -->
+<div id="screen-5" class="screen" style="background:#f8f9fa;">
+  <div class="app-header">
+    <span class="app-logo">catalog<span class="dot">.</span><span class="by"> by OLX</span></span>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:2rem;overflow-y:auto;">
+    <div class="prog-indicator mb-4">
+      <div class="prog-step done"><i class="bi bi-check"></i></div>
+      <div class="prog-line done"></div>
+      <div class="prog-step active">2</div>
+    </div>
+
+    <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
+                padding:2.5rem;max-width:580px;width:100%;">
+      <h4 class="fw-bold mb-1" data-ua="Контактні дані" data-en="Contact Details"></h4>
+      <p class="text-muted mb-4" style="font-size:.88rem;"
+        data-ua="Ці дані будуть використані для публікації оголошень на OLX. Ми підтягнули їх автоматично — ви можете змінити."
+        data-en="This information will be used to publish listings on OLX. We pre-filled it automatically — you can edit it."></p>
+
+      <div class="mb-3">
+        <label class="form-label fw-500 mb-1"
+          data-ua="Контактна особа або назва компанії *"
+          data-en="Contact person or company name *"></label>
+        <input type="text" id="s5_name" class="form-control" value="Misha Borys Auto Parts">
+      </div>
+
+      <div class="cb-host mb-3">
+        <label class="form-label fw-500 mb-1" data-ua="Область *" data-en="Region *"></label>
+        <select id="s5_region" class="form-select" onchange="s5UpdateCities()">
+          <option value="kyiv" selected data-ua="Київська" data-en="Kyiv Region"></option>
+          <option value="kharkiv" data-ua="Харківська" data-en="Kharkiv Region"></option>
+          <option value="odesa" data-ua="Одеська" data-en="Odesa Region"></option>
+          <option value="dnipro" data-ua="Дніпропетровська" data-en="Dnipro Region"></option>
+          <option value="lviv" data-ua="Львівська" data-en="Lviv Region"></option>
+        </select>
+        <button class="cb" onclick="showComment('s5_api')"><i class="bi bi-chat-fill"></i></button>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-500 mb-1" data-ua="Населений пункт *" data-en="City *"></label>
+        <select id="s5_city" class="form-select" onchange="s5UpdateDistrict()"></select>
+      </div>
+
+      <div id="s5_district_wrap" class="cb-host mb-3">
+        <label class="form-label fw-500 mb-1" data-ua="Район міста" data-en="City district"></label>
+        <select id="s5_district" class="form-select">
+          <option data-ua="Шевченківський" data-en="Shevchenkivskyi"></option>
+          <option data-ua="Печерський" data-en="Pecherskyi"></option>
+          <option data-ua="Подільський" data-en="Podilskyi"></option>
+          <option data-ua="Оболонський" data-en="Obolonskyi"></option>
+          <option selected data-ua="Дарницький" data-en="Darnytskyi"></option>
+        </select>
+        <button class="cb" onclick="showComment('s5_district')"><i class="bi bi-chat-fill"></i></button>
+      </div>
+
+      <div class="cb-host mb-2">
+        <label class="form-label fw-500 mb-1" data-ua="Телефон *" data-en="Phone *"></label>
+        <input type="text" id="s5_ph1" class="form-control" value="+380501234567" oninput="s5PhoneChange()">
+        <small class="text-muted" style="font-size:.75rem;"
+          data-ua="Кілька номерів через кому, максимум 3"
+          data-en="Multiple numbers separated by comma, max 3"></small>
+        <button class="cb" onclick="showComment('s5_phone')"><i class="bi bi-chat-fill"></i></button>
+      </div>
+      <div id="s5_ph2_wrap" class="mb-2" style="display:none;">
+        <label class="form-label fw-500 mb-1" data-ua="Телефон 2" data-en="Phone 2"></label>
+        <input type="text" id="s5_ph2" class="form-control" oninput="s5PhoneChange()">
+      </div>
+      <div id="s5_ph3_wrap" class="mb-3" style="display:none;">
+        <label class="form-label fw-500 mb-1" data-ua="Телефон 3" data-en="Phone 3"></label>
+        <input type="text" id="s5_ph3" class="form-control">
+      </div>
+
+      <div class="d-flex justify-content-end mt-2">
+        <div class="cb-host d-inline-block">
+          <button class="btn-teal" onclick="s5Submit()"
+            data-ua="Далі →" data-en="Next →"></button>
+          <button class="cb" onclick="showComment('s5_nobtn')"><i class="bi bi-chat-fill"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
