@@ -8,103 +8,103 @@ let currentLang   = 'ua';
 
 /* ─── COMMENTS DATA ─── */
 const COMMENTS = {
-  s1_left: {
+  register_leftPanel: {
     ua: 'Зміна: Додано опис сервісу. Раніше тут були лише іконки. Тепер користувач одразу розуміє що це за сервіс — міграція запчастин з AVTO.pro/PROM.ua на OLX.',
     en: 'Change: Added service description. Previously this area only had icons. Now the user immediately understands what this service is — migrating auto parts from AVTO.pro/PROM.ua to OLX.'
   },
-  s1_title: {
+  register_title: {
     ua: 'Зміна: Дефолтна сторінка — реєстрація, а не логін (після уточнення терміну дії токена).',
     en: 'Change: The default page is registration, not login (following clarification of token lifetime).'
   },
-  s1_infoblock: {
+  register_infoBlock: {
     ua: 'Зміна: Блок перенесено ПІД поле Email (не над формою). Додано посилання на реєстрацію всередині блоку.',
     en: 'Change: The info block has been moved UNDER the Email field (not above the form). A registration link has been added inside the block.'
   },
-  s1_pwbar: {
+  registerPwStrengthBar: {
     ua: 'Баг виправлено: прогрес-бар не фарбувався в правильний колір навіть коли всі умови виконані.\n\nРеалізована правильна логіка:\n1/4 умов → червоний\n2/4 → помаранчевий\n3/4 → жовтий\n4/4 → зелений',
     en: 'Bug fixed: the progress bar was not displaying the correct color even when all conditions were met.\n\nCorrect logic implemented:\n1/4 conditions → red\n2/4 → orange\n3/4 → yellow\n4/4 → green'
   },
-  s2_infoblock: {
+  login_infoBlock: {
     ua: 'Зміна: Додано інфо-блок на сторінці логіну. Користувач повинен знати що акаунти Content Manager і OLX — окремі.',
     en: 'Change: Info block added to the login page. The user must know that Content Manager and OLX accounts are separate.'
   },
-  s3_locked: {
+  emailVerify_locked: {
     ua: 'Зміна: Після реєстрації користувач НЕ потрапляє в кабінет. Він бачить ТІЛЬКИ цей екран. Доступні лише: надіслати повторно + вийти.\n\nЗміна: Видалено окремий екран підтвердження з кнопкою "Увійти до кабінету" — він нічого не робив. Після кліку по посиланню в листі — одразу в кабінет + toast "Акаунт підтверджено".',
     en: 'Change: After registration, the user does NOT enter the cabinet. They see ONLY this screen. Only available: resend + sign out.\n\nChange: Removed the separate confirmation screen with "Enter cabinet" button — it did nothing. After clicking the email link — directly to cabinet + toast "Account confirmed".'
   },
-  s4_text: {
+  olxSync_instructions: {
     ua: 'Зміна: Текст опису зроблено нормальним читабельним шрифтом. Раніше він був майже невидимий.',
     en: 'Change: Description text made with a normal readable font. Previously it was almost invisible.'
   },
-  s4_email_or_phone: {
+  olxSync_emailOrPhone: {
     ua: 'Важливо: Після синхронізації показуємо email АБО телефон (деякі акаунти OLX.ua мають тільки телефон, без email).',
     en: 'Important: After sync we show email OR phone number (some OLX.ua accounts have only a phone, no email).'
   },
-  s4_separate: {
+  olxSync_separateAccounts: {
     ua: 'Зміна: Ці 2 кроки онбордингу повністю відокремлені від флоу імпорту. Раніше вони були частиною 5-кроківного wizard\'у — це неправильно.',
     en: 'Change: These 2 onboarding steps are completely separate from the import flow. Previously they were part of a 5-step wizard — that was incorrect.'
   },
-  s5_api: {
+  contacts_regionCityApi: {
     ua: 'Зміна: Дані автоматично підтягуються з OLX API. Поля передзаповнені але редаговані.',
     en: 'Change: Data is automatically pulled from the OLX API. Fields are pre-filled but editable.'
   },
-  s5_district: {
+  contactDistrict: {
     ua: 'Зміна: Поле "Район міста" з\'являється ТІЛЬКИ для міст що мають райони (напр. Київ). Для інших міст — не показувати.',
     en: 'Change: The "City district" field appears ONLY for cities that have districts (e.g. Kyiv). For other cities — do not show.'
   },
-  s5_phone: {
+  contacts_phone: {
     ua: 'Зміна: Телефон — текстове поле (не числове). Без стрілок вгору/вниз. Підтримує кілька номерів через кому.\n\nТелефон 2 з\'являється тільки якщо заповнений Телефон 1. Телефон 3 — тільки якщо заповнений Телефон 2.',
     en: 'Change: Phone is a text field (not numeric). No up/down arrows. Supports multiple numbers separated by comma.\n\nPhone 2 appears only when Phone 1 is filled. Phone 3 — only when Phone 2 is filled.'
   },
-  s5_nobtn: {
+  contacts_noSubmitBtn: {
     ua: 'Зміна: Кнопки "Зберегти інформацію" НЕ існує. Кнопка "Далі" одночасно валідує і зберігає.',
     en: 'Change: The "Save information" button does NOT exist. The "Next" button simultaneously validates and saves.'
   },
-  s6_platforms: {
+  import_platformSelection: {
     ua: 'Зміна: Вибір платформи і завантаження файлу — ОДИН екран з табами (а не 2 окремі кроки).\n\nЗміна: При першому відкритті жоден таб не вибраний. Вибір зберігається як дефолт в акаунті.',
     en: 'Change: Platform selection and file upload — ONE screen (not 2 separate steps).\n\nChange: On first open, no platform is selected. The selection is saved as default in the account.'
   },
-  s6_instruction: {
+  import_fileInstructions: {
     ua: 'Зміна: Інструкція відкривається в модальному вікні — з повним покроковим описом.',
     en: 'Change: Instructions open in a modal window — with a full step-by-step description.'
   },
-  s6_dropzone: {
+  importDropZonezone: {
     ua: 'Зміна: Зона завантаження велика і красива (drag & drop), а не стандартний некрасивий input.',
     en: 'Change: The upload zone is large and visually appealing (drag & drop), not a standard ugly input.'
   },
-  s6_checkbox: {
+  import_skipNoPhotoCheckbox: {
     ua: 'Зміна: Жодних фільтрів. Тільки один пре-вибраний чекбокс — не завантажувати без фото.',
     en: 'Change: No filters. Just one pre-selected checkbox — skip listings without photos.'
   },
-  s6_avto_extra: {
+  importAvtoExtraFields: {
     ua: 'Зміна: Для AVTO.pro — тільки 2 додаткові обов\'язкові поля: валюта і опис. Більше нічого.',
     en: 'Change: For AVTO.pro — only 2 additional required fields: currency and description. Nothing more.'
   },
-  s7_redirect: {
+  importProgress_redirect: {
     ua: 'Зміна: Після натискання "Імпортувати" — одразу переходимо на цю сторінку. Показуємо назву файлу і прогрес.',
     en: 'Change: After clicking "Import" — immediately navigate to this page. We show the file name and progress.'
   },
-  s8_only_failed: {
+  failedListings_onlyFailed: {
     ua: 'Зміна: Показуємо ТІЛЬКИ зафейлені оголошення. Раніше показувались всі з акаунту OLX — це неправильно.',
     en: 'Change: We show ONLY failed listings. Previously all OLX account listings were shown — that was incorrect.'
   },
-  s8_inline_err: {
+  failedListings_inlineError: {
     ua: 'Зміна: Причина помилки видна безпосередньо в рядку таблиці (не треба відкривати панель, щоб дізнатись).',
     en: 'Change: The error reason is visible directly in the table row (no need to open the panel to find out).'
   },
-  s8_save: {
+  failedListings_saveEdit: {
     ua: 'Зміна: Після виправлення — toast + оголошення зникає зі списку. Успішні оголошення НЕ зберігаємо в системі.',
     en: 'Change: After fixing — toast + listing disappears from the list. Successful listings are NOT stored in the system.'
   },
-  s9_del_acc: {
+  settings_deleteAccount: {
     ua: 'Зміна: Видалено кнопку "Видалити акаунт" (рішення продукту — не включати в MVP).',
     en: 'Change: "Delete account" button removed (product decision — not included in MVP).'
   },
-  s9_avto_desc: {
+  settings_avtoDesc: {
     ua: 'Зміна: "Нестандартний опис" перейменовано і переміщено в секцію "Опис для AVTO.pro" — це поле ТІЛЬКИ для AVTO.pro.',
     en: 'Change: "Custom description" renamed and moved to the "AVTO.pro Description" section — this field is ONLY for AVTO.pro.'
   },
-  s9_no_import_btn: {
+  settings_noImportBtn: {
     ua: 'Зміна: Видалено кнопку "Імпортувати оголошення" з налаштувань — вона там не до місця.',
     en: 'Change: "Import listings" button removed from settings — it doesn\'t belong there.'
   }
@@ -122,7 +122,7 @@ function showScreen(id, tab) {
   document.getElementById('nav-panel').classList.remove('open');
   closeDrop();
   if (id === 6 && tab) switchDashTab(tab);
-  if (id === 7) s7StartProgress();
+  if (id === 7) startImportProgress();
 }
 
 /* ════════════════════════════════
@@ -224,8 +224,8 @@ function evalPw(inputId, barId) {
    SCREEN 1 — REGISTRATION
 ════════════════════════════════ */
 function submitRegister() {
-  const email = document.getElementById('s1_email').value.trim();
-  const pw    = document.getElementById('s1_pw').value;
+  const email = document.getElementById('registerEmail').value.trim();
+  const pw    = document.getElementById('registerPassword').value;
   if (!email.includes('@')) {
     toast(currentLang === 'ua' ? 'Введіть коректний email' : 'Enter a valid email', 'error');
     return;
@@ -234,7 +234,7 @@ function submitRegister() {
     toast(currentLang === 'ua' ? 'Пароль занадто короткий' : 'Password is too short', 'error');
     return;
   }
-  const s3el = document.getElementById('s3_email');
+  const s3el = document.getElementById('verifyEmailDisplay');
   if (s3el) s3el.textContent = email;
   showScreen(3);
 }
@@ -255,9 +255,9 @@ function openOAuthModal() {
 }
 function completeOAuth() {
   bootstrap.Modal.getInstance(document.getElementById('oauthModal'))?.hide();
-  document.getElementById('s4_initial').style.display = 'none';
-  document.getElementById('s4_synced').style.display  = 'block';
-  document.getElementById('s4_next').disabled = false;
+  document.getElementById('olxSyncInitialState').style.display = 'none';
+  document.getElementById('olxSyncDoneState').style.display  = 'block';
+  document.getElementById('olxSyncNextBtn').disabled = false;
   toast(currentLang === 'ua' ? '✓ Синхронізовано з OLX' : '✓ Synced with OLX');
   applyLang();
 }
@@ -279,35 +279,35 @@ const S5_CITIES = {
             { v:'trusk',   ua:'Трускавець',en:'Truskavets', d:false }]
 };
 
-function s5UpdateCities() {
-  const reg = document.getElementById('s5_region').value;
-  const sel = document.getElementById('s5_city');
+function updateContactCities() {
+  const reg = document.getElementById('contactRegion').value;
+  const sel = document.getElementById('contactCity');
   sel.innerHTML = (S5_CITIES[reg] || []).map((c, i) =>
     `<option value="${c.v}" data-ua="${c.ua}" data-en="${c.en}" data-d="${c.d}" ${i === 0 ? 'selected' : ''}></option>`
   ).join('');
   applyLang();
-  s5UpdateDistrict();
+  updateContactDistrict();
 }
 
-function s5UpdateDistrict() {
-  const sel = document.getElementById('s5_city');
+function updateContactDistrict() {
+  const sel = document.getElementById('contactCity');
   const opt = sel.options[sel.selectedIndex];
   const show = opt && opt.dataset.d === 'true';
-  document.getElementById('s5_district_wrap').style.display = show ? 'block' : 'none';
+  document.getElementById('contactDistrictWrap').style.display = show ? 'block' : 'none';
 }
 
-function s5PhoneChange() {
-  const ph1 = document.getElementById('s5_ph1').value.trim();
-  const ph2 = document.getElementById('s5_ph2').value.trim();
-  document.getElementById('s5_ph2_wrap').style.display = ph1 ? 'block' : 'none';
-  document.getElementById('s5_ph3_wrap').style.display = ph2 ? 'block' : 'none';
+function onContactPhoneChange() {
+  const ph1 = document.getElementById('contactPhone1').value.trim();
+  const ph2 = document.getElementById('contactPhone2').value.trim();
+  document.getElementById('contactPhone2Wrap').style.display = ph1 ? 'block' : 'none';
+  document.getElementById('contactPhone3Wrap').style.display = ph2 ? 'block' : 'none';
 }
 
-function s5Submit() {
-  const name   = document.getElementById('s5_name').value.trim();
-  const region = document.getElementById('s5_region').value;
-  const city   = document.getElementById('s5_city').value;
-  const phone  = document.getElementById('s5_ph1').value.trim();
+function submitContactDetails() {
+  const name   = document.getElementById('contactName').value.trim();
+  const region = document.getElementById('contactRegion').value;
+  const city   = document.getElementById('contactCity').value;
+  const phone  = document.getElementById('contactPhone1').value.trim();
   if (!name || !region || !city || !phone) {
     toast(currentLang === 'ua' ? 'Заповніть усі обов\'язкові поля' : 'Fill in all required fields', 'error');
     return;
@@ -318,112 +318,114 @@ function s5Submit() {
 /* ════════════════════════════════
    SCREEN 6 — DASHBOARD
 ════════════════════════════════ */
-let s6Platform = null;
-let s6FileReady = false;
+let selectedImportPlatform = null;
+let importFileReady = false;
 
 function switchDashTab(t) {
+  const tabPanels = { hist: 'importHistoryTab',    imp: 'importNewTab'    };
+  const tabBtns   = { hist: 'importHistoryTabBtn', imp: 'importNewTabBtn' };
   ['hist', 'imp'].forEach(id => {
-    document.getElementById('tab6_' + id).style.display = id === t ? 'block' : 'none';
-    document.getElementById('tab6_' + id + '_btn').classList.toggle('active-tab', id === t);
+    document.getElementById(tabPanels[id]).style.display = id === t ? 'block' : 'none';
+    document.getElementById(tabBtns[id]).classList.toggle('active-tab', id === t);
   });
   if (t === 'imp') {
-    s6Platform = null;
-    s6FileReady = false;
-    document.getElementById('plt_prom').classList.remove('selected');
-    document.getElementById('plt_avto').classList.remove('selected');
-    document.getElementById('s6_drop_empty').style.display = 'block';
-    document.getElementById('s6_drop_done').style.display  = 'none';
-    document.getElementById('s6_drop').classList.remove('has-file');
-    document.getElementById('s6_avto_extra').style.display = 'none';
-    s6Step(1);
+    selectedImportPlatform = null;
+    importFileReady = false;
+    document.getElementById('platformCardProm').classList.remove('selected');
+    document.getElementById('platformCardAvto').classList.remove('selected');
+    document.getElementById('importDropZoneEmpty').style.display = 'block';
+    document.getElementById('importDropZoneDone').style.display  = 'none';
+    document.getElementById('importDropZone').classList.remove('has-file');
+    document.getElementById('importAvtoExtraFields').style.display = 'none';
+    goToImportStep(1);
   }
   applyLang();
 }
 
-function s6Step(n) {
+function goToImportStep(n) {
   [1, 2, 3].forEach(i => {
-    document.getElementById('s6_step_' + i).style.display = i === n ? 'block' : 'none';
-    const dot  = document.getElementById('s6_dot_'  + i);
-    const line = document.getElementById('s6_line_' + i);
+    document.getElementById('importStepPanel' + i).style.display = i === n ? 'block' : 'none';
+    const dot  = document.getElementById('importStepDot'  + i);
+    const line = document.getElementById('importStepLine' + i);
     if (dot) {
       dot.classList.toggle('active', i === n);
       dot.classList.toggle('done',   i <  n);
     }
     if (line) line.classList.toggle('done', i < n);
   });
-  if (n === 3) s6BuildSummary();
+  if (n === 3) buildImportSummary();
   applyLang();
 }
 
-function s6BuildSummary() {
+function buildImportSummary() {
   const ua = currentLang === 'ua';
-  document.getElementById('s6_sum_platform').innerHTML =
-    `<span class="badge-platform ${s6Platform}">${s6Platform === 'prom' ? 'PROM.ua' : 'AVTO.pro'}</span>`;
-  const fname = s6Platform === 'prom' ? 'prom_export.xlsx' : 'avto_export.xlsx';
-  document.getElementById('s6_sum_file').textContent = fname;
-  const noPhoto = document.getElementById('s6_nophoto').checked;
-  document.getElementById('s6_sum_nophoto').textContent = noPhoto
+  document.getElementById('importSummaryPlatform').innerHTML =
+    `<span class="badge-platform ${selectedImportPlatform}">${selectedImportPlatform === 'prom' ? 'PROM.ua' : 'AVTO.pro'}</span>`;
+  const fname = selectedImportPlatform === 'prom' ? 'prom_export.xlsx' : 'avto_export.xlsx';
+  document.getElementById('importSummaryFile').textContent = fname;
+  const noPhoto = document.getElementById('importSkipNoPhoto').checked;
+  document.getElementById('importSummaryNoPhoto').textContent = noPhoto
     ? (ua ? 'Пропускати оголошення без фото' : 'Skip listings without photos')
     : (ua ? 'Завантажувати всі оголошення'   : 'Upload all listings');
-  const descWrap = document.getElementById('s6_sum_desc_wrap');
-  if (s6Platform === 'avto') {
-    const desc = document.getElementById('s6_desc').value.trim();
-    document.getElementById('s6_sum_desc').textContent = desc || (ua ? '(не вказано)' : '(not set)');
+  const descWrap = document.getElementById('importSummaryDescWrap');
+  if (selectedImportPlatform === 'avto') {
+    const desc = document.getElementById('importAvtoDescription').value.trim();
+    document.getElementById('importSummaryDesc').textContent = desc || (ua ? '(не вказано)' : '(not set)');
     descWrap.style.display = 'flex';
   } else {
     descWrap.style.display = 'none';
   }
 }
 
-function s6GoToStep3() {
-  if (s6Platform === 'avto' && !document.getElementById('s6_desc').value.trim()) {
+function validateAndGoToImportStep3() {
+  if (selectedImportPlatform === 'avto' && !document.getElementById('importAvtoDescription').value.trim()) {
     toast(currentLang === 'ua' ? 'Введіть опис оголошень' : 'Enter a listing description', 'error');
     return;
   }
-  s6Step(3);
+  goToImportStep(3);
 }
 
-function s6SelectPlatform(p) {
-  s6Platform = p;
-  document.getElementById('plt_prom').classList.toggle('selected', p === 'prom');
-  document.getElementById('plt_avto').classList.toggle('selected', p === 'avto');
-  document.getElementById('s6_plt_name').textContent = p === 'prom' ? 'PROM.ua' : 'AVTO.pro';
-  s6FileReady = false;
-  document.getElementById('s6_drop_empty').style.display = 'block';
-  document.getElementById('s6_drop_done').style.display  = 'none';
-  document.getElementById('s6_drop').classList.remove('has-file');
-  document.getElementById('s6_avto_extra').style.display = 'none';
-  document.getElementById('s6_next_1').disabled = false;
+function selectImportPlatform(p) {
+  selectedImportPlatform = p;
+  document.getElementById('platformCardProm').classList.toggle('selected', p === 'prom');
+  document.getElementById('platformCardAvto').classList.toggle('selected', p === 'avto');
+  document.getElementById('importSelectedPlatform').textContent = p === 'prom' ? 'PROM.ua' : 'AVTO.pro';
+  importFileReady = false;
+  document.getElementById('importDropZoneEmpty').style.display = 'block';
+  document.getElementById('importDropZoneDone').style.display  = 'none';
+  document.getElementById('importDropZone').classList.remove('has-file');
+  document.getElementById('importAvtoExtraFields').style.display = 'none';
+  document.getElementById('importNextBtn1').disabled = false;
   applyLang();
 }
 
-function s6SimulateFile() {
-  if (!s6Platform) return;
-  s6FileReady = true;
-  const fname = s6Platform === 'prom' ? 'prom_export.xlsx' : 'avto_export.xlsx';
-  document.getElementById('s6_fname').textContent = fname;
-  document.getElementById('s6_drop_empty').style.display = 'none';
-  document.getElementById('s6_drop_done').style.display  = 'block';
-  document.getElementById('s6_drop').classList.add('has-file');
-  if (s6Platform === 'avto') {
-    document.getElementById('s6_avto_extra').style.display = 'block';
+function simulateImportFile() {
+  if (!selectedImportPlatform) return;
+  importFileReady = true;
+  const fname = selectedImportPlatform === 'prom' ? 'prom_export.xlsx' : 'avto_export.xlsx';
+  document.getElementById('importFileName').textContent = fname;
+  document.getElementById('importDropZoneEmpty').style.display = 'none';
+  document.getElementById('importDropZoneDone').style.display  = 'block';
+  document.getElementById('importDropZone').classList.add('has-file');
+  if (selectedImportPlatform === 'avto') {
+    document.getElementById('importAvtoExtraFields').style.display = 'block';
   }
-  document.getElementById('s6_next_2').disabled = false;
+  document.getElementById('importNextBtn2').disabled = false;
   applyLang();
 }
 
-function s6SetCur(c) {
+function setImportCurrency(c) {
   ['uah', 'usd', 'eur'].forEach(id => {
     document.getElementById('cur_' + id).classList.toggle('active-cur', id === c);
   });
 }
 
-function s6StartImport() {
+function startImport() {
   showScreen(7);
 }
 
 function openInstModal() {
-  const isProm = s6Platform === 'prom';
+  const isProm = selectedImportPlatform === 'prom';
   const ua = currentLang === 'ua';
   document.getElementById('instModal_title').textContent =
     ua ? (isProm ? 'Інструкція PROM.ua' : 'Інструкція AVTO.pro')
@@ -479,53 +481,53 @@ function openInstModal() {
 /* ════════════════════════════════
    SCREEN 7 — IMPORT PROGRESS
 ════════════════════════════════ */
-let s7Interval = null;
+let importProgressInterval = null;
 
-function s7StartProgress() {
+function startImportProgress() {
   let n = 0;
-  document.getElementById('s7_count').textContent = '0';
-  document.getElementById('s7_bar').style.width = '0%';
-  document.getElementById('s7_spin').classList.add('spinning');
-  if (s7Interval) clearInterval(s7Interval);
-  s7Interval = setInterval(() => {
+  document.getElementById('importProgressCount').textContent = '0';
+  document.getElementById('importProgressBar').style.width = '0%';
+  document.getElementById('importProgressSpinner').classList.add('spinning');
+  if (importProgressInterval) clearInterval(importProgressInterval);
+  importProgressInterval = setInterval(() => {
     n += Math.floor(Math.random() * 4) + 1;
-    if (n >= 87) { n = 87; clearInterval(s7Interval); }
-    document.getElementById('s7_count').textContent = n;
-    document.getElementById('s7_bar').style.width = Math.round(n / 146 * 100) + '%';
+    if (n >= 87) { n = 87; clearInterval(importProgressInterval); }
+    document.getElementById('importProgressCount').textContent = n;
+    document.getElementById('importProgressBar').style.width = Math.round(n / 146 * 100) + '%';
   }, 70);
 }
 
 /* ════════════════════════════════
    SCREEN 8 — FAILED LISTINGS
 ════════════════════════════════ */
-const S8_ERRORS = [
+const FAILED_LISTING_ERRORS = [
   { ua: 'Не вказана категорія',              en: 'Category not specified'       },
   { ua: 'Назва занадто довга > 70 символів', en: 'Title too long > 70 chars'    },
   { ua: 'Відсутнє фото',                     en: 'Missing photo'                }
 ];
-let s8OpenRow  = null;
-let s8Remaining = 3;
+let failedListingOpenRow  = null;
+let failedListingsRemaining = 3;
 
-function s8OpenEdit(idx) {
-  s8OpenRow = idx;
-  const err = S8_ERRORS[idx];
-  document.getElementById('s8_err_txt').textContent = currentLang === 'ua' ? err.ua : err.en;
-  document.getElementById('s8_panel').classList.add('open');
-  document.getElementById('s8_overlay').style.display = 'block';
-  s8CharCount();
+function openFailedListingEdit(idx) {
+  failedListingOpenRow = idx;
+  const err = FAILED_LISTING_ERRORS[idx];
+  document.getElementById('failedListingErrorText').textContent = currentLang === 'ua' ? err.ua : err.en;
+  document.getElementById('failedListingsEditPanel').classList.add('open');
+  document.getElementById('failedListingsOverlay').style.display = 'block';
+  onFailedListingTitleChange();
   applyLang();
 }
 
-function s8CloseEdit() {
-  document.getElementById('s8_panel').classList.remove('open');
-  document.getElementById('s8_overlay').style.display = 'none';
-  s8OpenRow = null;
+function closeFailedListingEdit() {
+  document.getElementById('failedListingsEditPanel').classList.remove('open');
+  document.getElementById('failedListingsOverlay').style.display = 'none';
+  failedListingOpenRow = null;
 }
 
-function s8SaveEdit() {
-  const row = document.getElementById('s8r_' + s8OpenRow);
+function saveFailedListingEdit() {
+  const row = document.getElementById('failedListingRow' + failedListingOpenRow);
   if (!row) return;
-  s8CloseEdit();
+  closeFailedListingEdit();
   toast(currentLang === 'ua'
     ? '✓ Оголошення пройшло валідацію. Тепер ви можете побачити його в акаунті OLX.'
     : '✓ Listing passed validation. You can now see it in your OLX account.');
@@ -533,36 +535,38 @@ function s8SaveEdit() {
   row.style.opacity = '0';
   setTimeout(() => {
     row.remove();
-    s8Remaining--;
-    document.getElementById('s8_failcount').textContent = s8Remaining;
-    if (s8Remaining === 0) {
-      document.getElementById('s8_table').style.display = 'none';
-      document.getElementById('s8_empty').style.display = 'block';
+    failedListingsRemaining--;
+    document.getElementById('failedListingsCount').textContent = failedListingsRemaining;
+    if (failedListingsRemaining === 0) {
+      document.getElementById('failedListingsTable').style.display = 'none';
+      document.getElementById('failedListingsEmpty').style.display = 'block';
     }
   }, 420);
 }
 
-function s8CharCount() {
-  const inp = document.getElementById('s8_title_inp');
-  const cnt = document.getElementById('s8_char_cnt');
+function onFailedListingTitleChange() {
+  const inp = document.getElementById('failedListingTitleInput');
+  const cnt = document.getElementById('failedListingCharCount');
   if (!inp || !cnt) return;
   const len = inp.value.length;
   cnt.textContent = len + '/70';
   cnt.style.color = len > 70 ? '#c62828' : '#aaa';
 }
 
-function s8SetCond(c) {
-  document.getElementById('cond_used').classList.toggle('active-cur', c === 'used');
-  document.getElementById('cond_new').classList.toggle('active-cur', c === 'new');
+function setFailedListingCondition(c) {
+  document.getElementById('conditionUsedBtn').classList.toggle('active-cur', c === 'used');
+  document.getElementById('conditionNewBtn').classList.toggle('active-cur', c === 'new');
 }
 
 /* ════════════════════════════════
    SCREEN 9 — SETTINGS
 ════════════════════════════════ */
-function s9Tab(t) {
-  ['olx', 'contacts', 'avto', 'pw'].forEach(id => {
-    document.getElementById('s9_' + id).style.display = id === t ? 'block' : 'none';
-    document.getElementById('s9nav_' + id).classList.toggle('active-sett', id === t);
+function switchSettingsTab(t) {
+  const panels = { olx: 'settingsPanelOlx', contacts: 'settingsPanelContacts', avto: 'settingsPanelAvto', pw: 'settingsPanelPassword' };
+  const navs   = { olx: 'settingsNavOlx',   contacts: 'settingsNavContacts',   avto: 'settingsNavAvto',   pw: 'settingsNavPassword'   };
+  Object.keys(panels).forEach(id => {
+    document.getElementById(panels[id]).style.display = id === t ? 'block' : 'none';
+    document.getElementById(navs[id]).classList.toggle('active-sett', id === t);
   });
   applyLang();
 }
@@ -630,7 +634,7 @@ function renderLeftPanel(gridId) {
                 data-en="Track progress in your personal cabinet"></span>
         </li>
       </ul>
-      <button class="cb" onclick="showComment('s1_left')"><i class="bi bi-chat-fill"></i></button>
+      <button class="cb" onclick="showComment('register_leftPanel')"><i class="bi bi-chat-fill"></i></button>
     </div>
   </div>`;
 }
@@ -743,9 +747,9 @@ async function loadScreens() {
   buildGrid('iconGrid1');
   buildGrid('iconGrid2');
   buildGrid('iconGrid10');
-  s5UpdateCities();
-  s5UpdateDistrict();
-  s5PhoneChange();
+  updateContactCities();
+  updateContactDistrict();
+  onContactPhoneChange();
   refreshNavHighlight();
   applyLang();
   document.getElementById('comments-btn').classList.add('active');

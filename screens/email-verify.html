@@ -14,7 +14,7 @@
 
       <p class="text-muted mb-4" style="line-height:1.65;">
         <span data-ua="Ми надіслали листа на " data-en="We sent a verification email to "></span>
-        <strong id="s3_email">user@example.com</strong>
+        <strong id="verifyEmailDisplay">user@example.com</strong>
         <span data-ua=". Перевірте пошту та папку «Спам» і перейдіть за посиланням для завершення реєстрації."
               data-en=". Please check your inbox and spam folder, then follow the link to complete registration."></span>
       </p>
@@ -24,7 +24,7 @@
           onclick="toast(currentLang==='ua'?'Лист надіслано повторно':'Email resent')">
           <span data-ua="Надіслати повторно" data-en="Resend email"></span>
         </button>
-        <button class="cb" onclick="showComment('s3_locked')"><i class="bi bi-chat-fill"></i></button>
+        <button class="cb" onclick="showComment('emailVerify_locked')"><i class="bi bi-chat-fill"></i></button>
       </div>
 
       <br>

@@ -6,9 +6,9 @@
 
   <div style="background:#fff;border-bottom:1px solid #e0e0e0;padding:0 1.5rem;">
     <div class="d-flex gap-1">
-      <button id="tab6_hist_btn" class="dash-tab active-tab" onclick="switchDashTab('hist')"
+      <button id="importHistoryTabBtn" class="dash-tab active-tab" onclick="switchDashTab('hist')"
         data-ua="Історія імпорту" data-en="Import History"></button>
-      <button id="tab6_imp_btn" class="dash-tab" onclick="switchDashTab('imp')"
+      <button id="importNewTabBtn" class="dash-tab" onclick="switchDashTab('imp')"
         data-ua="Імпортувати оголошення" data-en="Import Listings"></button>
     </div>
   </div>
@@ -16,7 +16,7 @@
   <div style="flex:1;background:#f8f9fa;padding:1.5rem;overflow-y:auto;">
 
     <!-- TAB: HISTORY -->
-    <div id="tab6_hist">
+    <div id="importHistoryTab">
       <div style="background:#fff;border-radius:12px;border-left:4px solid #2e7d32;
                   box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1rem 1.25rem;margin-bottom:1rem;">
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
@@ -89,28 +89,28 @@
     </div>
 
     <!-- TAB: IMPORT (3-step wizard) -->
-    <div id="tab6_imp" style="display:none;max-width:680px;">
+    <div id="importNewTab" style="display:none;max-width:680px;">
 
       <!-- Stepper indicator -->
       <div class="s6-stepper">
-        <div class="s6-step-item active" id="s6_dot_1">
+        <div class="s6-step-item active" id="importStepDot1">
           <div class="s6-step-circle">1</div>
           <div class="s6-step-label" data-ua="Платформа" data-en="Platform"></div>
         </div>
-        <div class="s6-step-line" id="s6_line_1"></div>
-        <div class="s6-step-item" id="s6_dot_2">
+        <div class="s6-step-line" id="importStepLine1"></div>
+        <div class="s6-step-item" id="importStepDot2">
           <div class="s6-step-circle">2</div>
           <div class="s6-step-label" data-ua="Файл" data-en="File"></div>
         </div>
-        <div class="s6-step-line" id="s6_line_2"></div>
-        <div class="s6-step-item" id="s6_dot_3">
+        <div class="s6-step-line" id="importStepLine2"></div>
+        <div class="s6-step-item" id="importStepDot3">
           <div class="s6-step-circle">3</div>
           <div class="s6-step-label" data-ua="Підтвердження" data-en="Confirm"></div>
         </div>
       </div>
 
       <!-- ── STEP 1: Platform ── -->
-      <div id="s6_step_1" style="background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
+      <div id="importStepPanel1" style="background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
         <h6 class="fw-bold mb-1" style="font-size:1rem;"
           data-ua="Оберіть платформу" data-en="Select platform"></h6>
         <p class="text-muted mb-4" style="font-size:.85rem;"
@@ -119,31 +119,31 @@
 
         <div class="cb-host mb-4">
           <div class="d-flex gap-3">
-            <div id="plt_prom" class="platform-card" onclick="s6SelectPlatform('prom')" style="flex:1;">
+            <div id="platformCardProm" class="platform-card" onclick="selectImportPlatform('prom')" style="flex:1;">
               <div style="font-size:1.3rem;font-weight:800;color:#7b1fa2;margin-bottom:.3rem;">PROM.ua</div>
               <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Prom.ua" data-en="Import from Prom.ua"></div>
             </div>
-            <div id="plt_avto" class="platform-card" onclick="s6SelectPlatform('avto')" style="flex:1;">
+            <div id="platformCardAvto" class="platform-card" onclick="selectImportPlatform('avto')" style="flex:1;">
               <div style="font-size:1.3rem;font-weight:800;color:#1565c0;margin-bottom:.3rem;">AVTO.pro</div>
               <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Avto.pro" data-en="Import from Avto.pro"></div>
             </div>
           </div>
-          <button class="cb" style="top:2px;right:2px;" onclick="showComment('s6_platforms')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" style="top:2px;right:2px;" onclick="showComment('import_platformSelection')"><i class="bi bi-chat-fill"></i></button>
         </div>
 
         <div class="d-flex justify-content-end">
-          <button id="s6_next_1" class="btn-teal" disabled onclick="s6Step(2)"
+          <button id="importNextBtn1" class="btn-teal" disabled onclick="goToImportStep(2)"
             data-ua="Далі →" data-en="Next →"></button>
         </div>
       </div>
 
       <!-- ── STEP 2: File upload ── -->
-      <div id="s6_step_2" style="display:none;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
+      <div id="importStepPanel2" style="display:none;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
         <h6 class="fw-bold mb-1" style="font-size:1rem;"
           data-ua="Завантажте файл" data-en="Upload file"></h6>
         <p class="text-muted mb-4" style="font-size:.85rem;">
           <span data-ua="Платформа:" data-en="Platform:"></span>
-          &nbsp;<strong id="s6_plt_name"></strong>
+          &nbsp;<strong id="importSelectedPlatform"></strong>
         </p>
 
         <div class="cb-host mb-3">
@@ -156,59 +156,59 @@
                style="color:var(--olx-teal-dark);text-decoration:none;font-weight:500;"
                data-ua=" Переглянути інструкцію →" data-en=" View instructions →"></a>
           </div>
-          <button class="cb" onclick="showComment('s6_instruction')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" onclick="showComment('import_fileInstructions')"><i class="bi bi-chat-fill"></i></button>
         </div>
 
         <div class="cb-host mb-3">
-          <div id="s6_drop" class="upload-zone"
-            onclick="s6SimulateFile()"
+          <div id="importDropZone" class="upload-zone"
+            onclick="simulateImportFile()"
             ondragover="event.preventDefault()"
-            ondrop="s6SimulateFile();event.preventDefault()">
-            <div id="s6_drop_empty">
+            ondrop="simulateImportFile();event.preventDefault()">
+            <div id="importDropZoneEmpty">
               <i class="bi bi-folder2-open" style="font-size:2.5rem;color:#bbb;display:block;margin-bottom:.5rem;"></i>
               <div class="fw-500 mb-1"
                 data-ua="Перетягніть файл або оберіть вручну"
                 data-en="Drag and drop or choose manually"></div>
               <div style="font-size:.82rem;color:#aaa;">.xlsx, .xls</div>
               <button class="btn-outline-olx" style="width:auto;padding:.4rem 1rem;margin-top:.75rem;font-size:.85rem;"
-                onclick="event.stopPropagation();s6SimulateFile()"
+                onclick="event.stopPropagation();simulateImportFile()"
                 data-ua="Обрати файл" data-en="Choose file"></button>
             </div>
-            <div id="s6_drop_done" style="display:none;">
+            <div id="importDropZoneDone" style="display:none;">
               <i class="bi bi-file-earmark-check" style="font-size:2rem;color:#2e7d32;display:block;margin-bottom:.5rem;"></i>
-              <strong id="s6_fname"></strong>
+              <strong id="importFileName"></strong>
               <div style="font-size:.85rem;color:#666;margin-top:.25rem;"
                 data-ua="Файл містить: 146 оголошень"
                 data-en="File contains: 146 listings"></div>
             </div>
           </div>
-          <button class="cb" onclick="showComment('s6_dropzone')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" onclick="showComment('importDropZonezone')"><i class="bi bi-chat-fill"></i></button>
         </div>
 
         <div class="cb-host mb-3" style="display:inline-block;">
           <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;cursor:pointer;">
-            <input type="checkbox" id="s6_nophoto" checked style="width:16px;height:16px;">
+            <input type="checkbox" id="importSkipNoPhoto" checked style="width:16px;height:16px;">
             <span data-ua="Не завантажувати оголошення без фото"
                   data-en="Skip listings without photos"></span>
           </label>
-          <button class="cb" style="top:-6px;right:-6px;" onclick="showComment('s6_checkbox')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" style="top:-6px;right:-6px;" onclick="showComment('import_skipNoPhotoCheckbox')"><i class="bi bi-chat-fill"></i></button>
         </div>
 
-        <div id="s6_avto_extra" style="display:none;">
+        <div id="importAvtoExtraFields" style="display:none;">
           <div class="cb-host mb-3">
             <label class="form-label fw-500 mb-2" data-ua="Валюта файлу" data-en="File currency"></label>
             <div class="d-flex gap-2">
-              <button id="cur_uah" class="cur-btn active-cur" onclick="s6SetCur('uah')">UAH</button>
-              <button id="cur_usd" class="cur-btn" onclick="s6SetCur('usd')">USD</button>
-              <button id="cur_eur" class="cur-btn" onclick="s6SetCur('eur')">EUR</button>
+              <button id="importCurrencyUah" class="cur-btn active-cur" onclick="setImportCurrency('uah')">UAH</button>
+              <button id="importCurrencyUsd" class="cur-btn" onclick="setImportCurrency('usd')">USD</button>
+              <button id="importCurrencyEur" class="cur-btn" onclick="setImportCurrency('eur')">EUR</button>
             </div>
-            <button class="cb" style="top:2px;right:2px;" onclick="showComment('s6_avto_extra')"><i class="bi bi-chat-fill"></i></button>
+            <button class="cb" style="top:2px;right:2px;" onclick="showComment('importAvtoExtraFields')"><i class="bi bi-chat-fill"></i></button>
           </div>
           <div class="mb-3">
             <label class="form-label fw-500 mb-1"
               data-ua="Опис оголошень (обов'язково)"
               data-en="Listing description (required)"></label>
-            <textarea id="s6_desc" class="form-control" rows="3"
+            <textarea id="importAvtoDescription" class="form-control" rows="3"
               data-ua-placeholder="Введіть опис, який буде доданий до всіх ваших оголошень..."
               data-en-placeholder="Enter a description that will be added to all your listings..."></textarea>
             <small class="text-muted" style="font-size:.75rem;"
@@ -219,15 +219,15 @@
 
         <div class="d-flex justify-content-between mt-2">
           <button class="btn-outline-olx" style="width:auto;padding:.5rem 1.25rem;"
-            onclick="s6Step(1)"
+            onclick="goToImportStep(1)"
             data-ua="← Назад" data-en="← Back"></button>
-          <button id="s6_next_2" class="btn-teal" disabled onclick="s6GoToStep3()"
+          <button id="importNextBtn2" class="btn-teal" disabled onclick="validateAndGoToImportStep3()"
             data-ua="Далі →" data-en="Next →"></button>
         </div>
       </div>
 
       <!-- ── STEP 3: Confirm ── -->
-      <div id="s6_step_3" style="display:none;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
+      <div id="importStepPanel3" style="display:none;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
         <h6 class="fw-bold mb-1" style="font-size:1rem;"
           data-ua="Підтвердження імпорту" data-en="Confirm import"></h6>
         <p class="text-muted mb-4" style="font-size:.85rem;"
@@ -240,7 +240,7 @@
             <div>
               <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
                 data-ua="Платформа" data-en="Platform"></div>
-              <div id="s6_sum_platform"></div>
+              <div id="importSummaryPlatform"></div>
             </div>
           </div>
           <div class="s6-summary-row">
@@ -248,7 +248,7 @@
             <div>
               <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
                 data-ua="Файл" data-en="File"></div>
-              <div id="s6_sum_file" style="font-weight:500;"></div>
+              <div id="importSummaryFile" style="font-weight:500;"></div>
               <div style="font-size:.8rem;color:#888;"
                 data-ua="146 оголошень" data-en="146 listings"></div>
             </div>
@@ -258,24 +258,24 @@
             <div>
               <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
                 data-ua="Фото" data-en="Photos"></div>
-              <div id="s6_sum_nophoto" style="font-size:.9rem;"></div>
+              <div id="importSummaryNoPhoto" style="font-size:.9rem;"></div>
             </div>
           </div>
-          <div class="s6-summary-row" id="s6_sum_desc_wrap" style="display:none;">
+          <div class="s6-summary-row" id="importSummaryDescWrap" style="display:none;">
             <i class="bi bi-text-left s6-summary-icon"></i>
             <div style="flex:1;">
               <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
                 data-ua="Опис" data-en="Description"></div>
-              <div id="s6_sum_desc" style="font-size:.88rem;color:#444;white-space:pre-wrap;word-break:break-word;"></div>
+              <div id="importSummaryDesc" style="font-size:.88rem;color:#444;white-space:pre-wrap;word-break:break-word;"></div>
             </div>
           </div>
         </div>
 
         <div class="d-flex justify-content-between">
           <button class="btn-outline-olx" style="width:auto;padding:.5rem 1.25rem;"
-            onclick="s6Step(2)"
+            onclick="goToImportStep(2)"
             data-ua="← Назад" data-en="← Back"></button>
-          <button class="btn-teal" onclick="s6StartImport()"
+          <button class="btn-teal" onclick="startImport()"
             data-ua="Імпортувати на OLX →" data-en="Import to OLX →"></button>
         </div>
       </div>

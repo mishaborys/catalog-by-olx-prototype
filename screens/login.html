@@ -27,19 +27,19 @@
                   data-en="The Content Manager account is not linked to your OLX account. If you don't have an account yet — "></span><a href="#" onclick="showScreen(1);return false;"
                data-ua="зареєструйтесь" data-en="register here"></a><span data-ua="." data-en="."></span>
           </div>
-          <button class="cb" onclick="showComment('s2_infoblock')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" onclick="showComment('login_infoBlock')"><i class="bi bi-chat-fill"></i></button>
         </div>
 
         <div class="mb-2">
           <label class="form-label fw-500 mb-1" data-ua="Email" data-en="Email"></label>
-          <input type="email" id="s2_email" class="form-control">
+          <input type="email" id="loginEmail" class="form-control">
         </div>
 
         <div class="mb-3">
           <label class="form-label fw-500 mb-1" data-ua="Пароль" data-en="Password"></label>
           <div class="input-group">
-            <input type="password" id="s2_pw" class="form-control">
-            <button class="btn btn-outline-secondary" type="button" onclick="togglePw('s2_pw',this)">
+            <input type="password" id="loginPassword" class="form-control">
+            <button class="btn btn-outline-secondary" type="button" onclick="togglePw('loginPassword',this)">
               <i class="bi bi-eye"></i>
             </button>
           </div>
@@ -47,8 +47,8 @@
 
         <div class="d-flex align-items-center justify-content-between mb-4">
           <div class="form-check mb-0">
-            <input class="form-check-input" type="checkbox" id="s2_remember">
-            <label class="form-check-label" for="s2_remember" style="font-size:.88rem;"
+            <input class="form-check-input" type="checkbox" id="loginRememberMe">
+            <label class="form-check-label" for="loginRememberMe" style="font-size:.88rem;"
               data-ua="Запам'ятати мене" data-en="Remember me"></label>
           </div>
           <a href="#" onclick="showScreen(10);return false;" style="color:var(--olx-teal-dark);font-size:.88rem;text-decoration:none;"

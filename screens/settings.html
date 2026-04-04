@@ -12,19 +12,19 @@
                     color:#999;font-weight:600;margin-bottom:.75rem;padding:0 .5rem;"
           data-ua="Налаштування" data-en="Settings"></div>
         <nav style="display:flex;flex-direction:column;gap:2px;">
-          <button id="s9nav_olx" class="sett-nav active-sett" onclick="s9Tab('olx')">
+          <button id="settingsNavOlx" class="sett-nav active-sett" onclick="switchSettingsTab('olx')">
             <i class="bi bi-arrow-repeat me-2"></i>
             <span data-ua="Синхронізація з OLX" data-en="OLX Sync"></span>
           </button>
-          <button id="s9nav_contacts" class="sett-nav" onclick="s9Tab('contacts')">
+          <button id="settingsNavContacts" class="sett-nav" onclick="switchSettingsTab('contacts')">
             <i class="bi bi-person me-2"></i>
             <span data-ua="Контактні дані" data-en="Contact Details"></span>
           </button>
-          <button id="s9nav_avto" class="sett-nav" onclick="s9Tab('avto')">
+          <button id="settingsNavAvto" class="sett-nav" onclick="switchSettingsTab('avto')">
             <i class="bi bi-card-text me-2"></i>
             <span data-ua="Опис для AVTO.pro" data-en="AVTO.pro Description"></span>
           </button>
-          <button id="s9nav_pw" class="sett-nav" onclick="s9Tab('pw')">
+          <button id="settingsNavPassword" class="sett-nav" onclick="switchSettingsTab('pw')">
             <i class="bi bi-key me-2"></i>
             <span data-ua="Зміна пароля" data-en="Change Password"></span>
           </button>
@@ -33,11 +33,11 @@
 
       <div style="flex:1;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
 
-        <div id="s9_olx">
+        <div id="settingsPanelOlx">
           <div class="d-flex align-items-center justify-content-between mb-1">
             <h5 class="fw-bold mb-0" data-ua="Синхронізація з OLX" data-en="OLX Sync"></h5>
             <button class="cb" style="position:static;transform:none;margin-left:.5rem;"
-              onclick="showComment('s9_del_acc')"><i class="bi bi-chat-fill"></i></button>
+              onclick="showComment('settings_deleteAccount')"><i class="bi bi-chat-fill"></i></button>
           </div>
           <p class="text-muted mb-4" style="font-size:.88rem;"
             data-ua="Управляйте підключенням між вашим акаунтом Content Manager і OLX."
@@ -52,11 +52,11 @@
             data-ua="Синхронізувати інший акаунт" data-en="Sync another account"></button>
         </div>
 
-        <div id="s9_contacts" style="display:none;">
+        <div id="settingsPanelContacts" style="display:none;">
           <div class="d-flex align-items-center justify-content-between mb-1">
             <h5 class="fw-bold mb-0" data-ua="Контактні дані" data-en="Contact Details"></h5>
             <button class="cb" style="position:static;transform:none;margin-left:.5rem;"
-              onclick="showComment('s9_no_import_btn')"><i class="bi bi-chat-fill"></i></button>
+              onclick="showComment('settings_noImportBtn')"><i class="bi bi-chat-fill"></i></button>
           </div>
           <p class="text-muted mb-4" style="font-size:.88rem;"
             data-ua="Дані, що використовуються при публікації оголошень."
@@ -87,11 +87,11 @@
             data-ua="Зберегти" data-en="Save"></button>
         </div>
 
-        <div id="s9_avto" style="display:none;">
+        <div id="settingsPanelAvto" style="display:none;">
           <div class="d-flex align-items-center justify-content-between mb-1">
             <h5 class="fw-bold mb-0" data-ua="Опис для AVTO.pro" data-en="AVTO.pro Description"></h5>
             <button class="cb" style="position:static;transform:none;margin-left:.5rem;"
-              onclick="showComment('s9_avto_desc')"><i class="bi bi-chat-fill"></i></button>
+              onclick="showComment('settings_avtoDesc')"><i class="bi bi-chat-fill"></i></button>
           </div>
           <p class="text-muted mb-4" style="font-size:.88rem;"
             data-ua="Цей текст автоматично додається до всіх оголошень при імпорті з AVTO.pro."
@@ -113,34 +113,34 @@
             data-ua="Зберегти" data-en="Save"></button>
         </div>
 
-        <div id="s9_pw" style="display:none;">
+        <div id="settingsPanelPassword" style="display:none;">
           <h5 class="fw-bold mb-4" data-ua="Зміна пароля" data-en="Change Password"></h5>
           <div class="mb-3">
             <label class="form-label fw-500 mb-1"
               data-ua="Поточний пароль" data-en="Current password"></label>
             <div class="input-group">
-              <input type="password" id="s9_cur_pw" class="form-control"
+              <input type="password" id="settingsCurrentPassword" class="form-control"
                 data-ua-placeholder="Введіть поточний пароль"
                 data-en-placeholder="Enter current password"
                 placeholder="Введіть поточний пароль">
               <button class="btn btn-outline-secondary" type="button"
-                onclick="togglePw('s9_cur_pw',this)"><i class="bi bi-eye"></i></button>
+                onclick="togglePw('settingsCurrentPassword',this)"><i class="bi bi-eye"></i></button>
             </div>
           </div>
           <div class="mb-1">
             <label class="form-label fw-500 mb-1"
               data-ua="Новий пароль" data-en="New password"></label>
             <div class="input-group">
-              <input type="password" id="s9_new_pw" class="form-control"
+              <input type="password" id="settingsNewPassword" class="form-control"
                 data-ua-placeholder="Мінімум 8 символів"
                 data-en-placeholder="Minimum 8 characters"
                 placeholder="Мінімум 8 символів"
-                oninput="evalPw('s9_new_pw','s9_pwbar')">
+                oninput="evalPw('settingsNewPassword','settingsPwStrengthBar')">
               <button class="btn btn-outline-secondary" type="button"
-                onclick="togglePw('s9_new_pw',this)"><i class="bi bi-eye"></i></button>
+                onclick="togglePw('settingsNewPassword',this)"><i class="bi bi-eye"></i></button>
             </div>
           </div>
-          <div class="pw-bar mb-1" id="s9_pwbar">
+          <div class="pw-bar mb-1" id="settingsPwStrengthBar">
             <div class="pw-seg"></div><div class="pw-seg"></div>
             <div class="pw-seg"></div><div class="pw-seg"></div>
           </div>

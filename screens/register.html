@@ -13,7 +13,7 @@
           <h3 class="fw-bold mb-0"
             data-ua="Створити обліковий запис"
             data-en="Create an account"></h3>
-          <button class="cb" onclick="showComment('s1_title')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" onclick="showComment('register_title')"><i class="bi bi-chat-fill"></i></button>
         </div>
 
         <p class="text-muted mb-4" style="font-size:.88rem;">
@@ -29,34 +29,34 @@
             <span data-ua="Обліковий запис Content Manager не пов'язаний з обліковим записом OLX."
                   data-en="The Content Manager account is not linked to your OLX account."></span>
           </div>
-          <button class="cb" onclick="showComment('s1_infoblock')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" onclick="showComment('register_infoBlock')"><i class="bi bi-chat-fill"></i></button>
         </div>
 
         <div class="mb-2">
           <label class="form-label fw-500 mb-1" data-ua="Email" data-en="Email"></label>
-          <input type="email" id="s1_email" class="form-control">
+          <input type="email" id="registerEmail" class="form-control">
         </div>
 
         <div class="mb-1">
           <label class="form-label fw-500 mb-1" data-ua="Пароль" data-en="Password"></label>
           <div class="input-group">
-            <input type="password" id="s1_pw" class="form-control"
-              oninput="evalPw('s1_pw','s1_pwbar')">
-            <button class="btn btn-outline-secondary" type="button" onclick="togglePw('s1_pw',this)">
+            <input type="password" id="registerPassword" class="form-control"
+              oninput="evalPw('registerPassword','registerPwStrengthBar')">
+            <button class="btn btn-outline-secondary" type="button" onclick="togglePw('registerPassword',this)">
               <i class="bi bi-eye"></i>
             </button>
           </div>
         </div>
 
         <div class="cb-host mb-3">
-          <div class="pw-bar" id="s1_pwbar">
+          <div class="pw-bar" id="registerPwStrengthBar">
             <div class="pw-seg"></div><div class="pw-seg"></div>
             <div class="pw-seg"></div><div class="pw-seg"></div>
           </div>
           <small class="text-muted" style="font-size:.75rem;"
             data-ua="Мінімум 8 символів: велика, мала літера та цифра"
             data-en="Minimum 8 characters: uppercase, lowercase and a digit"></small>
-          <button class="cb" onclick="showComment('s1_pwbar')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" onclick="showComment('registerPwStrengthBar')"><i class="bi bi-chat-fill"></i></button>
         </div>
 
         <p class="text-muted mb-3" style="font-size:.75rem;">

@@ -19,15 +19,15 @@
       </span>
       <div class="cb-host d-inline-block">
         <span style="color:#c62828;font-size:.9rem;">
-          <i class="bi bi-x-circle me-1"></i><span id="s8_failcount">3</span>
+          <i class="bi bi-x-circle me-1"></i><span id="failedListingsCount">3</span>
           <span data-ua=" не вдалось" data-en=" failed"></span>
         </span>
-        <button class="cb" style="top:-6px;right:-6px;" onclick="showComment('s8_only_failed')"><i class="bi bi-chat-fill"></i></button>
+        <button class="cb" style="top:-6px;right:-6px;" onclick="showComment('failedListings_onlyFailed')"><i class="bi bi-chat-fill"></i></button>
       </div>
     </div>
 
-    <div id="s8_table_wrap" style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;">
-      <table style="width:100%;border-collapse:collapse;" id="s8_table">
+    <div id="failedListingsTableWrap" style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;" id="failedListingsTable">
         <thead>
           <tr style="background:#f8f9fa;border-bottom:1px solid #e0e0e0;">
             <th class="tbl-h" style="width:64px;" data-ua="Фото" data-en="Photo"></th>
@@ -35,38 +35,38 @@
             <th class="tbl-h">
               <div class="cb-host d-inline-block">
                 <span data-ua="Причина помилки" data-en="Error reason"></span>
-                <button class="cb" style="top:-6px;right:-6px;" onclick="showComment('s8_inline_err')"><i class="bi bi-chat-fill"></i></button>
+                <button class="cb" style="top:-6px;right:-6px;" onclick="showComment('failedListings_inlineError')"><i class="bi bi-chat-fill"></i></button>
               </div>
             </th>
             <th class="tbl-h" data-ua="Ціна" data-en="Price"></th>
             <th class="tbl-h" data-ua="Дії" data-en="Actions"></th>
           </tr>
         </thead>
-        <tbody id="s8_tbody">
-          <tr id="s8r_0" class="tbl-row">
+        <tbody id="failedListingsTbody">
+          <tr id="failedListingRow0" class="tbl-row">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-wrench" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Прокладка головки блоку циліндрів</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Не вказана категорія" data-en="Category not specified"></span></td>
             <td class="tbl-c" style="white-space:nowrap;">450 <span data-ua="грн" data-en="UAH"></span></td>
-            <td class="tbl-c"><button class="btn-sm-outline" onclick="s8OpenEdit(0)" data-ua="Редагувати" data-en="Edit"></button></td>
+            <td class="tbl-c"><button class="btn-sm-outline" onclick="openFailedListingEdit(0)" data-ua="Редагувати" data-en="Edit"></button></td>
           </tr>
-          <tr id="s8r_1" class="tbl-row">
+          <tr id="failedListingRow1" class="tbl-row">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-gear" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Ремінь ГРМ Gates T41072</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Назва занадто довга > 70 символів" data-en="Title too long > 70 chars"></span></td>
             <td class="tbl-c" style="white-space:nowrap;">280 <span data-ua="грн" data-en="UAH"></span></td>
-            <td class="tbl-c"><button class="btn-sm-outline" onclick="s8OpenEdit(1)" data-ua="Редагувати" data-en="Edit"></button></td>
+            <td class="tbl-c"><button class="btn-sm-outline" onclick="openFailedListingEdit(1)" data-ua="Редагувати" data-en="Edit"></button></td>
           </tr>
-          <tr id="s8r_2" class="tbl-row">
+          <tr id="failedListingRow2" class="tbl-row">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#f5f5f5;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-image" style="color:#ccc;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Фільтр масляний Mann W712/95</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Відсутнє фото" data-en="Missing photo"></span></td>
             <td class="tbl-c" style="white-space:nowrap;">120 <span data-ua="грн" data-en="UAH"></span></td>
-            <td class="tbl-c"><button class="btn-sm-outline" onclick="s8OpenEdit(2)" data-ua="Редагувати" data-en="Edit"></button></td>
+            <td class="tbl-c"><button class="btn-sm-outline" onclick="openFailedListingEdit(2)" data-ua="Редагувати" data-en="Edit"></button></td>
           </tr>
         </tbody>
       </table>
-      <div id="s8_empty" style="display:none;text-align:center;padding:3rem 2rem;">
+      <div id="failedListingsEmpty" style="display:none;text-align:center;padding:3rem 2rem;">
         <i class="bi bi-check-circle-fill" style="font-size:3rem;color:#2e7d32;display:block;margin-bottom:1rem;"></i>
         <h5 class="fw-bold" style="color:#2e7d32;"
           data-ua="✓ Всі оголошення успішно перенесені на OLX!"
@@ -76,10 +76,10 @@
   </div>
 
   <!-- Slide-in edit panel -->
-  <div id="s8_panel" class="slide-panel">
+  <div id="failedListingsEditPanel" class="slide-panel">
     <div style="padding:1.25rem 1.5rem;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between;">
       <h5 class="fw-bold mb-0" data-ua="Редагування оголошення" data-en="Edit listing"></h5>
-      <button onclick="s8CloseEdit()" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:#666;">
+      <button onclick="closeFailedListingEdit()" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:#666;">
         <i class="bi bi-x-lg"></i>
       </button>
     </div>
@@ -88,7 +88,7 @@
                   padding:.7rem 1rem;margin-bottom:1.5rem;font-size:.88rem;color:#b71c1c;">
         <i class="bi bi-exclamation-triangle-fill me-2"></i>
         <strong data-ua="Причина: " data-en="Reason: "></strong>
-        <span id="s8_err_txt"></span>
+        <span id="failedListingErrorText"></span>
       </div>
       <div class="mb-3">
         <label class="form-label fw-500 mb-1" data-ua="Категорія" data-en="Category"></label>
@@ -123,19 +123,19 @@
       <div class="mb-3">
         <label class="form-label fw-500 mb-1" data-ua="Стан" data-en="Condition"></label>
         <div class="d-flex gap-2">
-          <button id="cond_used" class="cur-btn active-cur" onclick="s8SetCond('used')"
+          <button id="conditionUsedBtn" class="cur-btn active-cur" onclick="setFailedListingCondition('used')"
             data-ua="Вживаний" data-en="Used"></button>
-          <button id="cond_new" class="cur-btn" onclick="s8SetCond('new')"
+          <button id="conditionNewBtn" class="cur-btn" onclick="setFailedListingCondition('new')"
             data-ua="Новий" data-en="New"></button>
         </div>
       </div>
       <div class="mb-3">
         <div class="d-flex align-items-center justify-content-between mb-1">
           <label class="form-label fw-500 mb-0" data-ua="Назва оголошення" data-en="Listing title"></label>
-          <small id="s8_char_cnt" style="color:#aaa;font-size:.75rem;"></small>
+          <small id="failedListingCharCount" style="color:#aaa;font-size:.75rem;"></small>
         </div>
-        <input type="text" id="s8_title_inp" class="form-control"
-          value="Ремінь ГРМ Gates T41072" oninput="s8CharCount()">
+        <input type="text" id="failedListingTitleInput" class="form-control"
+          value="Ремінь ГРМ Gates T41072" oninput="onFailedListingTitleChange()">
       </div>
       <div class="mb-3">
         <label class="form-label fw-500 mb-1" data-ua="Опис" data-en="Description"></label>
@@ -146,15 +146,15 @@
     <div style="padding:1rem 1.5rem;border-top:1px solid #eee;display:flex;gap:.75rem;">
       <div class="cb-host d-inline-block">
         <button class="btn-dark-olx" style="width:auto;padding:.55rem 1.25rem;"
-          onclick="s8SaveEdit()"
+          onclick="saveFailedListingEdit()"
           data-ua="Зберегти зміни" data-en="Save changes"></button>
-        <button class="cb" onclick="showComment('s8_save')"><i class="bi bi-chat-fill"></i></button>
+        <button class="cb" onclick="showComment('failedListings_saveEdit')"><i class="bi bi-chat-fill"></i></button>
       </div>
       <button class="btn-outline-olx" style="width:auto;padding:.5rem 1rem;"
-        onclick="s8CloseEdit()"
+        onclick="closeFailedListingEdit()"
         data-ua="Скасувати" data-en="Cancel"></button>
     </div>
   </div>
-  <div id="s8_overlay" onclick="s8CloseEdit()"
+  <div id="failedListingsOverlay" onclick="closeFailedListingEdit()"
     style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:1040;"></div>
 </div>

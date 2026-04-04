@@ -8,7 +8,7 @@
     <div class="prog-indicator mb-4">
       <div class="prog-step active">1</div>
       <div class="prog-line"></div>
-      <div class="prog-step" id="s4_step2">2</div>
+      <div class="prog-step" id="olxSyncStep2">2</div>
     </div>
 
     <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
@@ -19,23 +19,23 @@
         <p class="text-muted mb-0" style="font-size:.95rem;line-height:1.65;"
           data-ua="Натисніть кнопку нижче — вас перекине на OLX.ua. Увійдіть у свій акаунт та дайте додатку доступ."
           data-en="Click the button below — you will be redirected to OLX.ua. Sign in to your account and grant the app access."></p>
-        <button class="cb" onclick="showComment('s4_text')"><i class="bi bi-chat-fill"></i></button>
+        <button class="cb" onclick="showComment('olxSync_instructions')"><i class="bi bi-chat-fill"></i></button>
       </div>
 
-      <div id="s4_initial">
+      <div id="olxSyncInitialState">
         <button class="btn-dark-olx" style="width:auto;padding:.6rem 1.5rem;"
           onclick="openOAuthModal()"
           data-ua="Синхронізувати" data-en="Synchronize"></button>
       </div>
 
-      <div id="s4_synced" style="display:none;">
+      <div id="olxSyncDoneState" style="display:none;">
         <div class="cb-host d-inline-block mb-3">
           <div class="sync-ok-block">
             <i class="bi bi-check-circle-fill"></i>
             <span data-ua="Синхронізовано з акаунтом OLX: " data-en="Synced with OLX account: "></span>
             <strong>mishaborys@gmail.com</strong>
           </div>
-          <button class="cb" onclick="showComment('s4_email_or_phone')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" onclick="showComment('olxSync_emailOrPhone')"><i class="bi bi-chat-fill"></i></button>
         </div>
         <br>
         <button class="btn-outline-olx" style="width:auto;padding:.5rem 1.25rem;margin-bottom:.5rem;"
@@ -45,9 +45,9 @@
 
       <div class="d-flex justify-content-end mt-4">
         <div class="cb-host d-inline-block">
-          <button id="s4_next" class="btn-teal" disabled onclick="showScreen(5)"
+          <button id="olxSyncNextBtn" class="btn-teal" disabled onclick="showScreen(5)"
             data-ua="Далі →" data-en="Next →"></button>
-          <button class="cb" onclick="showComment('s4_separate')"><i class="bi bi-chat-fill"></i></button>
+          <button class="cb" onclick="showComment('olxSync_separateAccounts')"><i class="bi bi-chat-fill"></i></button>
         </div>
       </div>
     </div>
