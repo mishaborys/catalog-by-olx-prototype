@@ -1,0 +1,43 @@
+<!-- ═══════════════════════════════════════
+     SCREEN 10 — ЗАБУЛИ ПАРОЛЬ
+════════════════════════════════════════ -->
+<div id="screen-10" class="screen">
+  <div class="split-layout">
+
+    <div data-component="icon-panel" data-grid-id="iconGrid10"></div>
+
+    <div class="split-right">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+        <div style="width:100%;max-width:400px;">
+
+          <div style="text-align:center;margin-bottom:2rem;">
+            <div class="logo-text" style="font-size:2rem;">Content manager<span class="dot">.</span></div>
+            <div class="logo-by" style="color:#888;font-size:.85rem;margin-top:.1rem;">by OLX</div>
+          </div>
+
+          <h4 class="fw-bold mb-1" style="text-align:center;"
+            data-ua="Забули пароль?" data-en="Forgot password?"></h4>
+          <p class="text-muted mb-4" style="text-align:center;font-size:.88rem;"
+            data-ua="Введіть свій email для скидання пароля"
+            data-en="Enter your email to reset your password"></p>
+
+          <div class="mb-4">
+            <label class="form-label fw-500 mb-1" data-ua="Email" data-en="Email"></label>
+            <input type="email" id="s10_email" class="form-control">
+          </div>
+
+          <div class="d-flex gap-3">
+            <button class="btn-dark-olx" style="flex:1;"
+              onclick="s10Submit()"
+              data-ua="Надіслати" data-en="Send"></button>
+            <button class="btn-outline-olx" style="flex:1;"
+              onclick="showScreen(2)"
+              data-ua="Скасувати" data-en="Cancel"></button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

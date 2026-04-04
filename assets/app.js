@@ -599,8 +599,8 @@ function renderLeftPanel(gridId) {
         data-ua="Перенесіть свої оголошення на OLX"
         data-en="Transfer your listings to OLX"></div>
       <div class="left-sub"
-        data-ua="Міграція ваших оголошень з категорії запчастин сайтів AVTO.pro та PROM.ua прямо на OLX — швидко та без ручної роботи."
-        data-en="Migrate your auto parts listings from AVTO.pro and PROM.ua directly to OLX — fast, without manual work."></div>
+        data-ua="Переносьте свої запчастини з AVTO.pro і PROM.ua на OLX — швидко, без ручного заповнення."
+        data-en="Move your auto parts from AVTO.pro and PROM.ua to OLX — fast, no manual data entry."></div>
       <ul class="left-features">
         <li>
           <i class="bi bi-check-circle-fill"></i>
@@ -623,6 +623,15 @@ function renderLeftPanel(gridId) {
   </div>`;
 }
 
+/* Icon-only left panel — dark bg + icon grid, no text content.
+   Place <div data-component="icon-panel" data-grid-id="iconGridN"></div> in any screen. */
+function renderIconPanel(gridId) {
+  return `
+  <div class="split-left">
+    <div class="icon-grid" id="${gridId}"></div>
+  </div>`;
+}
+
 /* Scan DOM for data-component placeholders and replace with rendered HTML. */
 function mountComponents() {
   document.querySelectorAll('[data-component="app-header"]').forEach(el => {
@@ -633,6 +642,25 @@ function mountComponents() {
     const gridId = el.dataset.gridId || 'iconGrid';
     el.outerHTML = renderLeftPanel(gridId);
   });
+  document.querySelectorAll('[data-component="icon-panel"]').forEach(el => {
+    const gridId = el.dataset.gridId || 'iconGrid';
+    el.outerHTML = renderIconPanel(gridId);
+  });
+}
+
+/* ════════════════════════════════
+   SCREEN 10 — FORGOT PASSWORD
+════════════════════════════════ */
+function s10Submit() {
+  const email = document.getElementById('s10_email').value.trim();
+  if (!email) {
+    toast(currentLang === 'ua' ? 'Введіть email' : 'Enter your email', 'error');
+    return;
+  }
+  toast(currentLang === 'ua'
+    ? 'Лист із посиланням надіслано на ' + email
+    : 'Reset link sent to ' + email);
+  setTimeout(() => showScreen(2), 2000);
 }
 
 /* ════════════════════════════════
@@ -675,7 +703,7 @@ document.addEventListener('click', e => {
 ════════════════════════════════ */
 async function loadScreens() {
   const container = document.getElementById('screens-container');
-  const total = 9;
+  const total = 10;
   const fetches = Array.from({ length: total }, (_, i) =>
     fetch(`screens/screen-${i + 1}.html`).then(r => r.text())
   );
@@ -691,6 +719,7 @@ async function loadScreens() {
 
   buildGrid('iconGrid1');
   buildGrid('iconGrid2');
+  buildGrid('iconGrid10');
   s5UpdateCities();
   s5UpdateDistrict();
   s5PhoneChange();
