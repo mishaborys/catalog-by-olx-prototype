@@ -663,15 +663,15 @@ function mountComponents() {
 /* ════════════════════════════════
    SCREEN 10 — FORGOT PASSWORD
 ════════════════════════════════ */
-function s10Submit() {
-  const email = document.getElementById('s10_email').value.trim();
+function submitForgotPassword() {
+  const email = document.getElementById('forgotPasswordEmail').value.trim();
   if (!email) {
     toast(currentLang === 'ua' ? 'Введіть email' : 'Enter your email', 'error');
     return;
   }
-  document.getElementById('s10-form-fields').style.display = 'none';
-  document.getElementById('s10-shown-email').textContent = email;
-  document.getElementById('s10-success').style.display = 'block';
+  document.getElementById('forgot-password-form').style.display = 'none';
+  document.getElementById('forgot-password-sent-to').textContent = email;
+  document.getElementById('forgot-password-success').style.display = 'block';
   applyLang();
 }
 
