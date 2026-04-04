@@ -198,6 +198,45 @@ body { background: #f8f9fa; margin: 0; }
   to   { opacity: 1; transform: translateY(0)     scale(1);   }
 }
 
+/* ─── FORGOT PASSWORD: SUCCESS STATE ─── */
+.s10-success-card {
+  background: rgba(202,252,250,.45);
+  border: 1px solid rgba(14,169,160,.3);
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+.s10-success-icon {
+  font-size: 2.2rem;
+  color: var(--olx-teal-dark);
+  margin-bottom: .75rem;
+}
+.s10-success-email {
+  font-weight: 600;
+  font-size: .92rem;
+  color: var(--olx-charcoal);
+  word-break: break-all;
+}
+
+/* ─── COMMENTS TOGGLE BUTTON ─── */
+#comments-btn {
+  position: fixed; bottom: 20px; left: 90px; z-index: 1000;
+  background: #fff; border: 2px solid #ccc; border-radius: 8px;
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #aaa; font-size: 1rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+  transition: all .2s;
+}
+#comments-btn.active {
+  border-color: var(--cb-orange);
+  color: var(--cb-orange);
+}
+#comments-btn:hover { opacity: .8; }
+
+/* Hide all comment bubbles when toggled off */
+body.comments-hidden .cb { display: none !important; }
+
 /* ─── SCREEN NAVIGATOR ─── */
 #nav-btn {
   position: fixed; bottom: 20px; right: 20px; z-index: 1000;

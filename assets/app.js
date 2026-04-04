@@ -126,6 +126,18 @@ function showScreen(id, tab) {
 }
 
 /* ════════════════════════════════
+   COMMENTS TOGGLE
+════════════════════════════════ */
+let commentsVisible = true;
+function toggleComments() {
+  commentsVisible = !commentsVisible;
+  document.body.classList.toggle('comments-hidden', !commentsVisible);
+  const btn = document.getElementById('comments-btn');
+  btn.classList.toggle('active', commentsVisible);
+  btn.title = commentsVisible ? 'Hide design comments' : 'Show design comments';
+}
+
+/* ════════════════════════════════
    LANGUAGE
 ════════════════════════════════ */
 function setLang(lang) {
@@ -657,10 +669,13 @@ function s10Submit() {
     toast(currentLang === 'ua' ? 'Введіть email' : 'Enter your email', 'error');
     return;
   }
-  toast(currentLang === 'ua'
-    ? 'Лист із посиланням надіслано на ' + email
-    : 'Reset link sent to ' + email);
-  setTimeout(() => showScreen(2), 2000);
+  // Hide form fields, show static success message
+  document.getElementById('s10_email').closest('.mb-4').style.display = 'none';
+  document.querySelector('#screen-10 [onclick="s10Submit()"]').style.display = 'none';
+  document.querySelector('#screen-10 .btn-ghost').style.display = 'none';
+  document.getElementById('s10-shown-email').textContent = email;
+  document.getElementById('s10-success').style.display = 'block';
+  applyLang();
 }
 
 /* ════════════════════════════════
@@ -736,6 +751,7 @@ async function loadScreens() {
   s5PhoneChange();
   refreshNavHighlight();
   applyLang();
+  document.getElementById('comments-btn').classList.add('active');
 }
 
 loadScreens();
