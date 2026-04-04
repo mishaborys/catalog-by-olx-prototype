@@ -669,10 +669,7 @@ function s10Submit() {
     toast(currentLang === 'ua' ? 'Введіть email' : 'Enter your email', 'error');
     return;
   }
-  // Hide form fields, show static success message
-  document.getElementById('s10_email').closest('.mb-4').style.display = 'none';
-  document.querySelector('#screen-10 [onclick="s10Submit()"]').style.display = 'none';
-  document.querySelector('#screen-10 .btn-ghost').style.display = 'none';
+  document.getElementById('s10-form-fields').style.display = 'none';
   document.getElementById('s10-shown-email').textContent = email;
   document.getElementById('s10-success').style.display = 'block';
   applyLang();
