@@ -118,6 +118,16 @@ body { background: #f8f9fa; margin: 0; }
 }
 .btn-outline-olx:hover { background: var(--olx-charcoal); color: #fff; }
 
+/* Ghost/secondary button — subtle hover, used for back/cancel actions */
+.btn-ghost {
+  background: transparent; color: #666;
+  border: none; border-radius: 8px;
+  padding: .6rem 1.25rem; font-weight: 500;
+  cursor: pointer; transition: all .2s; width: 100%;
+  font-size: 1rem;
+}
+.btn-ghost:hover { background: #f0f0f0; color: #333; }
+
 .google-btn {
   display: flex; align-items: center; justify-content: center; gap: .6rem;
   width: 100%; padding: .6rem 1rem;
