@@ -75,15 +75,13 @@ body { background: #f8f9fa; margin: 0; }
 
 /* ─── INFO BLOCK ─── */
 .info-block {
-  background: #e3f2fd;
-  border: 1px solid #90caf9;
-  border-radius: 8px;
-  padding: .7rem 1rem;
+  border-left: 3px solid #1565c0;
+  padding: .5rem .9rem;
   font-size: .83rem;
-  color: #1565c0;
-  line-height: 1.5;
+  color: #444;
+  line-height: 1.55;
 }
-.info-block a { color: #1565c0; font-weight: 500; }
+.info-block a { color: var(--olx-teal-dark); font-weight: 500; }
 
 /* ─── PASSWORD STRENGTH ─── */
 .pw-bar { display: flex; gap: 4px; margin-top: .35rem; }

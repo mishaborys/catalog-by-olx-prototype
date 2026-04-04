@@ -152,8 +152,7 @@ function applyLang() {
 function showComment(key) {
   const c = COMMENTS[key];
   if (!c) return;
-  document.getElementById('commentBody').textContent =
-    currentLang === 'ua' ? c.ua : c.en;
+  document.getElementById('commentBody').textContent = c.en;
   bootstrap.Modal.getOrCreateInstance(
     document.getElementById('commentModal')
   ).show();
