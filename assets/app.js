@@ -556,6 +556,86 @@ function s9Tab(t) {
 }
 
 /* ════════════════════════════════
+   COMPONENTS
+════════════════════════════════ */
+
+/* App header — used on all logged-in screens (4–9).
+   Place <div data-component="app-header"></div> in any screen. */
+function renderAppHeader(screenId) {
+  const dropId = `drop${screenId}`;
+  return `
+  <div class="app-header">
+    <span class="app-logo">catalog<span class="dot">.</span><span class="by"> by OLX</span></span>
+    <div class="hdr-dropdown">
+      <button class="hdr-dropdown-btn" onclick="toggleDrop('${dropId}')">
+        <span data-ua="Мій профіль" data-en="My Profile"></span>
+        <i class="bi bi-chevron-down" style="font-size:.7rem;"></i>
+      </button>
+      <div class="hdr-dropdown-menu" id="${dropId}">
+        <div class="hdr-drop-item" onclick="showScreen(6);closeDrop()">
+          <i class="bi bi-house me-2"></i><span data-ua="Кабінет" data-en="Cabinet"></span>
+        </div>
+        <div class="hdr-drop-item" onclick="showScreen(9);closeDrop()">
+          <i class="bi bi-gear me-2"></i><span data-ua="Налаштування" data-en="Settings"></span>
+        </div>
+        <div class="hdr-drop-item" onclick="showScreen(1);closeDrop()">
+          <i class="bi bi-box-arrow-right me-2"></i><span data-ua="Вийти" data-en="Sign out"></span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* Left panel — used on auth screens (1–2).
+   Place <div data-component="left-panel" data-grid-id="iconGridN"></div> in any screen. */
+function renderLeftPanel(gridId) {
+  return `
+  <div class="split-left">
+    <div class="icon-grid" id="${gridId}"></div>
+    <div class="left-content cb-host">
+      <div class="logo-text">Content manager<span class="dot">.</span></div>
+      <div class="logo-by">by OLX</div>
+      <div class="left-tagline"
+        data-ua="Перенесіть свої оголошення на OLX"
+        data-en="Transfer your listings to OLX"></div>
+      <div class="left-sub"
+        data-ua="Міграція ваших оголошень з категорії запчастин сайтів AVTO.pro та PROM.ua прямо на OLX — швидко та без ручної роботи."
+        data-en="Migrate your auto parts listings from AVTO.pro and PROM.ua directly to OLX — fast, without manual work."></div>
+      <ul class="left-features">
+        <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span data-ua="Завантажте файл з платформи конкурента"
+                data-en="Upload a file from the competitor platform"></span>
+        </li>
+        <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span data-ua="Ми опублікуємо ваші оголошення на OLX"
+                data-en="We will publish your listings on OLX"></span>
+        </li>
+        <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span data-ua="Слідкуйте за прогресом в особистому кабінеті"
+                data-en="Track progress in your personal cabinet"></span>
+        </li>
+      </ul>
+      <button class="cb" onclick="showComment('s1_left')"><i class="bi bi-chat-fill"></i></button>
+    </div>
+  </div>`;
+}
+
+/* Scan DOM for data-component placeholders and replace with rendered HTML. */
+function mountComponents() {
+  document.querySelectorAll('[data-component="app-header"]').forEach(el => {
+    const screenId = el.closest('[id^="screen-"]')?.id.replace('screen-', '') || '';
+    el.outerHTML = renderAppHeader(screenId);
+  });
+  document.querySelectorAll('[data-component="left-panel"]').forEach(el => {
+    const gridId = el.dataset.gridId || 'iconGrid';
+    el.outerHTML = renderLeftPanel(gridId);
+  });
+}
+
+/* ════════════════════════════════
    HEADER DROPDOWN
 ════════════════════════════════ */
 function toggleDrop(id) {
@@ -601,6 +681,9 @@ async function loadScreens() {
   );
   const htmls = await Promise.all(fetches);
   container.innerHTML = htmls.join('\n');
+
+  // Inject shared components before anything else
+  mountComponents();
 
   // Make screen-1 active by default
   const first = document.getElementById('screen-1');
