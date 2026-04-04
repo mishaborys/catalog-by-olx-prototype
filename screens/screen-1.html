@@ -34,16 +34,13 @@
 
         <div class="mb-2">
           <label class="form-label fw-500 mb-1" data-ua="Email" data-en="Email"></label>
-          <input type="email" id="s1_email" class="form-control" placeholder="your@email.com">
+          <input type="email" id="s1_email" class="form-control">
         </div>
 
         <div class="mb-1">
           <label class="form-label fw-500 mb-1" data-ua="Пароль" data-en="Password"></label>
           <div class="input-group">
             <input type="password" id="s1_pw" class="form-control"
-              data-ua-placeholder="Мінімум 8 символів"
-              data-en-placeholder="Minimum 8 characters"
-              placeholder="Мінімум 8 символів"
               oninput="evalPw('s1_pw','s1_pwbar')">
             <button class="btn btn-outline-secondary" type="button" onclick="togglePw('s1_pw',this)">
               <i class="bi bi-eye"></i>
