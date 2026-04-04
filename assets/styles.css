@@ -426,6 +426,89 @@ body.comments-hidden .cb { display: none !important; }
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 .spinning { animation:spin 1.2s linear infinite; }
 
+/* ─── BUTTON: DANGER (proposed) ─── */
+.btn-danger {
+  background: #c62828; color: #fff;
+  border: none; border-radius: 8px;
+  padding: .65rem 1.25rem; font-weight: 500;
+  cursor: pointer; transition: background .2s; width: 100%;
+}
+.btn-danger:hover { background: #b71c1c; }
+.btn-danger:disabled { background: #ef9a9a; cursor: not-allowed; }
+
+/* ─── DESIGN SYSTEM PAGE ─── */
+.ds-layout { display: flex; min-height: calc(100vh - 48px); }
+.ds-sidebar {
+  width: 200px; flex-shrink: 0;
+  background: #fff; border-right: 1px solid #ebebeb;
+  padding: 1.5rem 0;
+  position: sticky; top: 0;
+  height: calc(100vh - 48px); overflow-y: auto;
+}
+.ds-sidebar-heading {
+  font-size: .68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .6px; color: #bbb; padding: 0 1.25rem .9rem;
+}
+.ds-nav-link {
+  display: block; padding: .42rem 1.25rem;
+  font-size: .83rem; color: #666; text-decoration: none;
+  transition: background .12s, color .12s; border-left: 2px solid transparent;
+}
+.ds-nav-link:hover { background: #f5f5f5; color: var(--olx-charcoal); }
+.ds-content { flex: 1; padding: 2.5rem 3rem; max-width: 980px; }
+.ds-section { margin-bottom: 3.5rem; scroll-margin-top: 1.5rem; }
+.ds-section-title {
+  font-size: 1.15rem; font-weight: 700; color: var(--olx-charcoal);
+  padding-bottom: .6rem; margin-bottom: .35rem;
+  border-bottom: 2px solid var(--olx-teal-light);
+}
+.ds-section-desc { font-size: .84rem; color: #888; margin-bottom: 1.75rem; line-height: 1.65; }
+.ds-item { margin-bottom: 2rem; }
+.ds-item-label {
+  font-size: .7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .5px; color: #bbb; margin-bottom: .55rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.ds-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+.ds-preview {
+  background: #fff; border: 1px solid #e8e8e8; border-radius: 10px;
+  padding: 1.25rem 1.5rem; display: flex; flex-wrap: wrap;
+  gap: .75rem; align-items: center;
+}
+.ds-preview.bg-grey { background: #f5f5f5; }
+.ds-preview.bg-dark { background: var(--olx-charcoal); }
+.ds-preview.col    { flex-direction: column; align-items: flex-start; }
+.ds-code {
+  background: #1a1b2e; color: #a9b1d6; border-radius: 10px;
+  padding: 1rem 1.25rem;
+  font-family: 'JetBrains Mono','Fira Code',ui-monospace,monospace;
+  font-size: .73rem; line-height: 1.7; overflow-x: auto; white-space: pre;
+}
+.ds-note {
+  background: #fffbeb; border-left: 3px solid var(--olx-yellow-dark);
+  padding: .45rem .85rem; font-size: .78rem; color: #666;
+  border-radius: 0 6px 6px 0; margin-top: .5rem; line-height: 1.55;
+}
+.ds-tag {
+  display: inline-block; font-size: .62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .3px;
+  padding: .1rem .45rem; border-radius: 4px;
+}
+.ds-tag-baseline { background: #e8f5e9; color: #2e7d32; }
+.ds-tag-proposed { background: #fff3e0; color: #e65100; }
+.ds-color-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(130px,1fr)); gap: .75rem; }
+.ds-swatch { border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,0,0,.07); }
+.ds-swatch-color { height: 56px; }
+.ds-swatch-info { background: #fff; padding: .45rem .7rem; }
+.ds-swatch-name { font-size: .73rem; font-weight: 600; color: #333; }
+.ds-swatch-hex  { font-size: .7rem; color: #888; font-family: monospace; }
+.ds-swatch-var  { font-size: .67rem; color: #bbb; font-family: monospace; }
+.ds-type-row {
+  display: flex; align-items: baseline; gap: 1.5rem;
+  padding: .65rem 0; border-bottom: 1px solid #f0f0f0;
+}
+.ds-type-meta { min-width: 160px; font-size: .72rem; color: #aaa; font-family: monospace; line-height: 1.5; }
+
 /* ─── IMPORT STEPPER (Screen 6) ─── */
 .import-stepper { display:flex; align-items:center; margin-bottom:2rem; }
 .import-step-item { display:flex; flex-direction:column; align-items:center; gap:.35rem; }

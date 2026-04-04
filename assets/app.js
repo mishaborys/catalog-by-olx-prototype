@@ -761,6 +761,7 @@ async function loadScreens() {
     'failed-listings',
     'settings',
     'forgot-password',
+    'design-system',
   ];
   const fetches = SCREEN_FILES.map(name =>
     fetch(`screens/${name}.html`).then(r => r.text())
