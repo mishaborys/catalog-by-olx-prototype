@@ -92,20 +92,20 @@
     <div id="importNewTab" style="display:none;max-width:680px;">
 
       <!-- Stepper indicator -->
-      <div class="s6-stepper">
-        <div class="s6-step-item active" id="importStepDot1">
-          <div class="s6-step-circle">1</div>
-          <div class="s6-step-label" data-ua="Платформа" data-en="Platform"></div>
+      <div class="import-stepper">
+        <div class="import-step-item active" id="importStepDot1">
+          <div class="import-step-circle">1</div>
+          <div class="import-step-label" data-ua="Платформа" data-en="Platform"></div>
         </div>
-        <div class="s6-step-line" id="importStepLine1"></div>
-        <div class="s6-step-item" id="importStepDot2">
-          <div class="s6-step-circle">2</div>
-          <div class="s6-step-label" data-ua="Файл" data-en="File"></div>
+        <div class="import-step-line" id="importStepLine1"></div>
+        <div class="import-step-item" id="importStepDot2">
+          <div class="import-step-circle">2</div>
+          <div class="import-step-label" data-ua="Файл" data-en="File"></div>
         </div>
-        <div class="s6-step-line" id="importStepLine2"></div>
-        <div class="s6-step-item" id="importStepDot3">
-          <div class="s6-step-circle">3</div>
-          <div class="s6-step-label" data-ua="Підтвердження" data-en="Confirm"></div>
+        <div class="import-step-line" id="importStepLine2"></div>
+        <div class="import-step-item" id="importStepDot3">
+          <div class="import-step-circle">3</div>
+          <div class="import-step-label" data-ua="Підтвердження" data-en="Confirm"></div>
         </div>
       </div>
 
@@ -119,11 +119,11 @@
 
         <div class="cb-host mb-4">
           <div class="d-flex gap-3">
-            <div id="platformCardProm" class="platform-card" onclick="selectImportPlatform('prom')" style="flex:1;">
+            <div id="platformCardProm" class="import-platform-card" onclick="selectImportPlatform('prom')" style="flex:1;">
               <div style="font-size:1.3rem;font-weight:800;color:#7b1fa2;margin-bottom:.3rem;">PROM.ua</div>
               <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Prom.ua" data-en="Import from Prom.ua"></div>
             </div>
-            <div id="platformCardAvto" class="platform-card" onclick="selectImportPlatform('avto')" style="flex:1;">
+            <div id="platformCardAvto" class="import-platform-card" onclick="selectImportPlatform('avto')" style="flex:1;">
               <div style="font-size:1.3rem;font-weight:800;color:#1565c0;margin-bottom:.3rem;">AVTO.pro</div>
               <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Avto.pro" data-en="Import from Avto.pro"></div>
             </div>
@@ -160,7 +160,7 @@
         </div>
 
         <div class="cb-host mb-3">
-          <div id="importDropZone" class="upload-zone"
+          <div id="importDropZone" class="import-upload-zone"
             onclick="simulateImportFile()"
             ondragover="event.preventDefault()"
             ondrop="simulateImportFile();event.preventDefault()">
@@ -235,16 +235,16 @@
           data-en="Review the settings and start the import."></p>
 
         <div style="border:1px solid #e0e0e0;border-radius:10px;padding:.5rem 1rem;margin-bottom:1.5rem;">
-          <div class="s6-summary-row">
-            <i class="bi bi-collection s6-summary-icon"></i>
+          <div class="import-summary-row">
+            <i class="bi bi-collection import-summary-icon"></i>
             <div>
               <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
                 data-ua="Платформа" data-en="Platform"></div>
               <div id="importSummaryPlatform"></div>
             </div>
           </div>
-          <div class="s6-summary-row">
-            <i class="bi bi-file-earmark-excel s6-summary-icon" style="color:#217346;"></i>
+          <div class="import-summary-row">
+            <i class="bi bi-file-earmark-excel import-summary-icon" style="color:#217346;"></i>
             <div>
               <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
                 data-ua="Файл" data-en="File"></div>
@@ -253,16 +253,16 @@
                 data-ua="146 оголошень" data-en="146 listings"></div>
             </div>
           </div>
-          <div class="s6-summary-row">
-            <i class="bi bi-image s6-summary-icon"></i>
+          <div class="import-summary-row">
+            <i class="bi bi-image import-summary-icon"></i>
             <div>
               <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
                 data-ua="Фото" data-en="Photos"></div>
               <div id="importSummaryNoPhoto" style="font-size:.9rem;"></div>
             </div>
           </div>
-          <div class="s6-summary-row" id="importSummaryDescWrap" style="display:none;">
-            <i class="bi bi-text-left s6-summary-icon"></i>
+          <div class="import-summary-row" id="importSummaryDescWrap" style="display:none;">
+            <i class="bi bi-text-left import-summary-icon"></i>
             <div style="flex:1;">
               <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
                 data-ua="Опис" data-en="Description"></div>

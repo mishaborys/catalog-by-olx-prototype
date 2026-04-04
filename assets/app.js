@@ -251,16 +251,16 @@ function startEmailVerifyCountdown() {
   const btn       = document.getElementById('emailVerifyResendBtn');
   const countdown = document.getElementById('emailVerifyCountdown');
   if (!btn || !countdown) return;
-  btn.disabled = true;
+  btn.style.display = 'none';
   const tick = () => {
     const ua = currentLang === 'ua';
     countdown.textContent = ua
-      ? `Повторний лист можна надіслати через ${secs} с`
-      : `You can resend in ${secs}s`;
+      ? `Надіслати повторно через ${secs} с`
+      : `Resend available in ${secs}s`;
     secs--;
     if (secs < 0) {
       clearInterval(emailVerifyCountdownInterval);
-      btn.disabled = false;
+      btn.style.display = '';
       countdown.textContent = '';
     }
   };

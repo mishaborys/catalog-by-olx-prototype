@@ -29,14 +29,15 @@
               data-en="Didn't get it? Check your spam folder."></span>
       </div>
 
-      <div class="cb-host" style="display:inline-block;margin-bottom:.5rem;">
-        <button id="emailVerifyResendBtn" class="btn-outline-olx" style="width:auto;padding:.55rem 1.5rem;"
-          disabled onclick="resendVerificationEmail()">
+      <p id="emailVerifyCountdown" class="text-muted mb-3" style="font-size:.82rem;"></p>
+
+      <div class="cb-host" style="display:inline-block;margin-bottom:1.25rem;">
+        <button id="emailVerifyResendBtn" class="btn-outline-olx" style="width:auto;padding:.55rem 1.5rem;display:none;"
+          onclick="resendVerificationEmail()">
           <span data-ua="Надіслати повторно" data-en="Resend email"></span>
         </button>
         <button class="cb" onclick="showComment('emailVerify_locked')"><i class="bi bi-chat-fill"></i></button>
       </div>
-      <p id="emailVerifyCountdown" class="text-muted mb-3" style="font-size:.82rem;"></p>
 
       <hr style="margin:1.5rem 0;">
 
