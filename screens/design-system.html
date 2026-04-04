@@ -1,9 +1,7 @@
 <!-- ═══════════════════════════════════════
      SCREEN 11 — DESIGN SYSTEM
 ════════════════════════════════════════ -->
-<div id="screen-11" class="screen">
-  <div data-component="app-header"></div>
-
+<div id="screen-11" class="screen" style="background:#f8f9fa;">
   <div class="ds-layout">
 
     <!-- ── SIDEBAR ── -->
@@ -15,6 +13,7 @@
       <a class="ds-nav-link" href="#ds-inputs">Form Inputs</a>
       <a class="ds-nav-link" href="#ds-info-blocks">Info Blocks</a>
       <a class="ds-nav-link" href="#ds-toasts">Toasts</a>
+      <a class="ds-nav-link" href="#ds-status-blocks">Status Blocks</a>
       <a class="ds-nav-link" href="#ds-badges">Badges</a>
       <a class="ds-nav-link" href="#ds-navigation">Navigation</a>
       <a class="ds-nav-link" href="#ds-steppers">Steppers</a>
@@ -29,73 +28,16 @@
       ══════════════════════════════ -->
       <section id="ds-colors" class="ds-section">
         <div class="ds-section-title">Brand Colors</div>
-        <p class="ds-section-desc">All colors are defined as CSS custom properties in <code>:root</code>. Always use variables — never hardcode hex values.</p>
-
+        <p class="ds-section-desc">All colors defined as CSS custom properties in <code>:root</code>. Always use variables — never hardcode hex.</p>
         <div class="ds-color-grid">
-          <div class="ds-swatch">
-            <div class="ds-swatch-color" style="background:#044142;"></div>
-            <div class="ds-swatch-info">
-              <div class="ds-swatch-name">Charcoal</div>
-              <div class="ds-swatch-hex">#044142</div>
-              <div class="ds-swatch-var">--olx-charcoal</div>
-            </div>
-          </div>
-          <div class="ds-swatch">
-            <div class="ds-swatch-color" style="background:#1AD8D2;"></div>
-            <div class="ds-swatch-info">
-              <div class="ds-swatch-name">Teal</div>
-              <div class="ds-swatch-hex">#1AD8D2</div>
-              <div class="ds-swatch-var">--olx-teal</div>
-            </div>
-          </div>
-          <div class="ds-swatch">
-            <div class="ds-swatch-color" style="background:#0EA9A0;"></div>
-            <div class="ds-swatch-info">
-              <div class="ds-swatch-name">Teal Dark</div>
-              <div class="ds-swatch-hex">#0EA9A0</div>
-              <div class="ds-swatch-var">--olx-teal-dark</div>
-            </div>
-          </div>
-          <div class="ds-swatch">
-            <div class="ds-swatch-color" style="background:#CAFCFA; border-bottom:1px solid #e0e0e0;"></div>
-            <div class="ds-swatch-info">
-              <div class="ds-swatch-name">Teal Light</div>
-              <div class="ds-swatch-hex">#CAFCFA</div>
-              <div class="ds-swatch-var">--olx-teal-light</div>
-            </div>
-          </div>
-          <div class="ds-swatch">
-            <div class="ds-swatch-color" style="background:#FFD13C;"></div>
-            <div class="ds-swatch-info">
-              <div class="ds-swatch-name">Yellow Dark</div>
-              <div class="ds-swatch-hex">#FFD13C</div>
-              <div class="ds-swatch-var">--olx-yellow-dark</div>
-            </div>
-          </div>
-          <div class="ds-swatch">
-            <div class="ds-swatch-color" style="background:#FFDD73;"></div>
-            <div class="ds-swatch-info">
-              <div class="ds-swatch-name">Yellow</div>
-              <div class="ds-swatch-hex">#FFDD73</div>
-              <div class="ds-swatch-var">--olx-yellow</div>
-            </div>
-          </div>
-          <div class="ds-swatch">
-            <div class="ds-swatch-color" style="background:#FF5722;"></div>
-            <div class="ds-swatch-info">
-              <div class="ds-swatch-name">Orange</div>
-              <div class="ds-swatch-hex">#FF5722</div>
-              <div class="ds-swatch-var">--cb-orange</div>
-            </div>
-          </div>
-          <div class="ds-swatch">
-            <div class="ds-swatch-color" style="background:#f8f9fa; border-bottom:1px solid #e0e0e0;"></div>
-            <div class="ds-swatch-info">
-              <div class="ds-swatch-name">Page BG</div>
-              <div class="ds-swatch-hex">#f8f9fa</div>
-              <div class="ds-swatch-var">—</div>
-            </div>
-          </div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#044142;"></div><div class="ds-swatch-info"><div class="ds-swatch-name">Charcoal</div><div class="ds-swatch-hex">#044142</div><div class="ds-swatch-var">--olx-charcoal</div></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#1AD8D2;"></div><div class="ds-swatch-info"><div class="ds-swatch-name">Teal</div><div class="ds-swatch-hex">#1AD8D2</div><div class="ds-swatch-var">--olx-teal</div></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#0EA9A0;"></div><div class="ds-swatch-info"><div class="ds-swatch-name">Teal Dark</div><div class="ds-swatch-hex">#0EA9A0</div><div class="ds-swatch-var">--olx-teal-dark</div></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#CAFCFA;border-bottom:1px solid #e0e0e0;"></div><div class="ds-swatch-info"><div class="ds-swatch-name">Teal Light</div><div class="ds-swatch-hex">#CAFCFA</div><div class="ds-swatch-var">--olx-teal-light</div></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#FFD13C;"></div><div class="ds-swatch-info"><div class="ds-swatch-name">Yellow Dark</div><div class="ds-swatch-hex">#FFD13C</div><div class="ds-swatch-var">--olx-yellow-dark</div></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#FFDD73;"></div><div class="ds-swatch-info"><div class="ds-swatch-name">Yellow</div><div class="ds-swatch-hex">#FFDD73</div><div class="ds-swatch-var">--olx-yellow</div></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#FF5722;"></div><div class="ds-swatch-info"><div class="ds-swatch-name">Orange</div><div class="ds-swatch-hex">#FF5722</div><div class="ds-swatch-var">--cb-orange</div></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#f8f9fa;border-bottom:1px solid #e0e0e0;"></div><div class="ds-swatch-info"><div class="ds-swatch-name">Page BG</div><div class="ds-swatch-hex">#f8f9fa</div><div class="ds-swatch-var">—</div></div></div>
         </div>
       </section>
 
@@ -105,33 +47,14 @@
       ══════════════════════════════ -->
       <section id="ds-typography" class="ds-section">
         <div class="ds-section-title">Typography</div>
-        <p class="ds-section-desc">Font family: <code>Roboto</code> (Google Fonts). All sizes in <code>rem</code>.</p>
-
-        <div class="ds-preview col" style="gap:.25rem;">
-          <div class="ds-type-row">
-            <div class="ds-type-meta">h3 · 1.25rem · 700</div>
-            <h3 class="fw-bold mb-0">Form title / Screen heading</h3>
-          </div>
-          <div class="ds-type-row">
-            <div class="ds-type-meta">h6 · 1rem · 700</div>
-            <h6 class="fw-bold mb-0">Card title / Section title</h6>
-          </div>
-          <div class="ds-type-row">
-            <div class="ds-type-meta">body · 1rem · 400</div>
-            <span>Regular body text for content</span>
-          </div>
-          <div class="ds-type-row">
-            <div class="ds-type-meta">small · .88rem · 400</div>
-            <span style="font-size:.88rem;">Secondary text, labels, hints</span>
-          </div>
-          <div class="ds-type-row">
-            <div class="ds-type-meta">micro · .78rem · 400</div>
-            <span style="font-size:.78rem;">Captions, helper text, timestamps</span>
-          </div>
-          <div class="ds-type-row" style="border:none;">
-            <div class="ds-type-meta">muted · .88rem · 400</div>
-            <span class="text-muted" style="font-size:.88rem;">Muted / de-emphasized text</span>
-          </div>
+        <p class="ds-section-desc">Font: <strong>Roboto</strong> via Google Fonts. Sizes in <code>rem</code>.</p>
+        <div class="ds-preview col" style="gap:.1rem;">
+          <div class="ds-type-row"><div class="ds-type-meta">h3 · 1.25rem · 700</div><h3 class="fw-bold mb-0">Form title / Screen heading</h3></div>
+          <div class="ds-type-row"><div class="ds-type-meta">h6 · 1rem · 700</div><h6 class="fw-bold mb-0">Card title / Section title</h6></div>
+          <div class="ds-type-row"><div class="ds-type-meta">body · 1rem · 400</div><span>Regular body text for content</span></div>
+          <div class="ds-type-row"><div class="ds-type-meta">small · .88rem · 400</div><span style="font-size:.88rem;">Labels, secondary text, hints</span></div>
+          <div class="ds-type-row"><div class="ds-type-meta">micro · .78rem · 400</div><span style="font-size:.78rem;">Captions, helper text, timestamps</span></div>
+          <div class="ds-type-row" style="border:none;"><div class="ds-type-meta">muted · .88rem</div><span class="text-muted" style="font-size:.88rem;">De-emphasised / helper text</span></div>
         </div>
       </section>
 
@@ -142,109 +65,126 @@
       <section id="ds-buttons" class="ds-section">
         <div class="ds-section-title">Buttons</div>
         <p class="ds-section-desc">
-          Button hierarchy from highest to lowest emphasis. Each level has a clear role — avoid mixing levels for the same weight of action on one screen.
-          Buttons marked <span class="ds-tag ds-tag-baseline">Baseline</span> are confirmed from auth screens.
-          Buttons marked <span class="ds-tag ds-tag-proposed">Proposed</span> are suggested additions not yet used everywhere.
+          Use one primary button per screen. Tags: <span class="ds-tag ds-tag-baseline">Baseline</span> confirmed from auth screens · <span class="ds-tag ds-tag-proposed">Proposed</span> suggested for other screens.
         </p>
 
         <!-- Primary -->
         <div class="ds-item">
           <div class="ds-item-label">Primary <span class="ds-tag ds-tag-baseline">Baseline</span></div>
           <div class="ds-row">
-            <div class="ds-preview col">
-              <button class="btn-dark-olx" style="max-width:200px;">Register</button>
-              <button class="btn-dark-olx" style="max-width:200px;" disabled>Disabled</button>
-            </div>
-            <pre class="ds-code">&lt;button class="btn-dark-olx"&gt;
-  Register
-&lt;/button&gt;
+            <div class="ds-preview"><button class="btn-dark-olx" style="max-width:180px;">Register</button></div>
+            <pre class="ds-code">.btn-dark-olx
+  background: var(--olx-charcoal)
+  color: #fff
+  border-radius: 8px
+  padding: .65rem 1.25rem
+  font-weight: 500
+  width: 100%
 
-&lt;!-- Disabled state --&gt;
-&lt;button class="btn-dark-olx" disabled&gt;
-  Disabled
-&lt;/button&gt;</pre>
+  :hover → background: #066667</pre>
           </div>
-          <div class="ds-note">Use for: main form submissions (Register, Login, Reset Password, Save). One per screen. Full-width in form contexts — add <code>style="max-width:…"</code> to constrain in wider layouts.</div>
+          <div class="ds-note">Main form submissions — Register, Login, Reset Password. One per screen. Full-width by default.</div>
         </div>
 
-        <!-- Teal / Positive -->
+        <!-- Teal -->
         <div class="ds-item">
           <div class="ds-item-label">Teal — Secondary Positive <span class="ds-tag ds-tag-proposed">Proposed</span></div>
           <div class="ds-row">
-            <div class="ds-preview col">
-              <button class="btn-teal">Start Import</button>
-              <button class="btn-teal" disabled>Disabled</button>
-            </div>
-            <pre class="ds-code">&lt;button class="btn-teal"&gt;
-  Start Import
-&lt;/button&gt;
+            <div class="ds-preview"><button class="btn-teal">Start Import</button></div>
+            <pre class="ds-code">.btn-teal
+  background: var(--olx-teal-dark)
+  color: #fff
+  border-radius: 8px
+  padding: .65rem 1.5rem
+  font-weight: 500
+  width: auto
 
-&lt;!-- Disabled state --&gt;
-&lt;button class="btn-teal" disabled&gt;
-  Disabled
-&lt;/button&gt;</pre>
+  :hover → background: var(--olx-teal)</pre>
           </div>
-          <div class="ds-note">Use for: constructive secondary actions (Start Import, Confirm, Sync). Auto-width. Proposal: standardise padding to match <code>btn-dark-olx</code> (.65rem vs current .65rem — already consistent).</div>
+          <div class="ds-note">Constructive secondary actions — Start Import, Confirm, Save. Auto-width.</div>
         </div>
 
         <!-- Outlined -->
         <div class="ds-item">
           <div class="ds-item-label">Outlined — Neutral Secondary <span class="ds-tag ds-tag-baseline">Baseline</span></div>
           <div class="ds-row">
-            <div class="ds-preview col">
-              <button class="btn-outline-olx" style="max-width:200px;">Resend Email</button>
-            </div>
-            <pre class="ds-code">&lt;button class="btn-outline-olx"&gt;
-  Resend Email
-&lt;/button&gt;</pre>
+            <div class="ds-preview"><button class="btn-outline-olx" style="max-width:180px;">Resend Email</button></div>
+            <pre class="ds-code">.btn-outline-olx
+  background: #fff
+  color: var(--olx-charcoal)
+  border: 2px solid var(--olx-charcoal)
+  border-radius: 8px
+  padding: .6rem 1.25rem
+  font-weight: 500
+  width: 100%
+
+  :hover → background: var(--olx-charcoal)
+           color: #fff</pre>
           </div>
-          <div class="ds-note">Use for: neutral secondary actions paired with a primary button (e.g. Resend, Edit, Export). Currently full-width — consider auto-width variant for inline use.</div>
+          <div class="ds-note">Neutral alternative to primary — Resend, Edit, Export.</div>
         </div>
 
         <!-- Ghost -->
         <div class="ds-item">
-          <div class="ds-item-label">Ghost — De-emphasised / Back <span class="ds-tag ds-tag-baseline">Baseline</span></div>
+          <div class="ds-item-label">Ghost — Cancel / Back <span class="ds-tag ds-tag-baseline">Baseline</span></div>
           <div class="ds-row">
-            <div class="ds-preview col">
-              <button class="btn-ghost" style="max-width:200px;">Back to sign in</button>
-            </div>
-            <pre class="ds-code">&lt;button class="btn-ghost"
-  onclick="showScreen(2)"&gt;
-  Back to sign in
-&lt;/button&gt;</pre>
+            <div class="ds-preview"><button class="btn-ghost" style="max-width:180px;">Back to sign in</button></div>
+            <pre class="ds-code">.btn-ghost
+  background: transparent
+  color: #666
+  border: none
+  border-radius: 8px
+  padding: .6rem 1.25rem
+  font-weight: 500
+  width: 100%
+
+  :hover → background: #f0f0f0
+           color: #333</pre>
           </div>
-          <div class="ds-note">Use for: Cancel, Back, Skip — always placed below the primary action. Never use as the only button on screen.</div>
+          <div class="ds-note">Cancel, Back, Skip. Always placed below the primary action.</div>
         </div>
 
         <!-- Danger -->
         <div class="ds-item">
           <div class="ds-item-label">Danger — Destructive <span class="ds-tag ds-tag-proposed">Proposed</span></div>
           <div class="ds-row">
-            <div class="ds-preview col">
-              <button class="btn-danger" style="max-width:200px;">Delete Account</button>
-              <button class="btn-danger" style="max-width:200px;" disabled>Disabled</button>
-            </div>
-            <pre class="ds-code">&lt;button class="btn-danger"&gt;
-  Delete Account
-&lt;/button&gt;</pre>
+            <div class="ds-preview"><button class="btn-danger" style="max-width:180px;">Delete Account</button></div>
+            <pre class="ds-code">.btn-danger
+  background: #c62828
+  color: #fff
+  border: none
+  border-radius: 8px
+  padding: .65rem 1.25rem
+  font-weight: 500
+  width: 100%
+
+  :hover → background: #b71c1c</pre>
           </div>
-          <div class="ds-note">Use for: irreversible destructive actions only (Delete Account, Remove Integration). CSS class <code>btn-danger</code> is defined and ready to use — not yet placed on any screen.</div>
+          <div class="ds-note">Irreversible destructive actions only. Class <code>btn-danger</code> is defined and ready to use.</div>
         </div>
 
         <!-- Small -->
         <div class="ds-item">
-          <div class="ds-item-label">Small Outlined — Inline / Table Actions</div>
+          <div class="ds-item-label">Small Outlined — Table / Inline</div>
           <div class="ds-row">
             <div class="ds-preview">
               <button class="btn-sm-outline">Edit</button>
               <button class="btn-sm-outline">View</button>
               <button class="btn-sm-outline">Retry</button>
             </div>
-            <pre class="ds-code">&lt;button class="btn-sm-outline"&gt;
-  Edit
-&lt;/button&gt;</pre>
+            <pre class="ds-code">.btn-sm-outline
+  background: #fff
+  color: var(--olx-charcoal)
+  border: 1.5px solid var(--olx-charcoal)
+  border-radius: 6px
+  padding: .25rem .75rem
+  font-size: .82rem
+  font-weight: 500
+
+  :hover → background: var(--olx-charcoal)
+           color: #fff</pre>
           </div>
-          <div class="ds-note">Use for: table row actions and compact inline controls. Font-size .82rem, radius 6px — intentionally smaller than full-size buttons.</div>
+          <div class="ds-note">Table row actions and compact inline controls. Smaller than full-size buttons.</div>
         </div>
 
         <!-- Google -->
@@ -252,17 +192,23 @@
           <div class="ds-item-label">Google OAuth — Special</div>
           <div class="ds-row">
             <div class="ds-preview">
-              <button class="google-btn" style="max-width:240px;">
+              <button class="google-btn" style="max-width:220px;">
                 <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
                 Continue with Google
               </button>
             </div>
-            <pre class="ds-code">&lt;button class="google-btn"&gt;
-  &lt;!-- Google SVG icon --&gt;
-  Continue with Google
-&lt;/button&gt;</pre>
+            <pre class="ds-code">.google-btn
+  background: #fff
+  border: 1px solid #dadce0
+  border-radius: 8px
+  color: #3c4043
+  padding: .6rem 1rem
+  font-size: .9rem
+  font-weight: 500
+
+  :hover → background: #f8f8f8</pre>
           </div>
-          <div class="ds-note">Fixed style per Google brand guidelines. Use only for OAuth sign-in/sign-up flows.</div>
+          <div class="ds-note">Per Google brand guidelines. Use only for OAuth flows.</div>
         </div>
       </section>
 
@@ -272,102 +218,154 @@
       ══════════════════════════════ -->
       <section id="ds-inputs" class="ds-section">
         <div class="ds-section-title">Form Inputs</div>
-        <p class="ds-section-desc">Bootstrap 5 <code>form-control</code> base, no placeholders. Labels always visible above the field.</p>
+        <p class="ds-section-desc">Bootstrap 5 base classes. No placeholders — labels always visible above the field.</p>
 
-        <!-- Text input -->
+        <!-- Text -->
         <div class="ds-item">
-          <div class="ds-item-label">Text / Email Input</div>
+          <div class="ds-item-label">Text / Email</div>
           <div class="ds-row">
             <div class="ds-preview col">
-              <div style="width:100%;">
-                <label class="form-label fw-500 mb-1" style="font-size:.88rem;">Email</label>
-                <input type="email" class="form-control" value="user@example.com">
-              </div>
-              <div style="width:100%;">
-                <label class="form-label fw-500 mb-1" style="font-size:.88rem;">Email</label>
-                <input type="email" class="form-control is-invalid">
-                <div class="invalid-feedback">Enter a valid email address.</div>
-              </div>
+              <div style="width:100%;"><label class="form-label fw-500 mb-1" style="font-size:.88rem;">Email</label><input type="email" class="form-control" value="user@example.com"></div>
+              <div style="width:100%;"><label class="form-label fw-500 mb-1" style="font-size:.88rem;">Email</label><input type="email" class="form-control is-invalid"><div class="invalid-feedback">Enter a valid email address.</div></div>
             </div>
-            <pre class="ds-code">&lt;!-- Default --&gt;
-&lt;label class="form-label fw-500 mb-1"&gt;
-  Email
-&lt;/label&gt;
-&lt;input type="email" class="form-control"&gt;
+            <pre class="ds-code">Bootstrap: form-control
+Error state: form-control is-invalid
+Label: form-label fw-500 mb-1
 
-&lt;!-- Error state --&gt;
-&lt;input type="email"
-  class="form-control is-invalid"&gt;
-&lt;div class="invalid-feedback"&gt;
-  Enter a valid email address.
-&lt;/div&gt;</pre>
+font-size: 1rem
+border-radius: .375rem (Bootstrap default)
+border: 1px solid #dee2e6
+padding: .375rem .75rem
+
+:focus → border-color: #86b7fe
+         box-shadow: 0 0 0 .25rem rgba(13,110,253,.25)</pre>
           </div>
         </div>
 
         <!-- Password -->
         <div class="ds-item">
-          <div class="ds-item-label">Password Input with Toggle</div>
+          <div class="ds-item-label">Password + Toggle + Strength Bar</div>
           <div class="ds-row">
             <div class="ds-preview col">
               <div style="width:100%;">
                 <label class="form-label fw-500 mb-1" style="font-size:.88rem;">Password</label>
                 <div class="input-group">
-                  <input type="password" class="form-control" value="secret123">
-                  <button class="btn btn-outline-secondary" type="button" onclick="togglePw('ds-pw',this)">
-                    <i class="bi bi-eye"></i>
-                  </button>
+                  <input type="password" id="ds-pw" class="form-control" value="secret123">
+                  <button class="btn btn-outline-secondary" type="button" onclick="togglePw('ds-pw',this)"><i class="bi bi-eye"></i></button>
                 </div>
-              </div>
-              <div style="width:100%;">
-                <div class="pw-bar" id="ds-pwbar">
+                <div class="pw-bar mt-2">
                   <div class="pw-seg" style="background:#c62828;"></div>
                   <div class="pw-seg" style="background:#c62828;"></div>
                   <div class="pw-seg"></div>
                   <div class="pw-seg"></div>
                 </div>
-                <small class="text-muted" style="font-size:.78rem;">Weak — min 8 characters</small>
               </div>
             </div>
-            <pre class="ds-code">&lt;div class="input-group"&gt;
-  &lt;input type="password"
-    id="myPw" class="form-control"&gt;
-  &lt;button class="btn btn-outline-secondary"
-    onclick="togglePw('myPw', this)"&gt;
-    &lt;i class="bi bi-eye"&gt;&lt;/i&gt;
-  &lt;/button&gt;
-&lt;/div&gt;
+            <pre class="ds-code">Wrapper: input-group
+Toggle btn: btn btn-outline-secondary
 
-&lt;!-- Strength bar (4 segments) --&gt;
-&lt;div class="pw-bar"&gt;
-  &lt;div class="pw-seg"&gt;&lt;/div&gt;
-  &lt;div class="pw-seg"&gt;&lt;/div&gt;
-  &lt;div class="pw-seg"&gt;&lt;/div&gt;
-  &lt;div class="pw-seg"&gt;&lt;/div&gt;
-&lt;/div&gt;</pre>
+Strength bar: .pw-bar
+  display: flex; gap: 4px; margin-top: .35rem
+Segment: .pw-seg
+  flex: 1; height: 4px; border-radius: 2px
+  default bg: #e0e0e0
+  active: set bg inline (red/orange/yellow/green)</pre>
           </div>
-          <div class="ds-note">Strength bar segments: colour active ones via <code>style="background: …"</code> — red (weak), orange (fair), yellow (good), green (strong).</div>
         </div>
 
-        <!-- Select -->
+        <!-- Standard Select -->
         <div class="ds-item">
-          <div class="ds-item-label">Select / Dropdown</div>
+          <div class="ds-item-label">Select — Standard</div>
+          <div class="ds-row">
+            <div class="ds-preview col">
+              <div style="width:100%;"><label class="form-label fw-500 mb-1" style="font-size:.88rem;">Region</label><select class="form-select"><option>Kyiv</option><option>Lviv</option><option>Odesa</option></select></div>
+            </div>
+            <pre class="ds-code">Bootstrap: form-select
+Label: form-label fw-500 mb-1</pre>
+          </div>
+        </div>
+
+        <!-- Search Select -->
+        <div class="ds-item">
+          <div class="ds-item-label">Select — With Search</div>
           <div class="ds-row">
             <div class="ds-preview col">
               <div style="width:100%;">
-                <label class="form-label fw-500 mb-1" style="font-size:.88rem;">Region</label>
-                <select class="form-select">
-                  <option>Kyiv</option>
-                  <option>Lviv</option>
-                  <option>Odesa</option>
-                </select>
+                <label class="form-label fw-500 mb-1" style="font-size:.88rem;">City</label>
+                <div class="dropdown w-100">
+                  <button class="form-select text-start d-flex align-items-center justify-content-between w-100"
+                    style="background:#fff;" type="button"
+                    data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                    <span id="ds-search-sel">Select city...</span>
+                    <i class="bi bi-chevron-down" style="font-size:.7rem;color:#aaa;"></i>
+                  </button>
+                  <div class="dropdown-menu p-2 w-100">
+                    <input type="text" class="form-control form-control-sm mb-2" placeholder="Search..."
+                      oninput="dsFilterDropdown(this.value, 'ds-sopts')">
+                    <div id="ds-sopts">
+                      <button class="dropdown-item rounded" onclick="dsPickOpt(this,'ds-search-sel')">Kyiv</button>
+                      <button class="dropdown-item rounded" onclick="dsPickOpt(this,'ds-search-sel')">Lviv</button>
+                      <button class="dropdown-item rounded" onclick="dsPickOpt(this,'ds-search-sel')">Odesa</button>
+                      <button class="dropdown-item rounded" onclick="dsPickOpt(this,'ds-search-sel')">Kharkiv</button>
+                      <button class="dropdown-item rounded" onclick="dsPickOpt(this,'ds-search-sel')">Dnipro</button>
+                      <button class="dropdown-item rounded" onclick="dsPickOpt(this,'ds-search-sel')">Zaporizhzhia</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <pre class="ds-code">&lt;label class="form-label fw-500 mb-1"&gt;
-  Region
-&lt;/label&gt;
-&lt;select class="form-select"&gt;
-  &lt;option&gt;Kyiv&lt;/option&gt;
-&lt;/select&gt;</pre>
+            <pre class="ds-code">Wrapper: dropdown w-100
+Trigger: form-select (styled as input)
+  data-bs-toggle="dropdown"
+  data-bs-auto-close="outside"
+Menu: dropdown-menu p-2 w-100
+Search: form-control form-control-sm
+Options: dropdown-item
+
+JS: filter options by textContent
+    on input oninput event</pre>
+          </div>
+        </div>
+
+        <!-- Multiselect -->
+        <div class="ds-item">
+          <div class="ds-item-label">Select — Multiselect with Checkboxes</div>
+          <div class="ds-row">
+            <div class="ds-preview col">
+              <div style="width:100%;">
+                <label class="form-label fw-500 mb-1" style="font-size:.88rem;">Platforms</label>
+                <div class="dropdown w-100">
+                  <button class="form-select text-start d-flex align-items-center justify-content-between w-100"
+                    style="background:#fff;" type="button"
+                    data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                    <span id="ds-multi-label" style="font-size:.88rem; color:#6c757d;">Select platforms...</span>
+                    <i class="bi bi-chevron-down" style="font-size:.7rem;color:#aaa;"></i>
+                  </button>
+                  <div class="dropdown-menu p-2 w-100" id="ds-multi-wrap">
+                    <div class="form-check px-3 py-1">
+                      <input class="form-check-input" type="checkbox" value="PROM.ua" id="ms-prom" onchange="dsUpdateMultiLabel()">
+                      <label class="form-check-label" for="ms-prom" style="font-size:.88rem;">PROM.ua</label>
+                    </div>
+                    <div class="form-check px-3 py-1">
+                      <input class="form-check-input" type="checkbox" value="AVTO.pro" id="ms-avto" onchange="dsUpdateMultiLabel()">
+                      <label class="form-check-label" for="ms-avto" style="font-size:.88rem;">AVTO.pro</label>
+                    </div>
+                    <div class="form-check px-3 py-1">
+                      <input class="form-check-input" type="checkbox" value="OLX" id="ms-olx" onchange="dsUpdateMultiLabel()">
+                      <label class="form-check-label" for="ms-olx" style="font-size:.88rem;">OLX</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <pre class="ds-code">Trigger: form-select
+  data-bs-auto-close="outside"
+  (keeps menu open on checkbox click)
+
+Items: form-check inside dropdown-menu
+
+JS: collect checked values,
+    join with ', ' → display in trigger</pre>
           </div>
         </div>
 
@@ -375,24 +373,12 @@
         <div class="ds-item">
           <div class="ds-item-label">Checkbox</div>
           <div class="ds-row">
-            <div class="ds-preview col">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="ds-chk1" checked>
-                <label class="form-check-label" for="ds-chk1" style="font-size:.88rem;">Remember me</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="ds-chk2">
-                <label class="form-check-label" for="ds-chk2" style="font-size:.88rem;">Skip listings without photos</label>
-              </div>
+            <div class="ds-preview">
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="ds-chk1" checked><label class="form-check-label" for="ds-chk1" style="font-size:.88rem;">Remember me</label></div>
             </div>
-            <pre class="ds-code">&lt;div class="form-check"&gt;
-  &lt;input class="form-check-input"
-    type="checkbox" id="myChk"&gt;
-  &lt;label class="form-check-label"
-    for="myChk"&gt;
-    Remember me
-  &lt;/label&gt;
-&lt;/div&gt;</pre>
+            <pre class="ds-code">Bootstrap: form-check
+  form-check-input (type="checkbox")
+  form-check-label</pre>
           </div>
         </div>
       </section>
@@ -403,22 +389,17 @@
       ══════════════════════════════ -->
       <section id="ds-info-blocks" class="ds-section">
         <div class="ds-section-title">Info Blocks</div>
-        <p class="ds-section-desc">Inline contextual messages. Left-border only — no background fill. Used inside forms to surface important notes.</p>
+        <p class="ds-section-desc">Inline contextual messages. Left border only, no fill. Used inside forms.</p>
 
         <div class="ds-item">
           <div class="ds-item-label">Info (Blue)</div>
           <div class="ds-row">
-            <div class="ds-preview col">
-              <div class="info-block" style="width:100%;">
-                <i class="bi bi-info-circle me-1" style="color:#1565c0;"></i>
-                The Content Manager account is not linked to your OLX account.
-              </div>
-            </div>
-            <pre class="ds-code">&lt;div class="info-block"&gt;
-  &lt;i class="bi bi-info-circle me-1"
-    style="color:#1565c0;"&gt;&lt;/i&gt;
-  Your message here.
-&lt;/div&gt;</pre>
+            <div class="ds-preview col"><div class="info-block" style="width:100%;"><i class="bi bi-info-circle me-1" style="color:#1565c0;"></i>Content Manager account is not linked to your OLX account.</div></div>
+            <pre class="ds-code">.info-block
+  border-left: 3px solid #1565c0
+  padding: .5rem .9rem
+  font-size: .83rem; color: #444
+  (no background fill)</pre>
           </div>
         </div>
 
@@ -428,19 +409,21 @@
             <div class="ds-preview col">
               <div class="info-block info-block-success" style="width:100%;">
                 <i class="bi bi-check-circle me-1"></i>
-                <strong>Password reset email sent to user@example.com.</strong><br>
-                Follow the link in the email to create a new password.<br>
-                Didn't get it? Check your spam folder.
+                <strong>Reset email sent to user@example.com.</strong><br>
+                Follow the link to create a new password.<br>
+                Didn't get it? Check spam folder.
               </div>
             </div>
-            <pre class="ds-code">&lt;div class="info-block info-block-success"&gt;
-  &lt;i class="bi bi-check-circle me-1"&gt;&lt;/i&gt;
+            <pre class="ds-code">.info-block.info-block-success
+  border-left-color: var(--olx-teal-dark)
+
+Structure:
   &lt;strong&gt;Bold first sentence.&lt;/strong&gt;&lt;br&gt;
   Second sentence.&lt;br&gt;
   Third sentence.
-&lt;/div&gt;</pre>
+
+Max 3 lines.</pre>
           </div>
-          <div class="ds-note">Structure: bold first line (the key fact), then plain supporting lines. Max 3 lines. Used on forgot-password and email-verify success states.</div>
         </div>
       </section>
 
@@ -450,35 +433,109 @@
       ══════════════════════════════ -->
       <section id="ds-toasts" class="ds-section">
         <div class="ds-section-title">Toast Notifications</div>
-        <p class="ds-section-desc">Appear at top-centre of the screen with a spring animation. Auto-dismiss after ~3 s. Use <code>toast(message, type)</code>. Type: <code>'success'</code> (default) or <code>'error'</code>.</p>
+        <p class="ds-section-desc">Auto-dismiss after 5 s. API: <code>toast(message, type)</code> — type <code>'success'</code> (default) or <code>'error'</code>.</p>
 
         <div class="ds-item">
-          <div class="ds-item-label">Live Demo</div>
+          <div class="ds-item-label">Current Style — Live Demo</div>
           <div class="ds-preview">
-            <button class="btn-teal" onclick="toast('Import completed — 146 listings uploaded successfully.')">
-              Trigger success toast
-            </button>
-            <button class="btn-danger" style="width:auto;" onclick="toast('Could not connect to PROM.ua. Try again.', 'error')">
-              Trigger error toast
-            </button>
+            <button class="btn-teal" onclick="toast('Import completed — 146 listings uploaded.')">Trigger success</button>
+            <button class="btn-danger" style="width:auto;" onclick="toast('Could not connect to PROM.ua.', 'error')">Trigger error</button>
           </div>
         </div>
 
         <div class="ds-item">
-          <div class="ds-item-label">Code</div>
-          <pre class="ds-code">// Success (default)
-toast('Import completed successfully.');
-
-// Error
-toast('Something went wrong.', 'error');
-
-// With language support
-toast(currentLang === 'ua'
-  ? 'Імпорт завершено'
-  : 'Import complete');</pre>
+          <div class="ds-item-label">API</div>
+          <pre class="ds-code">// from app.js
+toast('Import complete.');
+toast('Something failed.', 'error');
+toast(currentLang==='ua' ? 'Імпорт завершено' : 'Import complete.');</pre>
         </div>
 
-        <div class="ds-note">Keep messages short — 1 sentence max. Toasts are not a replacement for inline validation errors on form fields.</div>
+        <!-- 3 style proposals -->
+        <div class="ds-item">
+          <div class="ds-item-label">Style Proposals — Pick one to replace the current</div>
+          <div class="ds-preview col" style="gap:1rem;">
+
+            <!-- Option A: Dark/Charcoal -->
+            <div>
+              <div class="ds-item-label" style="margin-bottom:.4rem;">A — Dark</div>
+              <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+                <div style="background:var(--olx-charcoal);color:#fff;padding:.7rem 1.2rem;border-radius:10px;display:flex;align-items:center;gap:.6rem;box-shadow:0 6px 24px rgba(4,65,66,.2);font-size:.88rem;font-weight:500;min-width:260px;">
+                  <i class="bi bi-check-circle-fill" style="color:var(--olx-teal);font-size:1rem;"></i>Import completed — 146 listings.
+                </div>
+                <div style="background:var(--olx-charcoal);color:#fff;padding:.7rem 1.2rem;border-radius:10px;display:flex;align-items:center;gap:.6rem;box-shadow:0 6px 24px rgba(4,65,66,.2);font-size:.88rem;font-weight:500;min-width:260px;">
+                  <i class="bi bi-exclamation-circle-fill" style="color:#ef9a9a;font-size:1rem;"></i>Could not connect to PROM.ua.
+                </div>
+              </div>
+            </div>
+
+            <!-- Option B: White card, left border -->
+            <div>
+              <div class="ds-item-label" style="margin-bottom:.4rem;">B — White Card</div>
+              <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+                <div style="background:#fff;border-left:4px solid var(--olx-teal-dark);padding:.7rem 1.2rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.1);display:flex;align-items:center;gap:.6rem;font-size:.88rem;min-width:260px;">
+                  <i class="bi bi-check-circle" style="color:var(--olx-teal-dark);font-size:1rem;"></i><span style="color:#333;">Import completed — 146 listings.</span>
+                </div>
+                <div style="background:#fff;border-left:4px solid #c62828;padding:.7rem 1.2rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.1);display:flex;align-items:center;gap:.6rem;font-size:.88rem;min-width:260px;">
+                  <i class="bi bi-exclamation-circle" style="color:#c62828;font-size:1rem;"></i><span style="color:#333;">Could not connect to PROM.ua.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Option C: Pill/Minimal -->
+            <div>
+              <div class="ds-item-label" style="margin-bottom:.4rem;">C — Pill / Minimal</div>
+              <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+                <div style="background:rgba(14,169,160,.1);border:1px solid rgba(14,169,160,.35);padding:.55rem 1.25rem;border-radius:999px;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:500;">
+                  <i class="bi bi-check-circle" style="color:var(--olx-teal-dark);"></i><span style="color:var(--olx-charcoal);">Import completed.</span>
+                </div>
+                <div style="background:rgba(198,40,40,.08);border:1px solid rgba(198,40,40,.25);padding:.55rem 1.25rem;border-radius:999px;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:500;">
+                  <i class="bi bi-exclamation-circle" style="color:#c62828;"></i><span style="color:#7f0000;">Could not connect.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ══════════════════════════════
+           STATUS BLOCKS
+      ══════════════════════════════ -->
+      <section id="ds-status-blocks" class="ds-section">
+        <div class="ds-section-title">Status Blocks</div>
+        <p class="ds-section-desc">Inline status indicators for connection state, sync results, warnings. Base class <code>.status-block</code> + modifier.</p>
+
+        <div class="ds-item">
+          <div class="ds-item-label">All Variants</div>
+          <div class="ds-row">
+            <div class="ds-preview col" style="gap:.6rem; align-items:flex-start;">
+              <div class="status-block success"><i class="bi bi-check-circle-fill"></i> Connected: seller@olx.ua</div>
+              <div class="status-block info"><i class="bi bi-info-circle-fill"></i> OLX account not linked yet</div>
+              <div class="status-block warning"><i class="bi bi-exclamation-triangle-fill"></i> Sync scheduled in 10 min</div>
+              <div class="status-block error"><i class="bi bi-x-circle-fill"></i> Connection failed — retry</div>
+            </div>
+            <pre class="ds-code">.status-block.success
+  background: #e8f5e9
+  border-color: #a5d6a7
+  color: #2e7d32
+
+.status-block.info
+  background: #e3f2fd
+  border-color: #90caf9
+  color: #1565c0
+
+.status-block.warning
+  background: #fff8e1
+  border-color: #ffe082
+  color: #f57f17
+
+.status-block.error
+  background: #ffebee
+  border-color: #ef9a9a
+  color: #c62828</pre>
+          </div>
+        </div>
       </section>
 
 
@@ -487,58 +544,48 @@ toast(currentLang === 'ua'
       ══════════════════════════════ -->
       <section id="ds-badges" class="ds-section">
         <div class="ds-section-title">Badges &amp; Labels</div>
-        <p class="ds-section-desc">Small inline labels used in tables and lists to convey status or origin.</p>
+        <p class="ds-section-desc">Small inline labels for tables and lists.</p>
 
         <div class="ds-item">
-          <div class="ds-item-label">Platform Badges</div>
+          <div class="ds-item-label">Platform</div>
           <div class="ds-row">
             <div class="ds-preview">
               <span class="badge-platform prom">PROM.ua</span>
               <span class="badge-platform avto">AVTO.pro</span>
             </div>
-            <pre class="ds-code">&lt;span class="badge-platform prom"&gt;
-  PROM.ua
-&lt;/span&gt;
+            <pre class="ds-code">.badge-platform.prom
+  background: #f3e5f5; color: #6a1b9a
 
-&lt;span class="badge-platform avto"&gt;
-  AVTO.pro
-&lt;/span&gt;</pre>
+.badge-platform.avto
+  background: #e3f2fd; color: #1565c0
+
+base: border-radius: 4px
+      padding: .15rem .45rem
+      font-size: .72rem; font-weight: 600</pre>
           </div>
         </div>
 
         <div class="ds-item">
-          <div class="ds-item-label">Status Badges</div>
+          <div class="ds-item-label">Status</div>
           <div class="ds-row">
-            <div class="ds-preview">
+            <div class="ds-preview" style="flex-wrap:wrap; gap:.5rem;">
+              <span class="badge-active">Active</span>
+              <span class="badge-success">Uploaded</span>
+              <span class="badge-info">Processing</span>
               <span class="badge-status">Pending</span>
+              <span class="badge-draft">Draft</span>
               <span class="err-badge"><i class="bi bi-exclamation-circle me-1"></i>Error</span>
             </div>
-            <pre class="ds-code">&lt;!-- Warning/pending --&gt;
-&lt;span class="badge-status"&gt;
-  Pending
-&lt;/span&gt;
+            <pre class="ds-code">.badge-active   → teal-light bg, charcoal
+.badge-success  → green-light bg, green
+.badge-info     → blue-light bg, blue
+.badge-status   → orange-light bg, orange
+.badge-draft    → grey-light bg, grey
+.err-badge      → red-light bg, red
 
-&lt;!-- Error --&gt;
-&lt;span class="err-badge"&gt;
-  &lt;i class="bi bi-exclamation-circle me-1"&gt;&lt;/i&gt;
-  Title too long
-&lt;/span&gt;</pre>
-          </div>
-        </div>
-
-        <div class="ds-item">
-          <div class="ds-item-label">OLX Sync Success Block</div>
-          <div class="ds-row">
-            <div class="ds-preview">
-              <div class="olx-sync-success">
-                <i class="bi bi-check-circle-fill"></i>
-                Connected: seller@olx.ua
-              </div>
-            </div>
-            <pre class="ds-code">&lt;div class="olx-sync-success"&gt;
-  &lt;i class="bi bi-check-circle-fill"&gt;&lt;/i&gt;
-  Connected: seller@olx.ua
-&lt;/div&gt;</pre>
+all: border-radius: 4px
+     padding: .15rem .45rem
+     font-size: .72rem; font-weight: 600</pre>
           </div>
         </div>
       </section>
@@ -550,44 +597,67 @@ toast(currentLang === 'ua'
       <section id="ds-navigation" class="ds-section">
         <div class="ds-section-title">Navigation &amp; Tabs</div>
 
+        <!-- Dashboard Tabs -->
         <div class="ds-item">
-          <div class="ds-item-label">Dashboard Tabs</div>
+          <div class="ds-item-label">Dashboard Tabs (current)</div>
           <div class="ds-row">
             <div class="ds-preview col" style="padding:0;">
-              <div style="border-bottom:1px solid #e0e0e0; display:flex;">
+              <div style="border-bottom:1px solid #e0e0e0;display:flex;">
                 <button class="dash-tab active-tab">Import History</button>
                 <button class="dash-tab">New Import</button>
               </div>
             </div>
-            <pre class="ds-code">&lt;button class="dash-tab active-tab"&gt;
-  Import History
-&lt;/button&gt;
-&lt;button class="dash-tab"&gt;
-  New Import
-&lt;/button&gt;</pre>
+            <pre class="ds-code">.dash-tab
+  border-bottom: 2px solid transparent
+  padding: .75rem 1rem
+  font-size: .9rem; font-weight: 500
+  color: #888
+
+.dash-tab.active-tab
+  color: var(--olx-charcoal)
+  border-bottom-color: var(--olx-charcoal)</pre>
           </div>
-          <div class="ds-note">Active tab: add class <code>active-tab</code>. Use <code>switchDashTab('hist'|'imp')</code> to toggle programmatically.</div>
         </div>
 
+        <!-- Settings Nav proposals -->
         <div class="ds-item">
-          <div class="ds-item-label">Settings Sidebar Nav</div>
-          <div class="ds-row">
-            <div class="ds-preview col" style="width:180px; padding:.5rem;">
-              <button class="sett-nav active-sett w-100">OLX Sync</button>
-              <button class="sett-nav w-100">Contacts</button>
-              <button class="sett-nav w-100">AVTO.pro</button>
-              <button class="sett-nav w-100">Password</button>
+          <div class="ds-item-label">Settings Sidebar Nav — 3 Variants (pick one)</div>
+          <div class="ds-preview col" style="gap:2rem; align-items:flex-start;">
+
+            <!-- Variant A: Underline tabs (horizontal) -->
+            <div style="width:100%;">
+              <div class="ds-item-label" style="margin-bottom:.5rem;">A — Horizontal underline tabs</div>
+              <div style="border-bottom:1px solid #e0e0e0;display:flex;gap:0;">
+                <button style="background:none;border:none;border-bottom:2px solid var(--olx-charcoal);padding:.6rem 1.1rem;font-size:.85rem;font-weight:600;color:var(--olx-charcoal);cursor:pointer;white-space:nowrap;">OLX Sync</button>
+                <button style="background:none;border:none;border-bottom:2px solid transparent;padding:.6rem 1.1rem;font-size:.85rem;color:#888;cursor:pointer;white-space:nowrap;">Contacts</button>
+                <button style="background:none;border:none;border-bottom:2px solid transparent;padding:.6rem 1.1rem;font-size:.85rem;color:#888;cursor:pointer;white-space:nowrap;">AVTO.pro</button>
+                <button style="background:none;border:none;border-bottom:2px solid transparent;padding:.6rem 1.1rem;font-size:.85rem;color:#888;cursor:pointer;white-space:nowrap;">Password</button>
+              </div>
             </div>
-            <pre class="ds-code">&lt;button class="sett-nav active-sett"
-  onclick="switchSettingsTab('olx')"&gt;
-  OLX Sync
-&lt;/button&gt;
-&lt;button class="sett-nav"
-  onclick="switchSettingsTab('contacts')"&gt;
-  Contacts
-&lt;/button&gt;</pre>
+
+            <!-- Variant B: Teal pill (vertical) -->
+            <div>
+              <div class="ds-item-label" style="margin-bottom:.5rem;">B — Vertical teal pills</div>
+              <div style="display:flex;flex-direction:column;gap:.25rem;width:180px;">
+                <button style="background:var(--olx-teal-dark);color:#fff;border:none;border-radius:8px;padding:.5rem 1rem;text-align:left;font-size:.85rem;font-weight:600;cursor:pointer;">OLX Sync</button>
+                <button style="background:none;color:#555;border:none;border-radius:8px;padding:.5rem 1rem;text-align:left;font-size:.85rem;cursor:pointer;">Contacts</button>
+                <button style="background:none;color:#555;border:none;border-radius:8px;padding:.5rem 1rem;text-align:left;font-size:.85rem;cursor:pointer;">AVTO.pro</button>
+                <button style="background:none;color:#555;border:none;border-radius:8px;padding:.5rem 1rem;text-align:left;font-size:.85rem;cursor:pointer;">Password</button>
+              </div>
+            </div>
+
+            <!-- Variant C: Left accent bar (vertical) -->
+            <div>
+              <div class="ds-item-label" style="margin-bottom:.5rem;">C — Vertical left-bar indicator</div>
+              <div style="display:flex;flex-direction:column;width:180px;">
+                <button style="background:none;border:none;border-left:3px solid var(--olx-teal-dark);padding:.55rem 1rem;text-align:left;font-size:.85rem;font-weight:600;color:var(--olx-charcoal);cursor:pointer;">OLX Sync</button>
+                <button style="background:none;border:none;border-left:3px solid transparent;padding:.55rem 1rem;text-align:left;font-size:.85rem;color:#888;cursor:pointer;">Contacts</button>
+                <button style="background:none;border:none;border-left:3px solid transparent;padding:.55rem 1rem;text-align:left;font-size:.85rem;color:#888;cursor:pointer;">AVTO.pro</button>
+                <button style="background:none;border:none;border-left:3px solid transparent;padding:.55rem 1rem;text-align:left;font-size:.85rem;color:#888;cursor:pointer;">Password</button>
+              </div>
+            </div>
+
           </div>
-          <div class="ds-note">Active item: add class <code>active-sett</code>. Use <code>switchSettingsTab('olx'|'contacts'|'avto'|'pw')</code>.</div>
         </div>
       </section>
 
@@ -597,48 +667,105 @@ toast(currentLang === 'ua'
       ══════════════════════════════ -->
       <section id="ds-steppers" class="ds-section">
         <div class="ds-section-title">Steppers &amp; Progress</div>
+        <p class="ds-section-desc">
+          Step states use only two colours: <strong>teal-dark</strong> (active/done) and <strong>#e0e0e0</strong> (inactive). No separate "done" green.
+        </p>
 
+        <!-- Current (circle) -->
         <div class="ds-item">
-          <div class="ds-item-label">Import Wizard Stepper (3 steps)</div>
+          <div class="ds-item-label">Current — Circle Stepper (3-step)</div>
           <div class="ds-row">
             <div class="ds-preview col">
               <div class="import-stepper" style="width:100%;">
-                <div class="import-step-item done">
-                  <div class="import-step-circle"><i class="bi bi-check"></i></div>
-                  <div class="import-step-label">Platform</div>
-                </div>
+                <div class="import-step-item done" id="importStepDot1"><div class="import-step-circle"><i class="bi bi-check"></i></div><div class="import-step-label">Platform</div></div>
                 <div class="import-step-line done"></div>
-                <div class="import-step-item active">
-                  <div class="import-step-circle">2</div>
-                  <div class="import-step-label">File</div>
-                </div>
+                <div class="import-step-item active" id="importStepDot2"><div class="import-step-circle">2</div><div class="import-step-label">File</div></div>
                 <div class="import-step-line"></div>
-                <div class="import-step-item">
-                  <div class="import-step-circle">3</div>
-                  <div class="import-step-label">Confirm</div>
+                <div class="import-step-item" id="importStepDot3"><div class="import-step-circle">3</div><div class="import-step-label">Confirm</div></div>
+              </div>
+            </div>
+            <pre class="ds-code">.import-step-item           → grey circle
+.import-step-item.active    → teal circle
+.import-step-item.done      → teal circle + ✓ icon
+.import-step-line           → grey line
+.import-step-line.done      → teal line
+
+(previously used #2e7d32 green — now unified to teal-dark)</pre>
+          </div>
+        </div>
+
+        <!-- Stepper proposals -->
+        <div class="ds-item">
+          <div class="ds-item-label">Stepper Style Proposals — Pick one</div>
+          <div class="ds-preview col" style="gap:2rem; align-items:stretch;">
+
+            <!-- A: Pill / password-bar style -->
+            <div>
+              <div class="ds-item-label" style="margin-bottom:.65rem;">A — Pill segments (password-bar style) <span class="ds-tag ds-tag-proposed">CSS ready</span></div>
+              <div class="stepper-pill">
+                <div class="stepper-pill-track">
+                  <div class="stepper-pill-seg done"></div>
+                  <div class="stepper-pill-seg active"></div>
+                  <div class="stepper-pill-seg"></div>
+                </div>
+                <div class="stepper-pill-labels">
+                  <div class="stepper-pill-label done">Platform ✓</div>
+                  <div class="stepper-pill-label active">File</div>
+                  <div class="stepper-pill-label">Confirm</div>
+                </div>
+              </div>
+              <pre class="ds-code mt-2" style="font-size:.7rem;">.stepper-pill-seg.done   → teal-dark 60% opacity
+.stepper-pill-seg.active → teal-dark 100%
+default                  → #e0e0e0</pre>
+            </div>
+
+            <!-- B: Numbered blocks -->
+            <div>
+              <div class="ds-item-label" style="margin-bottom:.65rem;">B — Numbered blocks</div>
+              <div style="display:flex;align-items:center;gap:.5rem;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:.3rem;">
+                  <div style="width:32px;height:32px;border-radius:6px;background:var(--olx-teal-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;"><i class="bi bi-check"></i></div>
+                  <span style="font-size:.7rem;color:var(--olx-teal-dark);font-weight:600;">Platform</span>
+                </div>
+                <div style="flex:1;height:2px;background:var(--olx-teal-dark);opacity:.4;margin-bottom:1.2rem;"></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:.3rem;">
+                  <div style="width:32px;height:32px;border-radius:6px;background:var(--olx-teal-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;">2</div>
+                  <span style="font-size:.7rem;color:var(--olx-teal-dark);font-weight:600;">File</span>
+                </div>
+                <div style="flex:1;height:2px;background:#e0e0e0;margin-bottom:1.2rem;"></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:.3rem;">
+                  <div style="width:32px;height:32px;border-radius:6px;background:#e0e0e0;color:#999;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;">3</div>
+                  <span style="font-size:.7rem;color:#aaa;">Confirm</span>
                 </div>
               </div>
             </div>
-            <pre class="ds-code">&lt;div class="import-stepper"&gt;
-  &lt;div class="import-step-item done"&gt;
-    &lt;div class="import-step-circle"&gt;
-      &lt;i class="bi bi-check"&gt;&lt;/i&gt;
-    &lt;/div&gt;
-    &lt;div class="import-step-label"&gt;
-      Platform
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="import-step-line done"&gt;&lt;/div&gt;
-  &lt;div class="import-step-item active"&gt;
-    ...
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+
+            <!-- C: Progress track with labels above -->
+            <div>
+              <div class="ds-item-label" style="margin-bottom:.65rem;">C — Progress track</div>
+              <div style="position:relative;padding-top:1.5rem;">
+                <div style="display:flex;justify-content:space-between;position:absolute;top:0;left:0;right:0;">
+                  <span style="font-size:.72rem;font-weight:600;color:var(--olx-teal-dark);">Platform</span>
+                  <span style="font-size:.72rem;font-weight:600;color:var(--olx-teal-dark);text-align:center;">File</span>
+                  <span style="font-size:.72rem;color:#aaa;text-align:right;">Confirm</span>
+                </div>
+                <div style="height:6px;border-radius:3px;background:#e0e0e0;position:relative;overflow:hidden;">
+                  <div style="width:55%;height:100%;background:var(--olx-teal-dark);border-radius:3px;"></div>
+                </div>
+                <div style="display:flex;justify-content:space-between;margin-top:4px;">
+                  <div style="width:10px;height:10px;border-radius:50%;background:var(--olx-teal-dark);margin-left:0;"></div>
+                  <div style="width:10px;height:10px;border-radius:50%;background:var(--olx-teal-dark);transform:translateX(50%);"></div>
+                  <div style="width:10px;height:10px;border-radius:50%;background:#e0e0e0;"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="ds-note">Step modifiers: default (grey), <code>active</code> (teal — current step), <code>done</code> (green — completed). Line: add <code>done</code> when the step it follows is complete.</div>
         </div>
 
+        <!-- Onboarding progress -->
         <div class="ds-item">
-          <div class="ds-item-label">Onboarding Progress (2 steps)</div>
+          <div class="ds-item-label">Onboarding Progress (2-step)</div>
           <div class="ds-row">
             <div class="ds-preview">
               <div class="onboarding-progress">
@@ -647,16 +774,11 @@ toast(currentLang === 'ua'
                 <div class="onboarding-step active">2</div>
               </div>
             </div>
-            <pre class="ds-code">&lt;div class="onboarding-progress"&gt;
-  &lt;div class="onboarding-step done"&gt;
-    &lt;i class="bi bi-check"&gt;&lt;/i&gt;
-  &lt;/div&gt;
-  &lt;div class="onboarding-step-line done"&gt;
-  &lt;/div&gt;
-  &lt;div class="onboarding-step active"&gt;
-    2
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
+            <pre class="ds-code">.onboarding-step           → grey circle
+.onboarding-step.active    → teal circle
+.onboarding-step.done      → teal circle + ✓
+.onboarding-step-line      → grey line
+.onboarding-step-line.done → teal line</pre>
           </div>
         </div>
       </section>
@@ -667,19 +789,14 @@ toast(currentLang === 'ua'
       ══════════════════════════════ -->
       <section id="ds-data" class="ds-section">
         <div class="ds-section-title">Data Display</div>
-        <p class="ds-section-desc">Table pattern used in Import History and Failed Listings screens.</p>
+        <p class="ds-section-desc">Table pattern for Import History and Failed Listings.</p>
 
         <div class="ds-item">
-          <div class="ds-item-label">Table Row</div>
-          <div class="ds-preview col" style="padding:0; overflow:hidden;">
-            <table style="width:100%; border-collapse:collapse;">
+          <div class="ds-item-label">Table</div>
+          <div class="ds-preview col" style="padding:0;overflow:hidden;">
+            <table style="width:100%;border-collapse:collapse;">
               <thead>
-                <tr style="border-bottom:1px solid #f0f0f0;">
-                  <th class="tbl-h">Listing</th>
-                  <th class="tbl-h">Platform</th>
-                  <th class="tbl-h">Status</th>
-                  <th class="tbl-h">Action</th>
-                </tr>
+                <tr><th class="tbl-h">Listing</th><th class="tbl-h">Platform</th><th class="tbl-h">Status</th><th class="tbl-h">Action</th></tr>
               </thead>
               <tbody>
                 <tr class="tbl-row">
@@ -691,8 +808,8 @@ toast(currentLang === 'ua'
                 <tr class="tbl-row">
                   <td class="tbl-c"><a class="tbl-link">Oil filter Honda Civic 2018</a></td>
                   <td class="tbl-c"><span class="badge-platform avto">AVTO.pro</span></td>
-                  <td class="tbl-c"><span class="badge-status">Pending</span></td>
-                  <td class="tbl-c"><button class="btn-sm-outline">Edit</button></td>
+                  <td class="tbl-c"><span class="badge-active">Active</span></td>
+                  <td class="tbl-c"><button class="btn-sm-outline">View</button></td>
                 </tr>
               </tbody>
             </table>
@@ -700,24 +817,36 @@ toast(currentLang === 'ua'
         </div>
 
         <div class="ds-item">
-          <div class="ds-item-label">Code</div>
-          <pre class="ds-code">&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th class="tbl-h"&gt;Listing&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr class="tbl-row"&gt;
-      &lt;td class="tbl-c"&gt;
-        &lt;a class="tbl-link"&gt;Title&lt;/a&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</pre>
+          <div class="ds-item-label">Classes</div>
+          <pre class="ds-code">.tbl-h    → header cell: .75rem 600 uppercase #888
+.tbl-c    → body cell: .88rem, padding .75rem 1rem
+.tbl-row  → border-bottom: 1px solid #f0f0f0
+            :hover → background: #fafafa
+.tbl-link → color: teal-dark, cursor pointer</pre>
         </div>
       </section>
 
-    </main><!-- /ds-content -->
-  </div><!-- /ds-layout -->
-</div><!-- /screen-11 -->
+    </main>
+  </div>
+
+  <!-- Design System local JS -->
+  <script>
+    function dsFilterDropdown(query, listId) {
+      document.querySelectorAll('#' + listId + ' .dropdown-item').forEach(item => {
+        item.parentElement.style.display =
+          item.textContent.toLowerCase().includes(query.toLowerCase()) ? '' : 'none';
+      });
+    }
+    function dsPickOpt(el, labelId) {
+      document.getElementById(labelId).textContent = el.textContent;
+      document.getElementById(labelId).style.color = '#212529';
+    }
+    function dsUpdateMultiLabel() {
+      const checked = [...document.querySelectorAll('#ds-multi-wrap input:checked')]
+        .map(cb => cb.value);
+      const lbl = document.getElementById('ds-multi-label');
+      lbl.textContent = checked.length ? checked.join(', ') : 'Select platforms...';
+      lbl.style.color = checked.length ? '#212529' : '#6c757d';
+    }
+  </script>
+</div>

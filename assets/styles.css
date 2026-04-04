@@ -109,7 +109,7 @@ body { background: #f8f9fa; margin: 0; }
   padding: .65rem 1.5rem; font-weight: 500;
   cursor: pointer; transition: background .2s;
 }
-.btn-teal:hover { background: var(--olx-teal); color: var(--olx-charcoal); }
+.btn-teal:hover { background: var(--olx-teal); }
 .btn-teal:disabled { background: #b0e0df; color: #fff; cursor: not-allowed; }
 
 .btn-outline-olx {
@@ -273,12 +273,40 @@ body.comments-hidden .cb { display: none !important; }
 .onboarding-step-line { width:60px; height:2px; background:#dee2e6; }
 .onboarding-step-line.done { background:#2e7d32; }
 
-/* ─── SYNC SUCCESS BLOCK ─── */
-.olx-sync-success {
+/* ─── STATUS BLOCKS ─── */
+.status-block {
   display:inline-flex; align-items:center; gap:.5rem;
-  background:#e8f5e9; border:1px solid #a5d6a7; border-radius:8px;
-  padding:.6rem 1rem; color:#2e7d32; font-size:.9rem;
+  border-radius:8px; padding:.6rem 1rem; font-size:.9rem; border:1px solid;
 }
+.status-block.success { background:#e8f5e9; border-color:#a5d6a7; color:#2e7d32; }
+.status-block.info    { background:#e3f2fd; border-color:#90caf9; color:#1565c0; }
+.status-block.warning { background:#fff8e1; border-color:#ffe082; color:#f57f17; }
+.status-block.error   { background:#ffebee; border-color:#ef9a9a; color:#c62828; }
+
+/* Legacy alias */
+.olx-sync-success { display:inline-flex; align-items:center; gap:.5rem; background:#e8f5e9; border:1px solid #a5d6a7; border-radius:8px; padding:.6rem 1rem; color:#2e7d32; font-size:.9rem; }
+
+/* ─── ADDITIONAL BADGE VARIANTS ─── */
+.badge-success { display:inline-block; background:#e8f5e9; color:#2e7d32; border-radius:4px; padding:.15rem .45rem; font-size:.72rem; font-weight:600; }
+.badge-info    { display:inline-block; background:#e3f2fd; color:#1565c0; border-radius:4px; padding:.15rem .45rem; font-size:.72rem; font-weight:600; }
+.badge-draft   { display:inline-block; background:#f5f5f5; color:#757575; border-radius:4px; padding:.15rem .45rem; font-size:.72rem; font-weight:600; }
+.badge-active  { display:inline-block; background:var(--olx-teal-light); color:var(--olx-charcoal); border-radius:4px; padding:.15rem .45rem; font-size:.72rem; font-weight:600; }
+
+/* ─── STEPPER PILL (password-bar style) ─── */
+.stepper-pill { display:flex; flex-direction:column; width:100%; gap:.6rem; }
+.stepper-pill-track { display:flex; gap:5px; }
+.stepper-pill-seg {
+  flex:1; height:6px; border-radius:3px;
+  background:#e0e0e0; transition:background .25s;
+}
+.stepper-pill-seg.done   { background:var(--olx-teal-dark); opacity:.6; }
+.stepper-pill-seg.active { background:var(--olx-teal-dark); opacity:1; }
+.stepper-pill-labels { display:flex; }
+.stepper-pill-label {
+  flex:1; text-align:center; font-size:.72rem; font-weight:500; color:#aaa;
+}
+.stepper-pill-label.done   { color:var(--olx-teal-dark); opacity:.7; }
+.stepper-pill-label.active { color:var(--olx-teal-dark); font-weight:600; }
 
 /* ─── PLATFORM CARDS ─── */
 .import-platform-card {

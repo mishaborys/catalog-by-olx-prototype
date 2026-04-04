@@ -179,8 +179,8 @@ function toast(msg, type = 'success') {
   el.className = `toast-item toast-${type}`;
   el.innerHTML = `<i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>${msg}`;
   document.getElementById('toast-container').appendChild(el);
-  setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .4s'; }, 2700);
-  setTimeout(() => el.remove(), 3200);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .4s'; }, 4700);
+  setTimeout(() => el.remove(), 5200);
 }
 
 /* ════════════════════════════════
