@@ -703,9 +703,20 @@ document.addEventListener('click', e => {
 ════════════════════════════════ */
 async function loadScreens() {
   const container = document.getElementById('screens-container');
-  const total = 10;
-  const fetches = Array.from({ length: total }, (_, i) =>
-    fetch(`screens/screen-${i + 1}.html`).then(r => r.text())
+  const SCREEN_FILES = [
+    'register',
+    'login',
+    'email-verify',
+    'onboarding-sync',
+    'onboarding-contacts',
+    'dashboard',
+    'import-progress',
+    'failed-listings',
+    'settings',
+    'forgot-password',
+  ];
+  const fetches = SCREEN_FILES.map(name =>
+    fetch(`screens/${name}.html`).then(r => r.text())
   );
   const htmls = await Promise.all(fetches);
   container.innerHTML = htmls.join('\n');
