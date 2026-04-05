@@ -288,7 +288,9 @@ function completeOAuth() {
   bootstrap.Modal.getInstance(document.getElementById('oauthModal'))?.hide();
   document.getElementById('olxSyncInitialState').style.display = 'none';
   document.getElementById('olxSyncDoneState').style.display  = 'block';
-  document.getElementById('olxSyncNextBtn').disabled = false;
+  document.getElementById('olxSyncNextBtn').style.display = 'block';
+  const step2 = document.getElementById('olxSyncStep2');
+  if (step2) step2.style.cursor = 'pointer';
   toast(currentLang === 'ua' ? '✓ Синхронізовано з OLX' : '✓ Synced with OLX');
   applyLang();
 }

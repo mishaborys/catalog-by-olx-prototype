@@ -5,34 +5,39 @@
   <div data-component="app-header"></div>
 
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;">
-    <div class="onboarding-progress mb-4">
-      <div class="onboarding-step active">1</div>
-      <div class="onboarding-step-line"></div>
-      <div class="onboarding-step" id="olxSyncStep2">2</div>
+
+    <div style="max-width:520px;width:100%;margin-bottom:1.25rem;">
+      <p class="mb-2" style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#aaa;"
+        data-ua="Обов'язкові кроки реєстрації" data-en="Required setup steps"></p>
+      <div class="onboarding-progress" style="gap:.5rem;">
+        <div class="onboarding-step active" onclick="showScreen(4)" style="cursor:pointer;" title="Step 1">1</div>
+        <div class="onboarding-step-line"></div>
+        <div class="onboarding-step" id="olxSyncStep2" onclick="showScreen(5)" style="cursor:default;" title="Step 2">2</div>
+      </div>
     </div>
 
     <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
                 padding:2.5rem;max-width:520px;width:100%;">
-      <h4 class="fw-bold mb-3" data-ua="Синхронізація з OLX" data-en="OLX Account Sync"></h4>
+      <h4 class="fw-bold mb-3" data-ua="Підключення OLX-акаунту" data-en="Connect your OLX account"></h4>
 
       <div class="cb-host mb-4">
-        <p class="text-muted mb-0" style="font-size:.95rem;line-height:1.65;"
-          data-ua="Натисніть кнопку нижче — вас перекине на OLX.ua. Увійдіть у свій акаунт та дайте додатку доступ."
-          data-en="Click the button below — you will be redirected to OLX.ua. Sign in to your account and grant the app access."></p>
+        <p class="text-muted mb-0" style="font-size:.92rem;line-height:1.7;"
+          data-ua="Щоб перенести ваші оголошення на OLX, нам потрібен доступ до вашого акаунту через API. Натисніть кнопку нижче — вас перенаправить на OLX.ua. Авторизуйтесь та підтвердіть доступ."
+          data-en="To migrate your listings to OLX, we need access to your account via API. Click the button below — you will be redirected to OLX.ua. Sign in and confirm access."></p>
         <button class="cb" onclick="showComment('olxSync_instructions')"><i class="bi bi-chat-fill"></i></button>
       </div>
 
       <div id="olxSyncInitialState">
         <button class="btn-dark-olx" style="width:auto;padding:.6rem 1.5rem;"
           onclick="openOAuthModal()"
-          data-ua="Синхронізувати" data-en="Synchronize"></button>
+          data-ua="Надати доступ до OLX" data-en="Grant OLX access"></button>
       </div>
 
       <div id="olxSyncDoneState" style="display:none;">
         <div class="cb-host d-inline-block mb-3">
           <div class="olx-sync-success">
             <i class="bi bi-check-circle-fill"></i>
-            <span data-ua="Синхронізовано з акаунтом OLX: " data-en="Synced with OLX account: "></span>
+            <span data-ua="Підключено акаунт OLX: " data-en="OLX account connected: "></span>
             <strong>mishaborys@gmail.com</strong>
           </div>
           <button class="cb" onclick="showComment('olxSync_emailOrPhone')"><i class="bi bi-chat-fill"></i></button>
@@ -40,12 +45,12 @@
         <br>
         <button class="btn-outline-olx" style="width:auto;padding:.5rem 1.25rem;margin-bottom:.5rem;"
           onclick="openOAuthModal()"
-          data-ua="Синхронізувати інший акаунт" data-en="Sync another account"></button>
+          data-ua="Підключити інший акаунт" data-en="Connect another account"></button>
       </div>
 
       <div class="d-flex justify-content-end mt-4">
         <div class="cb-host d-inline-block">
-          <button id="olxSyncNextBtn" class="btn-teal" disabled onclick="showScreen(5)"
+          <button id="olxSyncNextBtn" class="btn-teal" onclick="showScreen(5)" style="display:none;"
             data-ua="Далі →" data-en="Next →"></button>
           <button class="cb" onclick="showComment('olxSync_separateAccounts')"><i class="bi bi-chat-fill"></i></button>
         </div>
