@@ -58,17 +58,16 @@
     <div id="importStepPanel2" style="display:none;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:2.5rem;max-width:680px;width:100%;">
       <h4 class="fw-bold mb-1"
         data-ua="Завантажте файл" data-en="Upload file"></h4>
-      <p class="text-muted mb-4" style="font-size:.88rem;">
-        <span data-ua="Платформа:" data-en="Platform:"></span>
-        &nbsp;<strong id="importSelectedPlatform"></strong>
+      <p class="mb-4" style="font-size:.88rem;display:flex;align-items:center;gap:.5rem;">
+        <span class="text-muted" data-ua="Платформа:" data-en="Platform:"></span>
+        <span id="importSelectedPlatform"></span>
       </p>
 
       <div class="cb-host mb-3">
         <div class="status-block warning" style="width:100%;display:flex;flex-wrap:wrap;gap:.3rem;">
           <i class="bi bi-exclamation-triangle-fill"></i>
-          <span data-ua="Спочатку завантажте файл з платформи."
-                data-en="First download the export file from the platform."></span>
-          <a href="#" onclick="openInstModal();return false;"
+          <span id="importWarningText"></span>
+          <a href="#" onclick="openInstPanel();return false;"
              style="color:var(--olx-teal-dark);text-decoration:none;font-weight:500;"
              data-ua=" Переглянути інструкцію →" data-en=" View instructions →"></a>
         </div>
@@ -197,15 +196,13 @@
   </div>
 </div>
 
-<!-- Instruction Modal -->
-<div class="modal fade" id="instModal" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header" style="background:var(--olx-charcoal);color:#fff;">
-        <h5 class="modal-title" id="instModal_title"></h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body" id="instModal_body"></div>
-    </div>
+<!-- Instruction Slide Panel -->
+<div id="instPanelOverlay" onclick="closeInstPanel()"
+  style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1040;"></div>
+<div id="instPanel" class="slide-panel" style="width:400px;right:-420px;">
+  <div style="background:var(--olx-charcoal);color:#fff;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+    <h6 class="mb-0 fw-bold" id="instPanel_title"></h6>
+    <button onclick="closeInstPanel()" style="background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;line-height:1;">&times;</button>
   </div>
+  <div id="instPanel_body" style="flex:1;overflow-y:auto;padding:1.5rem;font-size:.9rem;line-height:1.7;"></div>
 </div>

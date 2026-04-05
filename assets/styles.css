@@ -327,7 +327,7 @@ body.comments-hidden .cb { display: none !important; }
   cursor:pointer; transition:all .2s; background:#fafafa;
 }
 .import-upload-zone:hover { border-color:var(--olx-teal-dark); background:var(--olx-teal-light); }
-.import-upload-zone.has-file { border-style:solid; border-color:#2e7d32; background:#f0fff4; }
+.import-upload-zone.has-file { border-style:solid; border-color:var(--olx-teal-dark); background:var(--olx-teal-light); }
 
 /* ─── CURRENCY / CONDITION BUTTONS ─── */
 .cur-btn {

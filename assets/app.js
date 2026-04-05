@@ -367,7 +367,8 @@ function goToImportStep(n) {
     if (dot) {
       dot.classList.toggle('active', i === n);
       dot.classList.toggle('done',   i <  n);
-      // clickable only for completed or current step
+      const circle = dot.querySelector('.import-step-circle');
+      if (circle) circle.innerHTML = i < n ? '<i class="bi bi-check"></i>' : String(i);
       const canClick = i <= n;
       dot.style.cursor = canClick ? 'pointer' : 'default';
       dot.onclick = canClick ? () => goToImportStep(i) : null;
@@ -410,7 +411,14 @@ function selectImportPlatform(p) {
   selectedImportPlatform = p;
   document.getElementById('platformCardProm').classList.toggle('selected', p === 'prom');
   document.getElementById('platformCardAvto').classList.toggle('selected', p === 'avto');
-  document.getElementById('importSelectedPlatform').textContent = p === 'prom' ? 'PROM.ua' : 'AVTO.pro';
+  const platformName = p === 'prom' ? 'PROM.ua' : 'AVTO.pro';
+  document.getElementById('importSelectedPlatform').innerHTML =
+    `<span class="badge-platform ${p}">${platformName}</span>`;
+  const warnText = currentLang === 'ua'
+    ? `Спочатку завантажте свої оголошення з ${platformName}.`
+    : `First download your listings from ${platformName}.`;
+  const warnEl = document.getElementById('importWarningText');
+  if (warnEl) warnEl.textContent = warnText;
   importFileReady = false;
   document.getElementById('importDropZoneEmpty').style.display = 'block';
   document.getElementById('importDropZoneDone').style.display  = 'none';
@@ -450,10 +458,10 @@ function startImport() {
   showScreen(7);
 }
 
-function openInstModal() {
+function openInstPanel() {
   const isProm = selectedImportPlatform === 'prom';
   const ua = currentLang === 'ua';
-  document.getElementById('instModal_title').textContent =
+  document.getElementById('instPanel_title').textContent =
     ua ? (isProm ? 'Інструкція PROM.ua' : 'Інструкція AVTO.pro')
        : (isProm ? 'PROM.ua Instructions' : 'AVTO.pro Instructions');
 
@@ -498,10 +506,16 @@ function openInstModal() {
     ? '⚠️ Важливо: Не змінюйте структуру файлу. Не переставляйте та не видаляйте колонки. Рядки можна видаляти.'
     : '⚠️ Important: Do not change the file structure. Do not reorder or delete columns. Rows can be deleted.';
 
-  document.getElementById('instModal_body').innerHTML =
+  document.getElementById('instPanel_body').innerHTML =
     `<ol class="mb-3">${steps.map(s => `<li class="mb-2">${s}</li>`).join('')}</ol>
-     <div class="alert alert-warning py-2 mb-0">${warn}</div>`;
-  bootstrap.Modal.getOrCreateInstance(document.getElementById('instModal')).show();
+     <div class="status-block warning" style="width:100%;">${warn}</div>`;
+  document.getElementById('instPanel').style.right = '0';
+  document.getElementById('instPanelOverlay').style.display = 'block';
+}
+
+function closeInstPanel() {
+  document.getElementById('instPanel').style.right = '-420px';
+  document.getElementById('instPanelOverlay').style.display = 'none';
 }
 
 /* ════════════════════════════════
