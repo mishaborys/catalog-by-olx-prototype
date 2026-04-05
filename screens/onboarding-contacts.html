@@ -24,11 +24,12 @@
         data-en="This information will be used when publishing listings on OLX."></p>
 
       <!-- Contact name -->
-      <div class="mb-3">
+      <div class="cb-host mb-3">
         <label class="form-label fw-500 mb-1"
           data-ua="Контактна особа або назва компанії *"
           data-en="Contact person or company name *"></label>
         <input type="text" id="contactName" class="form-control" value="Misha Borys Auto Parts">
+        <button class="cb" onclick="showComment('contacts_api_prefill')"><i class="bi bi-chat-fill"></i></button>
       </div>
 
       <!-- Location search dropdown -->
@@ -40,8 +41,7 @@
           <button class="form-select text-start d-flex align-items-center justify-content-between w-100"
             style="background:#fff;" type="button"
             data-bs-toggle="dropdown" data-bs-auto-close="outside">
-            <span id="contactLocationLabel" style="color:#6c757d;"
-              data-ua="Оберіть населений пункт..." data-en="Select location...">Оберіть населений пункт...</span>
+            <span id="contactLocationLabel" style="color:#333;">Київ, Київська область</span>
             <i class="bi bi-chevron-down" style="font-size:.7rem;color:#aaa;flex-shrink:0;margin-left:.5rem;"></i>
           </button>
           <div class="dropdown-menu p-2 w-100" style="max-height:260px;overflow-y:auto;">
@@ -91,11 +91,10 @@
       <!-- Phone -->
       <div class="cb-host mb-4">
         <label class="form-label fw-500 mb-1" data-ua="Телефон *" data-en="Phone *"></label>
-        <input type="text" id="contactPhone" class="form-control" value="+380501234567"
-          placeholder="+380501234567, +380671234567">
+        <input type="text" id="contactPhone" class="form-control" value="+380501234567, +380671234567">
         <small class="text-muted" style="font-size:.75rem;"
-          data-ua="Кілька номерів через кому"
-          data-en="Multiple numbers separated by comma"></small>
+          data-ua="Ви можете вказати кілька номерів через кому"
+          data-en="You can specify multiple numbers separated by comma"></small>
         <button class="cb" onclick="showComment('contacts_phone_regex')"><i class="bi bi-chat-fill"></i></button>
       </div>
 

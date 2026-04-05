@@ -52,6 +52,10 @@ const COMMENTS = {
     ua: 'Зміна: Поле "Район міста" з\'являється ТІЛЬКИ для міст що мають райони (напр. Київ). Для інших міст — не показувати.',
     en: 'Change: The "City district" field appears ONLY for cities that have districts (e.g. Kyiv). For other cities — do not show.'
   },
+  contacts_api_prefill: {
+    ua: 'Дані підтягуються автоматично з акаунту користувача через OLX API. Поля передзаповнені, але їх можна відредагувати.',
+    en: 'Data is automatically pulled from the user\'s OLX account via API. Fields are pre-filled but editable.'
+  },
   contacts_phone_regex: {
     ua: 'Зміна: Потрібна Regex-валідація формату номера телефону — така сама як на продукті OLX. Це критично: якщо формат буде невірним — постінг оголошення завершиться помилкою на боці OLX API.',
     en: 'Change: Requires Regex validation matching the OLX product phone format. Critical: incorrect format will cause a posting error on the OLX API side.'
@@ -316,8 +320,7 @@ function submitContactDetails() {
   const name     = document.getElementById('contactName').value.trim();
   const location = document.getElementById('contactLocationLabel').textContent.trim();
   const phone    = document.getElementById('contactPhone').value.trim();
-  const placeholders = ['Оберіть населений пункт...', 'Select location...'];
-  if (!name || placeholders.includes(location) || !phone) {
+  if (!name || !location || !phone) {
     toast(currentLang === 'ua' ? 'Заповніть усі обов\'язкові поля' : 'Fill in all required fields', 'error');
     return;
   }
