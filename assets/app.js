@@ -367,6 +367,10 @@ function goToImportStep(n) {
     if (dot) {
       dot.classList.toggle('active', i === n);
       dot.classList.toggle('done',   i <  n);
+      // clickable only for completed or current step
+      const canClick = i <= n;
+      dot.style.cursor = canClick ? 'pointer' : 'default';
+      dot.onclick = canClick ? () => goToImportStep(i) : null;
     }
     if (line) line.classList.toggle('done', i < n);
   });
@@ -413,6 +417,9 @@ function selectImportPlatform(p) {
   document.getElementById('importDropZone').classList.remove('has-file');
   document.getElementById('importAvtoExtraFields').style.display = 'none';
   document.getElementById('importNextBtn1').style.display = 'block';
+  // unlock step 2 dot
+  const dot2 = document.getElementById('importStepDot2');
+  if (dot2) { dot2.style.cursor = 'pointer'; dot2.onclick = () => goToImportStep(2); }
   applyLang();
 }
 
@@ -428,13 +435,15 @@ function simulateImportFile() {
     document.getElementById('importAvtoExtraFields').style.display = 'block';
   }
   document.getElementById('importNextBtn2').style.display = 'block';
+  // unlock step 3 dot
+  const dot3 = document.getElementById('importStepDot3');
+  if (dot3) { dot3.style.cursor = 'pointer'; dot3.onclick = () => validateAndGoToImportStep3(); }
   applyLang();
 }
 
 function setImportCurrency(c) {
-  ['uah', 'usd', 'eur'].forEach(id => {
-    document.getElementById('cur_' + id).classList.toggle('active-cur', id === c);
-  });
+  const sel = document.getElementById('importCurrencySelect');
+  if (sel) sel.value = c;
 }
 
 function startImport() {

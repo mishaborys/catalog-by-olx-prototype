@@ -9,17 +9,17 @@
     <!-- Stepper -->
     <div style="max-width:680px;width:100%;margin-bottom:1.5rem;">
       <div class="import-stepper">
-        <div class="import-step-item active" id="importStepDot1">
+        <div class="import-step-item active" id="importStepDot1" onclick="goToImportStep(1)" style="cursor:pointer;">
           <div class="import-step-circle">1</div>
           <div class="import-step-label" data-ua="Платформа" data-en="Platform"></div>
         </div>
         <div class="import-step-line" id="importStepLine1"></div>
-        <div class="import-step-item" id="importStepDot2">
+        <div class="import-step-item" id="importStepDot2" style="cursor:default;">
           <div class="import-step-circle">2</div>
           <div class="import-step-label" data-ua="Файл" data-en="File"></div>
         </div>
         <div class="import-step-line" id="importStepLine2"></div>
-        <div class="import-step-item" id="importStepDot3">
+        <div class="import-step-item" id="importStepDot3" style="cursor:default;">
           <div class="import-step-circle">3</div>
           <div class="import-step-label" data-ua="Підтвердження" data-en="Confirm"></div>
         </div>
@@ -37,11 +37,11 @@
       <div class="cb-host mb-4">
         <div class="d-flex gap-3">
           <div id="platformCardProm" class="import-platform-card" onclick="selectImportPlatform('prom')" style="flex:1;">
-            <div style="font-size:1.3rem;font-weight:800;color:#7b1fa2;margin-bottom:.3rem;">PROM.ua</div>
+            <span class="badge-platform prom" style="font-size:.85rem;padding:.3rem .7rem;margin-bottom:.5rem;display:inline-block;">PROM.ua</span>
             <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Prom.ua" data-en="Import from Prom.ua"></div>
           </div>
           <div id="platformCardAvto" class="import-platform-card" onclick="selectImportPlatform('avto')" style="flex:1;">
-            <div style="font-size:1.3rem;font-weight:800;color:#1565c0;margin-bottom:.3rem;">AVTO.pro</div>
+            <span class="badge-platform avto" style="font-size:.85rem;padding:.3rem .7rem;margin-bottom:.5rem;display:inline-block;">AVTO.pro</span>
             <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Avto.pro" data-en="Import from Avto.pro"></div>
           </div>
         </div>
@@ -64,9 +64,8 @@
       </p>
 
       <div class="cb-host mb-3">
-        <div style="background:#fffde7;border:1px solid #f9a825;border-radius:8px;
-                    padding:.7rem 1rem;font-size:.88rem;color:#5d4037;">
-          <i class="bi bi-exclamation-triangle me-1" style="color:#f57f17;"></i>
+        <div class="status-block warning" style="width:100%;display:flex;flex-wrap:wrap;gap:.3rem;">
+          <i class="bi bi-exclamation-triangle-fill"></i>
           <span data-ua="Спочатку завантажте файл з платформи."
                 data-en="First download the export file from the platform."></span>
           <a href="#" onclick="openInstModal();return false;"
@@ -113,12 +112,12 @@
 
       <div id="importAvtoExtraFields" style="display:none;">
         <div class="cb-host mb-3">
-          <label class="form-label fw-500 mb-2" data-ua="Валюта файлу" data-en="File currency"></label>
-          <div class="d-flex gap-2">
-            <button id="importCurrencyUah" class="cur-btn active-cur" onclick="setImportCurrency('uah')">UAH</button>
-            <button id="importCurrencyUsd" class="cur-btn" onclick="setImportCurrency('usd')">USD</button>
-            <button id="importCurrencyEur" class="cur-btn" onclick="setImportCurrency('eur')">EUR</button>
-          </div>
+          <label class="form-label fw-500 mb-1" data-ua="Валюта файлу" data-en="File currency"></label>
+          <select id="importCurrencySelect" class="form-select">
+            <option value="uah">UAH — Гривня</option>
+            <option value="usd" selected>USD — Долар США</option>
+            <option value="eur">EUR — Євро</option>
+          </select>
           <button class="cb" style="top:2px;right:2px;" onclick="showComment('importAvtoExtraFields')"><i class="bi bi-chat-fill"></i></button>
         </div>
         <div class="mb-3">
