@@ -350,8 +350,6 @@ function resetImportWizard() {
   if (dzd) dzd.style.display = 'none';
   if (dz)  dz.classList.remove('has-file');
   if (aef) aef.style.display = 'none';
-  if (nb1) nb1.style.display = 'none';
-  if (nb2) nb2.style.display = 'none';
   goToImportStep(1);
 }
 
@@ -399,7 +397,19 @@ function buildImportSummary() {
   }
 }
 
+function validateAndGoToImportStep2() {
+  if (!selectedImportPlatform) {
+    toast(currentLang === 'ua' ? 'Оберіть платформу для імпорту' : 'Select a platform to import from', 'error');
+    return;
+  }
+  goToImportStep(2);
+}
+
 function validateAndGoToImportStep3() {
+  if (!importFileReady) {
+    toast(currentLang === 'ua' ? 'Прикріпіть файл для імпорту' : 'Attach a file to import', 'error');
+    return;
+  }
   if (selectedImportPlatform === 'avto' && !document.getElementById('importAvtoDescription').value.trim()) {
     toast(currentLang === 'ua' ? 'Введіть опис оголошень' : 'Enter a listing description', 'error');
     return;
@@ -424,7 +434,6 @@ function selectImportPlatform(p) {
   document.getElementById('importDropZoneDone').style.display  = 'none';
   document.getElementById('importDropZone').classList.remove('has-file');
   document.getElementById('importAvtoExtraFields').style.display = 'none';
-  document.getElementById('importNextBtn1').style.display = 'block';
   // unlock step 2 dot
   const dot2 = document.getElementById('importStepDot2');
   if (dot2) { dot2.style.cursor = 'pointer'; dot2.onclick = () => goToImportStep(2); }
@@ -442,7 +451,6 @@ function simulateImportFile() {
   if (selectedImportPlatform === 'avto') {
     document.getElementById('importAvtoExtraFields').style.display = 'block';
   }
-  document.getElementById('importNextBtn2').style.display = 'block';
   // unlock step 3 dot
   const dot3 = document.getElementById('importStepDot3');
   if (dot3) { dot3.style.cursor = 'pointer'; dot3.onclick = () => validateAndGoToImportStep3(); }
