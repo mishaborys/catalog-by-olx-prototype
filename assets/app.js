@@ -290,7 +290,7 @@ function completeOAuth() {
   document.getElementById('olxSyncDoneState').style.display  = 'block';
   document.getElementById('olxSyncNextBtn').style.display = 'block';
   const step2 = document.getElementById('olxSyncStep2');
-  if (step2) step2.style.cursor = 'pointer';
+  if (step2) { step2.style.cursor = 'pointer'; step2.onclick = () => showScreen(5); }
   toast(currentLang === 'ua' ? '✓ Синхронізовано з OLX' : '✓ Synced with OLX');
   applyLang();
 }

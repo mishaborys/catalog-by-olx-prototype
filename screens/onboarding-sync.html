@@ -12,7 +12,7 @@
       <div class="onboarding-progress" style="gap:.5rem;justify-content:center;">
         <div class="onboarding-step active" onclick="showScreen(4)" style="cursor:pointer;" title="Step 1">1</div>
         <div class="onboarding-step-line"></div>
-        <div class="onboarding-step" id="olxSyncStep2" onclick="showScreen(5)" style="cursor:default;" title="Step 2">2</div>
+        <div class="onboarding-step" id="olxSyncStep2" style="cursor:default;" title="Step 2">2</div>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
               <strong>mishaborys@gmail.com</strong>
             </div>
             <button class="btn-sm-outline" onclick="openOAuthModal()" title="Change account" style="flex-shrink:0;padding:.3rem .6rem;">
-              <i class="bi bi-arrow-repeat"></i>
+              <i class="bi bi-pencil"></i>
             </button>
           </div>
           <button class="cb" onclick="showComment('olxSync_emailOrPhone')"><i class="bi bi-chat-fill"></i></button>
@@ -51,7 +51,7 @@
 
       <div class="d-flex justify-content-end mt-4">
         <div class="cb-host d-inline-block">
-          <button id="olxSyncNextBtn" class="btn-teal" onclick="showScreen(5)" style="display:none;"
+          <button id="olxSyncNextBtn" class="btn-dark-olx" onclick="showScreen(5)" style="display:none;width:auto;padding:.65rem 1.5rem;"
             data-ua="Далі →" data-en="Next →"></button>
           <button class="cb" onclick="showComment('olxSync_separateAccounts')"><i class="bi bi-chat-fill"></i></button>
         </div>
