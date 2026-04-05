@@ -468,51 +468,6 @@ toast('Something failed.', 'error');
 toast(currentLang==='ua' ? 'Імпорт завершено' : 'Import complete.');</pre>
         </div>
 
-        <!-- 3 style proposals -->
-        <div class="ds-item">
-          <div class="ds-item-label">Style Proposals (archived)</div>
-          <div class="ds-preview col" style="gap:1rem;">
-
-            <!-- Option A: Dark/Charcoal -->
-            <div>
-              <div class="ds-item-label" style="margin-bottom:.4rem;">A — Dark</div>
-              <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
-                <div style="background:var(--olx-charcoal);color:#fff;padding:.7rem 1.2rem;border-radius:10px;display:flex;align-items:center;gap:.6rem;box-shadow:0 6px 24px rgba(4,65,66,.2);font-size:.88rem;font-weight:500;min-width:260px;">
-                  <i class="bi bi-check-circle-fill" style="color:var(--olx-teal);font-size:1rem;"></i>Import completed — 146 listings.
-                </div>
-                <div style="background:var(--olx-charcoal);color:#fff;padding:.7rem 1.2rem;border-radius:10px;display:flex;align-items:center;gap:.6rem;box-shadow:0 6px 24px rgba(4,65,66,.2);font-size:.88rem;font-weight:500;min-width:260px;">
-                  <i class="bi bi-exclamation-circle-fill" style="color:#ef9a9a;font-size:1rem;"></i>Could not connect to PROM.ua.
-                </div>
-              </div>
-            </div>
-
-            <!-- Option B: White card, left border -->
-            <div>
-              <div class="ds-item-label" style="margin-bottom:.4rem;">B — White Card</div>
-              <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
-                <div style="background:#fff;border-left:4px solid var(--olx-teal-dark);padding:.7rem 1.2rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.1);display:flex;align-items:center;gap:.6rem;font-size:.88rem;min-width:260px;">
-                  <i class="bi bi-check-circle" style="color:var(--olx-teal-dark);font-size:1rem;"></i><span style="color:#333;">Import completed — 146 listings.</span>
-                </div>
-                <div style="background:#fff;border-left:4px solid #c62828;padding:.7rem 1.2rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.1);display:flex;align-items:center;gap:.6rem;font-size:.88rem;min-width:260px;">
-                  <i class="bi bi-exclamation-circle" style="color:#c62828;font-size:1rem;"></i><span style="color:#333;">Could not connect to PROM.ua.</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Option C: Pill/Minimal -->
-            <div>
-              <div class="ds-item-label" style="margin-bottom:.4rem;">C — Pill / Minimal</div>
-              <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
-                <div style="background:rgba(14,169,160,.1);border:1px solid rgba(14,169,160,.35);padding:.55rem 1.25rem;border-radius:999px;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:500;">
-                  <i class="bi bi-check-circle" style="color:var(--olx-teal-dark);"></i><span style="color:var(--olx-charcoal);">Import completed.</span>
-                </div>
-                <div style="background:rgba(198,40,40,.08);border:1px solid rgba(198,40,40,.25);padding:.55rem 1.25rem;border-radius:999px;display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:500;">
-                  <i class="bi bi-exclamation-circle" style="color:#c62828;"></i><span style="color:#7f0000;">Could not connect.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
 
@@ -662,46 +617,6 @@ all: border-radius: 4px
           </div>
         </div>
 
-        <!-- Settings Nav proposals (archived) -->
-        <div class="ds-item">
-          <div class="ds-item-label">Style Proposals (archived)</div>
-          <div class="ds-preview col" style="gap:2rem; align-items:flex-start;">
-
-            <!-- Variant A: Underline tabs (horizontal) -->
-            <div style="width:100%;">
-              <div class="ds-item-label" style="margin-bottom:.5rem;">A — Horizontal underline tabs</div>
-              <div style="border-bottom:1px solid #e0e0e0;display:flex;gap:0;">
-                <button style="background:none;border:none;border-bottom:2px solid var(--olx-charcoal);padding:.6rem 1.1rem;font-size:.85rem;font-weight:600;color:var(--olx-charcoal);cursor:pointer;white-space:nowrap;">OLX Sync</button>
-                <button style="background:none;border:none;border-bottom:2px solid transparent;padding:.6rem 1.1rem;font-size:.85rem;color:#888;cursor:pointer;white-space:nowrap;">Contacts</button>
-                <button style="background:none;border:none;border-bottom:2px solid transparent;padding:.6rem 1.1rem;font-size:.85rem;color:#888;cursor:pointer;white-space:nowrap;">AVTO.pro</button>
-                <button style="background:none;border:none;border-bottom:2px solid transparent;padding:.6rem 1.1rem;font-size:.85rem;color:#888;cursor:pointer;white-space:nowrap;">Password</button>
-              </div>
-            </div>
-
-            <!-- Variant B: Teal pill (vertical) -->
-            <div>
-              <div class="ds-item-label" style="margin-bottom:.5rem;">B — Vertical teal pills</div>
-              <div style="display:flex;flex-direction:column;gap:.25rem;width:180px;">
-                <button style="background:var(--olx-teal-dark);color:#fff;border:none;border-radius:8px;padding:.5rem 1rem;text-align:left;font-size:.85rem;font-weight:600;cursor:pointer;">OLX Sync</button>
-                <button style="background:none;color:#555;border:none;border-radius:8px;padding:.5rem 1rem;text-align:left;font-size:.85rem;cursor:pointer;">Contacts</button>
-                <button style="background:none;color:#555;border:none;border-radius:8px;padding:.5rem 1rem;text-align:left;font-size:.85rem;cursor:pointer;">AVTO.pro</button>
-                <button style="background:none;color:#555;border:none;border-radius:8px;padding:.5rem 1rem;text-align:left;font-size:.85rem;cursor:pointer;">Password</button>
-              </div>
-            </div>
-
-            <!-- Variant C: Left accent bar (vertical) -->
-            <div>
-              <div class="ds-item-label" style="margin-bottom:.5rem;">C — Vertical left-bar indicator</div>
-              <div style="display:flex;flex-direction:column;width:180px;">
-                <button style="background:none;border:none;border-left:3px solid var(--olx-teal-dark);padding:.55rem 1rem;text-align:left;font-size:.85rem;font-weight:600;color:var(--olx-charcoal);cursor:pointer;">OLX Sync</button>
-                <button style="background:none;border:none;border-left:3px solid transparent;padding:.55rem 1rem;text-align:left;font-size:.85rem;color:#888;cursor:pointer;">Contacts</button>
-                <button style="background:none;border:none;border-left:3px solid transparent;padding:.55rem 1rem;text-align:left;font-size:.85rem;color:#888;cursor:pointer;">AVTO.pro</button>
-                <button style="background:none;border:none;border-left:3px solid transparent;padding:.55rem 1rem;text-align:left;font-size:.85rem;color:#888;cursor:pointer;">Password</button>
-              </div>
-            </div>
-
-          </div>
-        </div>
       </section>
 
 
@@ -740,75 +655,6 @@ all: border-radius: 4px
 
 .import-step-line.done
   background: var(--olx-teal-dark); opacity: .5</pre>
-          </div>
-        </div>
-
-        <!-- Stepper proposals (archived) -->
-        <div class="ds-item">
-          <div class="ds-item-label">Style Proposals (archived)</div>
-          <div class="ds-preview col" style="gap:2rem; align-items:stretch;">
-
-            <!-- A: Pill / password-bar style -->
-            <div>
-              <div class="ds-item-label" style="margin-bottom:.65rem;">A — Pill segments (password-bar style) <span class="ds-tag ds-tag-proposed">CSS ready</span></div>
-              <div class="stepper-pill">
-                <div class="stepper-pill-track">
-                  <div class="stepper-pill-seg done"></div>
-                  <div class="stepper-pill-seg active"></div>
-                  <div class="stepper-pill-seg"></div>
-                </div>
-                <div class="stepper-pill-labels">
-                  <div class="stepper-pill-label done">Platform ✓</div>
-                  <div class="stepper-pill-label active">File</div>
-                  <div class="stepper-pill-label">Confirm</div>
-                </div>
-              </div>
-              <pre class="ds-code mt-2" style="font-size:.7rem;">.stepper-pill-seg.done   → teal-dark 60% opacity
-.stepper-pill-seg.active → teal-dark 100%
-default                  → #e0e0e0</pre>
-            </div>
-
-            <!-- B: Numbered blocks -->
-            <div>
-              <div class="ds-item-label" style="margin-bottom:.65rem;">B — Numbered blocks</div>
-              <div style="display:flex;align-items:center;gap:.5rem;">
-                <div style="display:flex;flex-direction:column;align-items:center;gap:.3rem;">
-                  <div style="width:32px;height:32px;border-radius:6px;background:var(--olx-teal-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;"><i class="bi bi-check"></i></div>
-                  <span style="font-size:.7rem;color:var(--olx-teal-dark);font-weight:600;">Platform</span>
-                </div>
-                <div style="flex:1;height:2px;background:var(--olx-teal-dark);opacity:.4;margin-bottom:1.2rem;"></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:.3rem;">
-                  <div style="width:32px;height:32px;border-radius:6px;background:var(--olx-teal-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;">2</div>
-                  <span style="font-size:.7rem;color:var(--olx-teal-dark);font-weight:600;">File</span>
-                </div>
-                <div style="flex:1;height:2px;background:#e0e0e0;margin-bottom:1.2rem;"></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:.3rem;">
-                  <div style="width:32px;height:32px;border-radius:6px;background:#e0e0e0;color:#999;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;">3</div>
-                  <span style="font-size:.7rem;color:#aaa;">Confirm</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- C: Progress track with labels above -->
-            <div>
-              <div class="ds-item-label" style="margin-bottom:.65rem;">C — Progress track</div>
-              <div style="position:relative;padding-top:1.5rem;">
-                <div style="display:flex;justify-content:space-between;position:absolute;top:0;left:0;right:0;">
-                  <span style="font-size:.72rem;font-weight:600;color:var(--olx-teal-dark);">Platform</span>
-                  <span style="font-size:.72rem;font-weight:600;color:var(--olx-teal-dark);text-align:center;">File</span>
-                  <span style="font-size:.72rem;color:#aaa;text-align:right;">Confirm</span>
-                </div>
-                <div style="height:6px;border-radius:3px;background:#e0e0e0;position:relative;overflow:hidden;">
-                  <div style="width:55%;height:100%;background:var(--olx-teal-dark);border-radius:3px;"></div>
-                </div>
-                <div style="display:flex;justify-content:space-between;margin-top:4px;">
-                  <div style="width:10px;height:10px;border-radius:50%;background:var(--olx-teal-dark);margin-left:0;"></div>
-                  <div style="width:10px;height:10px;border-radius:50%;background:var(--olx-teal-dark);transform:translateX(50%);"></div>
-                  <div style="width:10px;height:10px;border-radius:50%;background:#e0e0e0;"></div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
