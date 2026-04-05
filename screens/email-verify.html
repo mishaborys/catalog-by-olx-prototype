@@ -7,19 +7,23 @@
 
   <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;">
     <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
-                padding:3rem 2.5rem;max-width:480px;width:100%;text-align:center;">
+                padding:3rem 2.5rem;max-width:480px;width:100%;">
 
-      <div style="margin-bottom:1.25rem;">
+      <div style="margin-bottom:1.25rem;text-align:center;">
         <i class="bi bi-envelope-check-fill" style="font-size:3rem;color:var(--olx-teal-dark);"></i>
       </div>
 
-      <h3 class="fw-bold mb-3"
+      <h3 class="fw-bold mb-4" style="text-align:center;"
         data-ua="Підтвердіть електронну пошту"
         data-en="Verify your email address"></h3>
 
-      <p class="text-muted mb-4" style="font-size:.9rem;line-height:1.65;">
-        <span data-ua="Листа для підтвердження надіслано на "
-              data-en="Verification email sent to "></span><strong><span id="verifyEmailDisplay">user@example.com</span></strong><span data-ua="." data-en="."></span><br>
+      <p class="mb-1" style="font-size:.82rem;color:#aaa;text-transform:uppercase;letter-spacing:.4px;font-weight:600;">
+        <span data-ua="Лист надіслано на" data-en="Email sent to"></span>
+      </p>
+      <p class="fw-bold mb-3" style="font-size:1rem;color:var(--olx-charcoal);">
+        <span id="verifyEmailDisplay">user@example.com</span>
+      </p>
+      <p class="text-muted mb-4" style="font-size:.88rem;line-height:1.65;">
         <span data-ua="Перейдіть за посиланням у листі, щоб завершити реєстрацію."
               data-en="Follow the link in the email to complete registration."></span><br>
         <span data-ua="Не отримали? Перевірте папку «Спам»."
