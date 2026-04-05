@@ -6,10 +6,10 @@
 
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;">
 
-    <div style="max-width:520px;width:100%;margin-bottom:1.25rem;">
+    <div style="max-width:520px;width:100%;margin-bottom:1.25rem;text-align:center;">
       <p class="mb-2" style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#aaa;"
-        data-ua="Обов'язкові кроки реєстрації" data-en="Required setup steps"></p>
-      <div class="onboarding-progress" style="gap:.5rem;">
+        data-ua="Початок роботи" data-en="Getting started"></p>
+      <div class="onboarding-progress" style="gap:.5rem;justify-content:center;">
         <div class="onboarding-step active" onclick="showScreen(4)" style="cursor:pointer;" title="Step 1">1</div>
         <div class="onboarding-step-line"></div>
         <div class="onboarding-step" id="olxSyncStep2" onclick="showScreen(5)" style="cursor:default;" title="Step 2">2</div>
@@ -18,7 +18,7 @@
 
     <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
                 padding:2.5rem;max-width:520px;width:100%;">
-      <h4 class="fw-bold mb-3" data-ua="Підключення OLX-акаунту" data-en="Connect your OLX account"></h4>
+      <h4 class="fw-bold mb-3" data-ua="Синхронізація з OLX" data-en="OLX Account Sync"></h4>
 
       <div class="cb-host mb-4">
         <p class="text-muted mb-0" style="font-size:.92rem;line-height:1.7;"
@@ -34,18 +34,19 @@
       </div>
 
       <div id="olxSyncDoneState" style="display:none;">
-        <div class="cb-host d-inline-block mb-3">
-          <div class="olx-sync-success">
-            <i class="bi bi-check-circle-fill"></i>
-            <span data-ua="Підключено акаунт OLX: " data-en="OLX account connected: "></span>
-            <strong>mishaborys@gmail.com</strong>
+        <div class="cb-host mb-3">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <div class="olx-sync-success" style="flex:1;">
+              <i class="bi bi-check-circle-fill"></i>
+              <span data-ua="Підключено: " data-en="Connected: "></span>
+              <strong>mishaborys@gmail.com</strong>
+            </div>
+            <button class="btn-sm-outline" onclick="openOAuthModal()" title="Change account" style="flex-shrink:0;padding:.3rem .6rem;">
+              <i class="bi bi-arrow-repeat"></i>
+            </button>
           </div>
           <button class="cb" onclick="showComment('olxSync_emailOrPhone')"><i class="bi bi-chat-fill"></i></button>
         </div>
-        <br>
-        <button class="btn-outline-olx" style="width:auto;padding:.5rem 1.25rem;margin-bottom:.5rem;"
-          onclick="openOAuthModal()"
-          data-ua="Підключити інший акаунт" data-en="Connect another account"></button>
       </div>
 
       <div class="d-flex justify-content-end mt-4">
