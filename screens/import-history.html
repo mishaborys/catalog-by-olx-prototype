@@ -1,0 +1,88 @@
+<!-- ═══════════════════════════════════════
+     SCREEN 12 — ІСТОРІЯ ІМПОРТУ
+════════════════════════════════════════ -->
+<div id="screen-12" class="screen" style="background:#f8f9fa;">
+  <div data-component="app-header"></div>
+
+  <div style="flex:1;padding:2rem 2.5rem;max-width:960px;margin:0 auto;width:100%;">
+
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h4 class="fw-bold mb-0" data-ua="Історія імпорту" data-en="Import History"></h4>
+      <button class="btn-dark-olx" style="width:auto;padding:.6rem 1.25rem;" onclick="showScreen(6)"
+        data-ua="+ Новий імпорт" data-en="+ New import"></button>
+    </div>
+
+    <!-- In progress -->
+    <div style="background:#fff;border-radius:12px;border-left:4px solid var(--olx-teal-dark);
+                box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1rem 1.25rem;margin-bottom:1rem;">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <i class="bi bi-clock-history" style="color:#f59e0b;"></i>
+            <strong>avto_export_03042026.xlsx</strong>
+            <span class="badge-platform avto">AVTO.pro</span>
+            <span class="badge-status" data-ua="В процесі" data-en="In progress"></span>
+          </div>
+          <div style="font-size:.85rem;color:#666;"
+            data-ua="Обробляється: 87 / 146 оголошень"
+            data-en="Processing: 87 / 146 listings"></div>
+        </div>
+        <div style="min-width:200px;">
+          <div style="background:#e0e0e0;border-radius:4px;height:8px;overflow:hidden;margin-bottom:.25rem;">
+            <div style="width:60%;height:100%;background:var(--olx-teal-dark);border-radius:4px;"></div>
+          </div>
+          <small style="color:#888;font-size:.78rem;" data-ua="60% · ~2 хв" data-en="60% · ~2 min"></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="background:#f8f9fa;border-bottom:1px solid #e0e0e0;">
+            <th class="tbl-h" data-ua="Файл" data-en="File"></th>
+            <th class="tbl-h" data-ua="Платформа" data-en="Platform"></th>
+            <th class="tbl-h" data-ua="Всього" data-en="Total"></th>
+            <th class="tbl-h" data-ua="Успішно" data-en="Success"></th>
+            <th class="tbl-h" data-ua="Не вдалось" data-en="Failed"></th>
+            <th class="tbl-h" data-ua="Дата" data-en="Date"></th>
+            <th class="tbl-h" data-ua="Дії" data-en="Actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tbl-row">
+            <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>prom_export_01042026.xlsx</td>
+            <td class="tbl-c"><span class="badge-platform prom">PROM.ua</span></td>
+            <td class="tbl-c">142</td>
+            <td class="tbl-c" style="color:#2e7d32;font-weight:500;">139</td>
+            <td class="tbl-c" style="color:#c62828;font-weight:500;">3</td>
+            <td class="tbl-c">01.04.2026</td>
+            <td class="tbl-c"><a class="tbl-link" onclick="showScreen(8)"
+              data-ua="Переглянути помилки" data-en="View errors"></a></td>
+          </tr>
+          <tr class="tbl-row">
+            <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>avto_export_28032026.xlsx</td>
+            <td class="tbl-c"><span class="badge-platform avto">AVTO.pro</span></td>
+            <td class="tbl-c">89</td>
+            <td class="tbl-c" style="color:#2e7d32;font-weight:500;">89</td>
+            <td class="tbl-c">0</td>
+            <td class="tbl-c">28.03.2026</td>
+            <td class="tbl-c" style="color:#aaa;">—</td>
+          </tr>
+          <tr class="tbl-row">
+            <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>prom_export_15032026.xlsx</td>
+            <td class="tbl-c"><span class="badge-platform prom">PROM.ua</span></td>
+            <td class="tbl-c">56</td>
+            <td class="tbl-c" style="color:#2e7d32;font-weight:500;">54</td>
+            <td class="tbl-c" style="color:#c62828;font-weight:500;">2</td>
+            <td class="tbl-c">15.03.2026</td>
+            <td class="tbl-c"><a class="tbl-link" onclick="showScreen(8)"
+              data-ua="Переглянути помилки" data-en="View errors"></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

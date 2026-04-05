@@ -126,7 +126,7 @@ function showScreen(id, tab) {
   document.getElementById('nav-panel').classList.remove('open');
   closeDrop();
   if (id === 3) startEmailVerifyCountdown();
-  if (id === 6 && tab) switchDashTab(tab);
+  if (id === 6) resetImportWizard();
   if (id === 7) startImportProgress();
 }
 
@@ -324,7 +324,7 @@ function submitContactDetails() {
     toast(currentLang === 'ua' ? 'Заповніть усі обов\'язкові поля' : 'Fill in all required fields', 'error');
     return;
   }
-  showScreen(6, 'hist');
+  showScreen(6);
 }
 
 /* ════════════════════════════════
@@ -333,25 +333,30 @@ function submitContactDetails() {
 let selectedImportPlatform = null;
 let importFileReady = false;
 
-function switchDashTab(t) {
-  const tabPanels = { hist: 'importHistoryTab',    imp: 'importNewTab'    };
-  const tabBtns   = { hist: 'importHistoryTabBtn', imp: 'importNewTabBtn' };
-  ['hist', 'imp'].forEach(id => {
-    document.getElementById(tabPanels[id]).style.display = id === t ? 'block' : 'none';
-    document.getElementById(tabBtns[id]).classList.toggle('active-tab', id === t);
-  });
-  if (t === 'imp') {
-    selectedImportPlatform = null;
-    importFileReady = false;
-    document.getElementById('platformCardProm').classList.remove('selected');
-    document.getElementById('platformCardAvto').classList.remove('selected');
-    document.getElementById('importDropZoneEmpty').style.display = 'block';
-    document.getElementById('importDropZoneDone').style.display  = 'none';
-    document.getElementById('importDropZone').classList.remove('has-file');
-    document.getElementById('importAvtoExtraFields').style.display = 'none';
-    goToImportStep(1);
-  }
-  applyLang();
+function resetImportWizard() {
+  selectedImportPlatform = null;
+  importFileReady = false;
+  const prom = document.getElementById('platformCardProm');
+  const avto = document.getElementById('platformCardAvto');
+  if (prom) prom.classList.remove('selected');
+  if (avto) avto.classList.remove('selected');
+  const dze = document.getElementById('importDropZoneEmpty');
+  const dzd = document.getElementById('importDropZoneDone');
+  const dz  = document.getElementById('importDropZone');
+  const aef = document.getElementById('importAvtoExtraFields');
+  const nb1 = document.getElementById('importNextBtn1');
+  const nb2 = document.getElementById('importNextBtn2');
+  if (dze) dze.style.display = 'block';
+  if (dzd) dzd.style.display = 'none';
+  if (dz)  dz.classList.remove('has-file');
+  if (aef) aef.style.display = 'none';
+  if (nb1) nb1.style.display = 'none';
+  if (nb2) nb2.style.display = 'none';
+  goToImportStep(1);
+}
+
+function showHistoryScreen() {
+  showScreen(12);
 }
 
 function goToImportStep(n) {
@@ -407,7 +412,7 @@ function selectImportPlatform(p) {
   document.getElementById('importDropZoneDone').style.display  = 'none';
   document.getElementById('importDropZone').classList.remove('has-file');
   document.getElementById('importAvtoExtraFields').style.display = 'none';
-  document.getElementById('importNextBtn1').disabled = false;
+  document.getElementById('importNextBtn1').style.display = 'block';
   applyLang();
 }
 
@@ -422,7 +427,7 @@ function simulateImportFile() {
   if (selectedImportPlatform === 'avto') {
     document.getElementById('importAvtoExtraFields').style.display = 'block';
   }
-  document.getElementById('importNextBtn2').disabled = false;
+  document.getElementById('importNextBtn2').style.display = 'block';
   applyLang();
 }
 
@@ -593,21 +598,26 @@ function renderAppHeader(screenId) {
   const dropId = `drop${screenId}`;
   return `
   <div class="app-header">
-    <span class="app-logo">Content manager<span class="dot">.</span><span class="by"> by OLX</span></span>
-    <div class="hdr-dropdown">
-      <button class="hdr-dropdown-btn" onclick="toggleDrop('${dropId}')">
-        <span data-ua="Мій профіль" data-en="My Profile"></span>
-        <i class="bi bi-chevron-down" style="font-size:.7rem;"></i>
-      </button>
-      <div class="hdr-dropdown-menu" id="${dropId}">
-        <div class="hdr-drop-item" onclick="showScreen(6);closeDrop()">
-          <i class="bi bi-house me-2"></i><span data-ua="Кабінет" data-en="Cabinet"></span>
-        </div>
-        <div class="hdr-drop-item" onclick="showScreen(9);closeDrop()">
-          <i class="bi bi-gear me-2"></i><span data-ua="Налаштування" data-en="Settings"></span>
-        </div>
-        <div class="hdr-drop-item" onclick="showScreen(1);closeDrop()">
-          <i class="bi bi-box-arrow-right me-2"></i><span data-ua="Вийти" data-en="Sign out"></span>
+    <span class="app-logo" onclick="showScreen(6)" style="cursor:pointer;">Content manager<span class="dot">.</span><span class="by"> by OLX</span></span>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <a class="hdr-nav-link" onclick="showScreen(6)" style="cursor:pointer;">
+        <i class="bi bi-upload me-1" style="font-size:.82rem;"></i><span data-ua="Імпорт" data-en="Import"></span>
+      </a>
+      <a class="hdr-nav-link" onclick="showHistoryScreen()" style="cursor:pointer;">
+        <i class="bi bi-clock-history me-1" style="font-size:.82rem;"></i><span data-ua="Історія" data-en="History"></span>
+      </a>
+      <div class="hdr-dropdown">
+        <button class="hdr-dropdown-btn" onclick="toggleDrop('${dropId}')">
+          <span data-ua="Мій профіль" data-en="My Profile"></span>
+          <i class="bi bi-chevron-down" style="font-size:.7rem;"></i>
+        </button>
+        <div class="hdr-dropdown-menu" id="${dropId}">
+          <div class="hdr-drop-item" onclick="showScreen(9);closeDrop()">
+            <i class="bi bi-gear me-2"></i><span data-ua="Налаштування" data-en="Settings"></span>
+          </div>
+          <div class="hdr-drop-item" onclick="showScreen(1);closeDrop()">
+            <i class="bi bi-box-arrow-right me-2"></i><span data-ua="Вийти" data-en="Sign out"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -743,6 +753,7 @@ async function loadScreens() {
     'settings',
     'forgot-password',
     'design-system',
+    'import-history',
   ];
   const fetches = SCREEN_FILES.map(name =>
     fetch(`screens/${name}.html`).then(r => r.text())
