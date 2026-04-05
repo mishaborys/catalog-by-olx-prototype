@@ -387,12 +387,18 @@ function buildImportSummary() {
   document.getElementById('importSummaryNoPhoto').textContent = noPhoto
     ? (ua ? 'Пропускати оголошення без фото' : 'Skip listings without photos')
     : (ua ? 'Завантажувати всі оголошення'   : 'Upload all listings');
+  const currencyWrap = document.getElementById('importSummaryCurrencyWrap');
   const descWrap = document.getElementById('importSummaryDescWrap');
   if (selectedImportPlatform === 'avto') {
+    const currencyMap = { uah: 'UAH — Гривня', usd: 'USD — Долар США', eur: 'EUR — Євро' };
+    const currencyVal = document.getElementById('importCurrencySelect').value;
+    document.getElementById('importSummaryCurrency').textContent = currencyMap[currencyVal] || currencyVal.toUpperCase();
+    currencyWrap.style.display = 'flex';
     const desc = document.getElementById('importAvtoDescription').value.trim();
-    document.getElementById('importSummaryDesc').textContent = desc || (ua ? '(не вказано)' : '(not set)');
+    document.getElementById('importSummaryDesc').textContent = desc;
     descWrap.style.display = 'flex';
   } else {
+    currencyWrap.style.display = 'none';
     descWrap.style.display = 'none';
   }
 }
@@ -410,9 +416,16 @@ function validateAndGoToImportStep3() {
     toast(currentLang === 'ua' ? 'Прикріпіть файл для імпорту' : 'Attach a file to import', 'error');
     return;
   }
-  if (selectedImportPlatform === 'avto' && !document.getElementById('importAvtoDescription').value.trim()) {
-    toast(currentLang === 'ua' ? 'Введіть опис оголошень' : 'Enter a listing description', 'error');
-    return;
+  if (selectedImportPlatform === 'avto') {
+    const desc = document.getElementById('importAvtoDescription').value.trim();
+    if (!desc) {
+      toast(currentLang === 'ua' ? 'Введіть опис оголошень' : 'Enter a listing description', 'error');
+      return;
+    }
+    if (desc.length < 40) {
+      toast(currentLang === 'ua' ? 'Опис має містити щонайменше 40 символів' : 'Description must be at least 40 characters', 'error');
+      return;
+    }
   }
   goToImportStep(3);
 }

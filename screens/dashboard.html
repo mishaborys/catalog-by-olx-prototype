@@ -4,7 +4,7 @@
 <div id="screen-6" class="screen" style="background:#f8f9fa;">
   <div data-component="app-header"></div>
 
-  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;overflow-y:auto;">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;padding:2.5rem 2rem;overflow-y:auto;">
 
     <!-- Stepper -->
     <div style="max-width:680px;width:100%;margin-bottom:1.5rem;">
@@ -173,6 +173,14 @@
             <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
               data-ua="Фото" data-en="Photos"></div>
             <div id="importSummaryNoPhoto" style="font-size:.9rem;"></div>
+          </div>
+        </div>
+        <div class="import-summary-row" id="importSummaryCurrencyWrap" style="display:none;">
+          <i class="bi bi-currency-exchange import-summary-icon"></i>
+          <div>
+            <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
+              data-ua="Валюта файлу" data-en="File currency"></div>
+            <div id="importSummaryCurrency" style="font-size:.9rem;font-weight:500;"></div>
           </div>
         </div>
         <div class="import-summary-row" id="importSummaryDescWrap" style="display:none;">
