@@ -4,9 +4,9 @@
 <div id="screen-5" class="screen" style="background:#f8f9fa;">
   <div data-component="app-header"></div>
 
-  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:2rem;overflow-y:auto;">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;overflow-y:auto;">
 
-    <div style="max-width:580px;width:100%;margin-bottom:1.25rem;text-align:center;">
+    <div style="max-width:520px;width:100%;margin-bottom:1.25rem;text-align:center;">
       <p class="mb-2" style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#aaa;"
         data-ua="Початок роботи" data-en="Getting started"></p>
       <div class="onboarding-progress" style="gap:.5rem;justify-content:center;">
@@ -17,12 +17,13 @@
     </div>
 
     <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
-                padding:2.5rem;max-width:580px;width:100%;">
+                padding:2.5rem;max-width:520px;width:100%;">
       <h4 class="fw-bold mb-1" data-ua="Контактні дані" data-en="Contact Details"></h4>
       <p class="text-muted mb-4" style="font-size:.88rem;"
-        data-ua="Ці дані будуть використані для публікації оголошень на OLX. Ми підтягнули їх автоматично — ви можете змінити."
-        data-en="This information will be used to publish listings on OLX. We pre-filled it automatically — you can edit it."></p>
+        data-ua="Ці дані будуть використані для публікації оголошень на OLX."
+        data-en="This information will be used when publishing listings on OLX."></p>
 
+      <!-- Contact name -->
       <div class="mb-3">
         <label class="form-label fw-500 mb-1"
           data-ua="Контактна особа або назва компанії *"
@@ -30,56 +31,81 @@
         <input type="text" id="contactName" class="form-control" value="Misha Borys Auto Parts">
       </div>
 
-      <div class="cb-host mb-3">
-        <label class="form-label fw-500 mb-1" data-ua="Область *" data-en="Region *"></label>
-        <select id="contactRegion" class="form-select" onchange="updateContactCities()">
-          <option value="kyiv" selected data-ua="Київська" data-en="Kyiv Region"></option>
-          <option value="kharkiv" data-ua="Харківська" data-en="Kharkiv Region"></option>
-          <option value="odesa" data-ua="Одеська" data-en="Odesa Region"></option>
-          <option value="dnipro" data-ua="Дніпропетровська" data-en="Dnipro Region"></option>
-          <option value="lviv" data-ua="Львівська" data-en="Lviv Region"></option>
-        </select>
-        <button class="cb" onclick="showComment('contacts_regionCityApi')"><i class="bi bi-chat-fill"></i></button>
-      </div>
-
+      <!-- Location search dropdown -->
       <div class="mb-3">
-        <label class="form-label fw-500 mb-1" data-ua="Населений пункт *" data-en="City *"></label>
-        <select id="contactCity" class="form-select" onchange="updateContactDistrict()"></select>
+        <label class="form-label fw-500 mb-1"
+          data-ua="Населений пункт *"
+          data-en="Location *"></label>
+        <div class="dropdown w-100">
+          <button class="form-select text-start d-flex align-items-center justify-content-between w-100"
+            style="background:#fff;" type="button"
+            data-bs-toggle="dropdown" data-bs-auto-close="outside">
+            <span id="contactLocationLabel" style="color:#6c757d;"
+              data-ua="Оберіть населений пункт..." data-en="Select location...">Оберіть населений пункт...</span>
+            <i class="bi bi-chevron-down" style="font-size:.7rem;color:#aaa;flex-shrink:0;margin-left:.5rem;"></i>
+          </button>
+          <div class="dropdown-menu p-2 w-100" style="max-height:260px;overflow-y:auto;">
+            <input type="text" class="form-control form-control-sm mb-2"
+              data-ua="Пошук..." data-en="Search..."
+              placeholder="Пошук..."
+              oninput="filterContactLocation(this.value)">
+            <div id="contactLocationOpts">
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Київ, Київська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Бориспіль, Київська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Бровари, Київська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Біла Церква, Київська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Харків, Харківська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Ізюм, Харківська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Одеса, Одеська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Білгород-Дністровський, Одеська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Ізмаїл, Одеська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Дніпро, Дніпропетровська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Кривий Ріг, Дніпропетровська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Кам'янське, Дніпропетровська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Нікополь, Дніпропетровська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Львів, Львівська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Трускавець, Львівська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Дрогобич, Львівська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Запоріжжя, Запорізька область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Мелітополь, Запорізька область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Вінниця, Вінницька область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Полтава, Полтавська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Суми, Сумська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Чернігів, Чернігівська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Черкаси, Черкаська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Рівне, Рівненська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Луцьк, Волинська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Тернопіль, Тернопільська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Хмельницький, Хмельницька область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Івано-Франківськ, Івано-Франківська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Ужгород, Закарпатська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Чернівці, Чернівецька область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Кропивницький, Кіровоградська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Херсон, Херсонська область</button>
+              <button class="dropdown-item rounded" onclick="pickContactLocation(this)">Миколаїв, Миколаївська область</button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div id="contactDistrictWrap" class="cb-host mb-3">
-        <label class="form-label fw-500 mb-1" data-ua="Район міста" data-en="City district"></label>
-        <select id="contactDistrict" class="form-select">
-          <option data-ua="Шевченківський" data-en="Shevchenkivskyi"></option>
-          <option data-ua="Печерський" data-en="Pecherskyi"></option>
-          <option data-ua="Подільський" data-en="Podilskyi"></option>
-          <option data-ua="Оболонський" data-en="Obolonskyi"></option>
-          <option selected data-ua="Дарницький" data-en="Darnytskyi"></option>
-        </select>
-        <button class="cb" onclick="showComment('contactDistrict')"><i class="bi bi-chat-fill"></i></button>
-      </div>
-
-      <div class="cb-host mb-2">
+      <!-- Phone -->
+      <div class="cb-host mb-4">
         <label class="form-label fw-500 mb-1" data-ua="Телефон *" data-en="Phone *"></label>
-        <input type="text" id="contactPhone1" class="form-control" value="+380501234567" oninput="onContactPhoneChange()">
+        <input type="text" id="contactPhone" class="form-control" value="+380501234567"
+          placeholder="+380501234567, +380671234567">
         <small class="text-muted" style="font-size:.75rem;"
-          data-ua="Кілька номерів через кому, максимум 3"
-          data-en="Multiple numbers separated by comma, max 3"></small>
-        <button class="cb" onclick="showComment('contacts_phone')"><i class="bi bi-chat-fill"></i></button>
-      </div>
-      <div id="contactPhone2Wrap" class="mb-2" style="display:none;">
-        <label class="form-label fw-500 mb-1" data-ua="Телефон 2" data-en="Phone 2"></label>
-        <input type="text" id="contactPhone2" class="form-control" oninput="onContactPhoneChange()">
-      </div>
-      <div id="contactPhone3Wrap" class="mb-3" style="display:none;">
-        <label class="form-label fw-500 mb-1" data-ua="Телефон 3" data-en="Phone 3"></label>
-        <input type="text" id="contactPhone3" class="form-control">
+          data-ua="Кілька номерів через кому"
+          data-en="Multiple numbers separated by comma"></small>
+        <button class="cb" onclick="showComment('contacts_phone_regex')"><i class="bi bi-chat-fill"></i></button>
       </div>
 
-      <div class="d-flex justify-content-end mt-2">
+      <!-- Buttons -->
+      <div class="d-flex align-items-center justify-content-between mt-2">
+        <button class="btn-ghost" style="width:auto;" onclick="showScreen(4)"
+          data-ua="← Назад" data-en="← Back"></button>
         <div class="cb-host d-inline-block">
-          <button class="btn-teal" onclick="submitContactDetails()"
-            data-ua="Далі →" data-en="Next →"></button>
+          <button class="btn-dark-olx" style="width:auto;padding:.65rem 1.5rem;" onclick="submitContactDetails()"
+            data-ua="Готово" data-en="Done"></button>
           <button class="cb" onclick="showComment('contacts_noSubmitBtn')"><i class="bi bi-chat-fill"></i></button>
         </div>
       </div>

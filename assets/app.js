@@ -52,9 +52,9 @@ const COMMENTS = {
     ua: 'Зміна: Поле "Район міста" з\'являється ТІЛЬКИ для міст що мають райони (напр. Київ). Для інших міст — не показувати.',
     en: 'Change: The "City district" field appears ONLY for cities that have districts (e.g. Kyiv). For other cities — do not show.'
   },
-  contacts_phone: {
-    ua: 'Зміна: Телефон — текстове поле (не числове). Без стрілок вгору/вниз. Підтримує кілька номерів через кому.\n\nТелефон 2 з\'являється тільки якщо заповнений Телефон 1. Телефон 3 — тільки якщо заповнений Телефон 2.',
-    en: 'Change: Phone is a text field (not numeric). No up/down arrows. Supports multiple numbers separated by comma.\n\nPhone 2 appears only when Phone 1 is filled. Phone 3 — only when Phone 2 is filled.'
+  contacts_phone_regex: {
+    ua: 'Зміна: Потрібна Regex-валідація формату номера телефону — така сама як на продукті OLX. Це критично: якщо формат буде невірним — постінг оголошення завершиться помилкою на боці OLX API.',
+    en: 'Change: Requires Regex validation matching the OLX product phone format. Critical: incorrect format will cause a posting error on the OLX API side.'
   },
   contacts_noSubmitBtn: {
     ua: 'Зміна: Кнопки "Зберегти інформацію" НЕ існує. Кнопка "Далі" одночасно валідує і зберігає.',
@@ -298,50 +298,26 @@ function completeOAuth() {
 /* ════════════════════════════════
    SCREEN 5 — CONTACTS
 ════════════════════════════════ */
-const S5_CITIES = {
-  kyiv:    [{ v:'kyiv',    ua:'Київ',      en:'Kyiv',      d:true  },
-            { v:'boryspil',ua:'Бориспіль', en:'Boryspil',  d:false },
-            { v:'brovary', ua:'Бровари',   en:'Brovary',   d:false }],
-  kharkiv: [{ v:'kharkiv', ua:'Харків',    en:'Kharkiv',   d:true  },
-            { v:'izium',   ua:'Ізюм',      en:'Izium',     d:false }],
-  odesa:   [{ v:'odesa',   ua:'Одеса',     en:'Odesa',     d:true  },
-            { v:'bilhorod',ua:'Білгород-Дністровський', en:'Bilhorod-Dnistrovskyi', d:false }],
-  dnipro:  [{ v:'dnipro',  ua:'Дніпро',    en:'Dnipro',    d:true  },
-            { v:'kryvyi',  ua:'Кривий Ріг',en:'Kryvyi Rih',d:false }],
-  lviv:    [{ v:'lviv',    ua:'Львів',     en:'Lviv',      d:false },
-            { v:'trusk',   ua:'Трускавець',en:'Truskavets', d:false }]
-};
-
-function updateContactCities() {
-  const reg = document.getElementById('contactRegion').value;
-  const sel = document.getElementById('contactCity');
-  sel.innerHTML = (S5_CITIES[reg] || []).map((c, i) =>
-    `<option value="${c.v}" data-ua="${c.ua}" data-en="${c.en}" data-d="${c.d}" ${i === 0 ? 'selected' : ''}></option>`
-  ).join('');
-  applyLang();
-  updateContactDistrict();
+function filterContactLocation(query) {
+  document.querySelectorAll('#contactLocationOpts .dropdown-item').forEach(btn => {
+    btn.parentElement.style.display =
+      btn.textContent.toLowerCase().includes(query.toLowerCase()) ? '' : 'none';
+  });
 }
 
-function updateContactDistrict() {
-  const sel = document.getElementById('contactCity');
-  const opt = sel.options[sel.selectedIndex];
-  const show = opt && opt.dataset.d === 'true';
-  document.getElementById('contactDistrictWrap').style.display = show ? 'block' : 'none';
-}
-
-function onContactPhoneChange() {
-  const ph1 = document.getElementById('contactPhone1').value.trim();
-  const ph2 = document.getElementById('contactPhone2').value.trim();
-  document.getElementById('contactPhone2Wrap').style.display = ph1 ? 'block' : 'none';
-  document.getElementById('contactPhone3Wrap').style.display = ph2 ? 'block' : 'none';
+function pickContactLocation(el) {
+  const label = document.getElementById('contactLocationLabel');
+  label.textContent = el.textContent;
+  label.style.color = '';
+  bootstrap.Dropdown.getInstance(el.closest('.dropdown').querySelector('[data-bs-toggle="dropdown"]'))?.hide();
 }
 
 function submitContactDetails() {
-  const name   = document.getElementById('contactName').value.trim();
-  const region = document.getElementById('contactRegion').value;
-  const city   = document.getElementById('contactCity').value;
-  const phone  = document.getElementById('contactPhone1').value.trim();
-  if (!name || !region || !city || !phone) {
+  const name     = document.getElementById('contactName').value.trim();
+  const location = document.getElementById('contactLocationLabel').textContent.trim();
+  const phone    = document.getElementById('contactPhone').value.trim();
+  const placeholders = ['Оберіть населений пункт...', 'Select location...'];
+  if (!name || placeholders.includes(location) || !phone) {
     toast(currentLang === 'ua' ? 'Заповніть усі обов\'язкові поля' : 'Fill in all required fields', 'error');
     return;
   }
@@ -781,9 +757,7 @@ async function loadScreens() {
   buildGrid('iconGrid1');
   buildGrid('iconGrid2');
   buildGrid('iconGrid10');
-  updateContactCities();
-  updateContactDistrict();
-  onContactPhoneChange();
+
   refreshNavHighlight();
   applyLang();
   document.getElementById('comments-btn').classList.add('active');
