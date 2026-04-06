@@ -84,6 +84,10 @@ const COMMENTS = {
     ua: 'Зміна: Для AVTO.pro — тільки 2 додаткові обов\'язкові поля: валюта і опис. Більше нічого.',
     en: 'Change: For AVTO.pro — only 2 additional required fields: currency and description. Nothing more.'
   },
+  import_contactOverride: {
+    ua: 'Логіка: Контактні дані за замовчуванням підтягуються з профілю користувача. На кроці підтвердження їх можна змінити — але тільки для поточного імпорту. Дефолтні дані профілю залишаються незмінними. Зміна зберігається лише в контексті цього запиту до API.',
+    en: 'Logic: Default contact details are pulled from the user profile. On the confirmation step, they can be edited — but only for this import. The profile defaults are not affected. The change is scoped to this single API request only.'
+  },
   importProgress_redirect: {
     ua: 'Зміна: Після натискання "Імпортувати" — одразу переходимо на цю сторінку. Показуємо назву файлу і прогрес.',
     en: 'Change: After clicking "Import" — immediately navigate to this page. We show the file name and progress.'
@@ -401,6 +405,42 @@ function buildImportSummary() {
     currencyWrap.style.display = 'none';
     descWrap.style.display = 'none';
   }
+
+  // Pre-fill contact fields from account defaults (simulated).
+  // In production these values come from the user's profile loaded on init.
+  const defaultName     = document.getElementById('contactName')?.value.trim()     || 'Олександр Петренко';
+  const defaultLocation = document.getElementById('contactLocationLabel')?.textContent.trim() || 'Київ, Київська область';
+  const defaultPhone    = document.getElementById('contactPhone')?.value.trim()     || '+380501234567, +380671234567';
+  document.getElementById('importContactName').value     = defaultName;
+  document.getElementById('importContactLocation').value = defaultLocation;
+  document.getElementById('importContactPhone').value    = defaultPhone;
+  refreshImportContactSummary();
+
+  // Ensure panel starts collapsed
+  document.getElementById('importContactForm').style.display = 'none';
+  document.getElementById('importContactChevron').style.transform = '';
+}
+
+// Renders the single-line summary shown in the collapsed contact row
+function refreshImportContactSummary() {
+  const name     = document.getElementById('importContactName').value.trim();
+  const location = document.getElementById('importContactLocation').value.trim();
+  const phone    = document.getElementById('importContactPhone').value.trim();
+  document.getElementById('importContactSummaryLine').textContent = [name, location, phone].filter(Boolean).join(' · ');
+}
+
+function toggleImportContact() {
+  const form     = document.getElementById('importContactForm');
+  const chevron  = document.getElementById('importContactChevron');
+  const isOpen   = form.style.display !== 'none';
+  form.style.display    = isOpen ? 'none' : 'block';
+  chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+
+// Called when user clicks "Застосувати" inside the expanded form
+function applyImportContact() {
+  refreshImportContactSummary();
+  toggleImportContact();
 }
 
 function validateAndGoToImportStep2() {

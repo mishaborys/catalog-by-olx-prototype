@@ -193,6 +193,48 @@
         </div>
       </div>
 
+      <!-- Contact details for this import (collapsible) -->
+      <div class="cb-host" style="margin-bottom:1.5rem;">
+        <div id="importContactCollapse"
+          style="border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;">
+          <!-- Header row — always visible, click to toggle -->
+          <div onclick="toggleImportContact()"
+            style="display:flex;align-items:center;justify-content:space-between;padding:.65rem 1rem;cursor:pointer;user-select:none;background:#fafafa;">
+            <div style="display:flex;align-items:center;gap:.6rem;">
+              <i class="bi bi-person-circle" style="color:var(--olx-teal-dark);font-size:1.1rem;"></i>
+              <span id="importContactSummaryLine" style="font-size:.88rem;color:#333;"></span>
+            </div>
+            <i id="importContactChevron" class="bi bi-chevron-down" style="font-size:.8rem;color:#888;transition:transform .2s;"></i>
+          </div>
+          <!-- Expanded edit form -->
+          <div id="importContactForm" style="display:none;padding:1rem;border-top:1px solid #e0e0e0;background:#fff;">
+            <p style="font-size:.78rem;color:#888;margin-bottom:.75rem;"
+              data-ua="Зміни застосовуються лише до цього імпорту і не впливають на дані профілю."
+              data-en="Changes apply to this import only and do not affect your profile data."></p>
+            <div class="mb-2">
+              <label class="form-label fw-500 mb-1" style="font-size:.85rem;"
+                data-ua="Контактна особа" data-en="Contact name"></label>
+              <input type="text" id="importContactName" class="form-control form-control-sm">
+            </div>
+            <div class="mb-2">
+              <label class="form-label fw-500 mb-1" style="font-size:.85rem;"
+                data-ua="Населений пункт" data-en="Location"></label>
+              <input type="text" id="importContactLocation" class="form-control form-control-sm">
+            </div>
+            <div class="mb-2">
+              <label class="form-label fw-500 mb-1" style="font-size:.85rem;"
+                data-ua="Телефон" data-en="Phone"></label>
+              <input type="text" id="importContactPhone" class="form-control form-control-sm">
+            </div>
+            <div class="d-flex justify-content-end">
+              <button class="btn-ghost" style="width:auto;font-size:.82rem;padding:.3rem .85rem;" onclick="applyImportContact()"
+                data-ua="Застосувати" data-en="Apply"></button>
+            </div>
+          </div>
+        </div>
+        <button class="cb" style="top:2px;right:2px;" onclick="showComment('import_contactOverride')"><i class="bi bi-chat-fill"></i></button>
+      </div>
+
       <div class="d-flex align-items-center justify-content-between">
         <button class="btn-ghost" style="width:auto;" onclick="goToImportStep(2)"
           data-ua="← Назад" data-en="← Back"></button>
