@@ -34,11 +34,11 @@
         <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
           <div style="flex:1;">
             <!-- File + platform + status -->
-            <div class="d-flex align-items-center gap-2 mb-2">
+            <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem;">
               <i class="bi bi-clock-history" style="color:#f59e0b;"></i>
               <strong id="historyActiveFileName"></strong>
-              <span id="historyActivePlatform"></span>
-              <span class="badge-inprogress" data-ua="В процесі" data-en="In progress"></span>
+              <span id="historyActivePlatform" style="display:inline-flex;align-items:center;"></span>
+              <span class="badge-active" style="display:inline-flex;align-items:center;" data-ua="В процесі" data-en="In progress"></span>
             </div>
             <!-- Processing count -->
             <div style="font-size:.85rem;color:#666;margin-bottom:.35rem;">
@@ -104,7 +104,7 @@
           <tr class="tbl-row">
             <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>prom_export_01042026.xlsx</td>
             <td class="tbl-c"><span class="badge-platform prom">PROM.ua</span></td>
-            <td class="tbl-c"><span style="display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;color:#2e7d32;font-weight:500;"><i class="bi bi-check-circle-fill"></i><span data-ua="Завершено" data-en="Completed"></span></span></td>
+            <td class="tbl-c"><span class="badge-success" data-ua="Завершено" data-en="Completed"></span></td>
             <td class="tbl-c">142</td>
             <td class="tbl-c" style="color:#2e7d32;font-weight:500;">139</td>
             <td class="tbl-c" style="color:#c62828;font-weight:500;">3</td>
@@ -115,7 +115,7 @@
           <tr class="tbl-row">
             <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>avto_export_28032026.xlsx</td>
             <td class="tbl-c"><span class="badge-platform avto">AVTO.pro</span></td>
-            <td class="tbl-c"><span style="display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;color:#2e7d32;font-weight:500;"><i class="bi bi-check-circle-fill"></i><span data-ua="Завершено" data-en="Completed"></span></span></td>
+            <td class="tbl-c"><span class="badge-success" data-ua="Завершено" data-en="Completed"></span></td>
             <td class="tbl-c">89</td>
             <td class="tbl-c" style="color:#2e7d32;font-weight:500;">89</td>
             <td class="tbl-c">0</td>
@@ -126,7 +126,7 @@
           <tr class="tbl-row">
             <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>prom_export_15032026.xlsx</td>
             <td class="tbl-c"><span class="badge-platform prom">PROM.ua</span></td>
-            <td class="tbl-c"><span style="display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;color:#888;font-weight:500;"><i class="bi bi-hourglass-split"></i><span data-ua="В черзі" data-en="In queue"></span></span></td>
+            <td class="tbl-c"><span class="badge-status" data-ua="В черзі" data-en="In queue"></span></td>
             <td class="tbl-c">56</td>
             <td class="tbl-c" style="color:#aaa;">—</td>
             <td class="tbl-c" style="color:#aaa;">—</td>
