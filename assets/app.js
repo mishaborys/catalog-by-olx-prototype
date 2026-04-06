@@ -132,6 +132,7 @@ function showScreen(id, tab) {
   if (id === 3) startEmailVerifyCountdown();
   if (id === 6) resetImportWizard();
   if (id === 7) startImportProgress();
+  if (id === 12) initHistoryScreen();
 }
 
 /* ════════════════════════════════
@@ -328,7 +329,7 @@ function submitContactDetails() {
     toast(currentLang === 'ua' ? 'Заповніть усі обов\'язкові поля' : 'Fill in all required fields', 'error');
     return;
   }
-  showScreen(6);
+  showScreen(12);
 }
 
 /* ════════════════════════════════
@@ -510,8 +511,58 @@ function setImportCurrency(c) {
   if (sel) sel.value = c;
 }
 
+let importHistoryHasActive = false;
+
 function startImport() {
-  showScreen(7);
+  importHistoryHasActive = true;
+  showScreen(12);
+}
+
+/* ════════════════════════════════
+   SCREEN 12 — IMPORT HISTORY
+════════════════════════════════ */
+let historyProgressInterval = null;
+
+function initHistoryScreen() {
+  const emptyState  = document.getElementById('historyEmptyState');
+  const activeCard  = document.getElementById('historyActiveImport');
+  const tableWrap   = document.getElementById('historyTableWrap');
+  if (!emptyState) return;
+
+  if (importHistoryHasActive) {
+    emptyState.style.display  = 'none';
+    activeCard.style.display  = 'block';
+    tableWrap.style.display   = 'block';
+    // Set file name from current import
+    const fname = selectedImportPlatform === 'prom' ? 'prom_export.xlsx' : 'avto_export.xlsx';
+    const el = document.getElementById('historyActiveFileName');
+    if (el) el.textContent = fname;
+    const platEl = document.getElementById('historyActivePlatform');
+    if (platEl) platEl.innerHTML = `<span class="badge-platform ${selectedImportPlatform}">${selectedImportPlatform === 'prom' ? 'PROM.ua' : 'AVTO.pro'}</span>`;
+    startHistoryProgress();
+  } else {
+    emptyState.style.display  = 'flex';
+    activeCard.style.display  = 'none';
+    tableWrap.style.display   = 'none';
+  }
+}
+
+function startHistoryProgress() {
+  if (historyProgressInterval) clearInterval(historyProgressInterval);
+  let n = 0;
+  const bar     = document.getElementById('historyProgressBar');
+  const count   = document.getElementById('historyProgressCount');
+  const percent = document.getElementById('historyProgressPercent');
+  if (!bar) return;
+  bar.style.width = '0%';
+  historyProgressInterval = setInterval(() => {
+    n += Math.floor(Math.random() * 4) + 1;
+    if (n >= 87) { n = 87; clearInterval(historyProgressInterval); }
+    const pct = Math.round(n / 146 * 100);
+    bar.style.width = pct + '%';
+    if (count)   count.textContent   = n;
+    if (percent) percent.textContent = pct + '%';
+  }, 70);
 }
 
 function openInstPanel() {
@@ -677,14 +728,8 @@ function renderAppHeader(screenId) {
   const dropId = `drop${screenId}`;
   return `
   <div class="app-header">
-    <span class="app-logo" onclick="showScreen(6)" style="cursor:pointer;">Content manager<span class="dot">.</span><span class="by"> by OLX</span></span>
+    <span class="app-logo" onclick="showScreen(12)" style="cursor:pointer;">Content manager<span class="dot">.</span><span class="by"> by OLX</span></span>
     <div style="display:flex;align-items:center;gap:1.5rem;">
-      <a class="hdr-nav-link" onclick="showScreen(6)" style="cursor:pointer;">
-        <i class="bi bi-upload me-1" style="font-size:.82rem;"></i><span data-ua="Імпорт" data-en="Import"></span>
-      </a>
-      <a class="hdr-nav-link" onclick="showHistoryScreen()" style="cursor:pointer;">
-        <i class="bi bi-clock-history me-1" style="font-size:.82rem;"></i><span data-ua="Історія" data-en="History"></span>
-      </a>
       <div class="hdr-dropdown">
         <button class="hdr-dropdown-btn" onclick="toggleDrop('${dropId}')">
           <span data-ua="Мій профіль" data-en="My Profile"></span>

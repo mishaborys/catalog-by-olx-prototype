@@ -12,32 +12,50 @@
         data-ua="+ Новий імпорт" data-en="+ New import"></button>
     </div>
 
-    <!-- In progress -->
-    <div style="background:#fff;border-radius:12px;border-left:4px solid var(--olx-teal-dark);
-                box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1rem 1.25rem;margin-bottom:1rem;">
+    <!-- ── Empty state ── -->
+    <div id="historyEmptyState"
+      style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+             padding:5rem 2rem;text-align:center;gap:1rem;">
+      <i class="bi bi-inbox" style="font-size:3rem;color:#ccc;"></i>
+      <div style="font-weight:600;font-size:1rem;color:#555;"
+        data-ua="Тут відображатиметься ваша історія імпорту"
+        data-en="Your import history will appear here"></div>
+      <div style="font-size:.88rem;color:#aaa;max-width:340px;"
+        data-ua="Натисніть «+ Новий імпорт», щоб завантажити перший файл і розпочати."
+        data-en="Click «+ New import» to upload your first file and get started."></div>
+    </div>
+
+    <!-- ── Active import in progress ── -->
+    <div id="historyActiveImport" style="display:none;
+      background:#fff;border-radius:12px;border-left:4px solid var(--olx-teal-dark);
+      box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1rem 1.25rem;margin-bottom:1rem;">
       <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
         <div>
           <div class="d-flex align-items-center gap-2 mb-1">
             <i class="bi bi-clock-history" style="color:#f59e0b;"></i>
-            <strong>avto_export_03042026.xlsx</strong>
-            <span class="badge-platform avto">AVTO.pro</span>
+            <strong id="historyActiveFileName"></strong>
+            <span id="historyActivePlatform"></span>
             <span class="badge-status" data-ua="В процесі" data-en="In progress"></span>
           </div>
-          <div style="font-size:.85rem;color:#666;"
-            data-ua="Обробляється: 87 / 146 оголошень"
-            data-en="Processing: 87 / 146 listings"></div>
+          <div style="font-size:.85rem;color:#666;">
+            <span data-ua="Обробляється:" data-en="Processing:"></span>
+            <span id="historyProgressCount">0</span> / 146
+            <span data-ua="оголошень" data-en="listings"></span>
+          </div>
         </div>
         <div style="min-width:200px;">
           <div style="background:#e0e0e0;border-radius:4px;height:8px;overflow:hidden;margin-bottom:.25rem;">
-            <div style="width:60%;height:100%;background:var(--olx-teal-dark);border-radius:4px;"></div>
+            <div id="historyProgressBar" style="width:0%;height:100%;background:var(--olx-teal-dark);border-radius:4px;transition:width .15s linear;"></div>
           </div>
-          <small style="color:#888;font-size:.78rem;" data-ua="60% · ~2 хв" data-en="60% · ~2 min"></small>
+          <small style="color:#888;font-size:.78rem;">
+            <span id="historyProgressPercent">0%</span>
+          </small>
         </div>
       </div>
     </div>
 
-    <!-- Table -->
-    <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;">
+    <!-- ── History table ── -->
+    <div id="historyTableWrap" style="display:none;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;">
       <table style="width:100%;border-collapse:collapse;">
         <thead>
           <tr style="background:#f8f9fa;border-bottom:1px solid #e0e0e0;">
