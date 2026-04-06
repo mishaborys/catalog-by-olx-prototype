@@ -131,7 +131,6 @@ function showScreen(id, tab) {
   closeDrop();
   if (id === 3) startEmailVerifyCountdown();
   if (id === 6) resetImportWizard();
-  if (id === 7) startImportProgress();
   if (id === 12) initHistoryScreen();
 }
 
@@ -872,7 +871,6 @@ async function loadScreens() {
     'onboarding-sync',
     'onboarding-contacts',
     'dashboard',
-    'import-progress',
     'failed-listings',
     'settings',
     'forgot-password',
