@@ -1,23 +1,23 @@
 <!-- ═══════════════════════════════════════
      SCREEN 3 — ПІДТВЕРДЖЕННЯ EMAIL
 ════════════════════════════════════════ -->
-<div id="screen-3" class="screen" style="background:#f8f9fa;">
+<div id="screen-3" class="screen bg-light">
 
   <div data-component="app-header"></div>
 
-  <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;">
-    <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
-                padding:3rem 2.5rem;max-width:480px;width:100%;">
+  <div class="d-flex align-items-center justify-content-center" style="flex:1;padding:2rem;">
+    <div class="bg-white w-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
+                padding:3rem 2.5rem;max-width:480px;">
 
-      <div style="margin-bottom:1.25rem;text-align:center;">
+      <div class="text-center" style="margin-bottom:1.25rem;">
         <i class="bi bi-envelope-check-fill" style="font-size:3rem;color:var(--olx-teal-dark);"></i>
       </div>
 
-      <h3 class="fw-bold mb-4" style="text-align:center;"
+      <h3 class="fw-bold mb-4 text-center"
         data-ua="Підтвердіть електронну пошту"
         data-en="Verify your email address"></h3>
 
-      <p class="mb-3" style="font-size:.88rem;color:#aaa;font-weight:500;">
+      <p class="mb-3 fw-medium" style="font-size:.88rem;color:#aaa;">
         <span data-ua="Лист надіслано на " data-en="Email sent to "></span><span class="fw-bold" style="color:var(--olx-charcoal);"><span id="verifyEmailDisplay">user@example.com</span></span>
       </p>
       <p class="text-muted mb-4" style="font-size:.88rem;line-height:1.65;">
@@ -27,10 +27,10 @@
               data-en="Didn't get it? Check your spam folder."></span>
       </p>
 
-      <div style="text-align:center;">
+      <div class="text-center">
       <p id="emailVerifyCountdown" class="text-muted mb-3" style="font-size:.82rem;"></p>
 
-      <div class="cb-host" style="display:inline-block;margin-bottom:1.25rem;">
+      <div class="cb-host d-inline-block" style="margin-bottom:1.25rem;">
         <button id="emailVerifyResendBtn" class="btn-outline-olx" style="width:auto;padding:.55rem 1.5rem;display:none;"
           onclick="resendVerificationEmail()">
           <span data-ua="Надіслати лист повторно" data-en="Resend email"></span>
@@ -39,7 +39,7 @@
       </div>
       </div>
 
-      <hr style="margin:1.5rem 0;">
+      <hr class="my-4">
 
       <button onclick="simulateEmailConfirm()"
         style="background:none;border:none;color:#bbb;font-size:.78rem;cursor:pointer;text-decoration:underline;">

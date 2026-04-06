@@ -1,7 +1,7 @@
 <!-- ═══════════════════════════════════════
      SCREEN 12 — ІСТОРІЯ ІМПОРТУ
 ════════════════════════════════════════ -->
-<div id="screen-12" class="screen" style="background:#f8f9fa;">
+<div id="screen-12" class="screen bg-light">
   <div data-component="app-header"></div>
 
   <div style="flex:1;padding:2rem 2.5rem;max-width:1100px;margin:0 auto;width:100%;">
@@ -14,10 +14,10 @@
 
     <!-- ── Empty state ── -->
     <div id="historyEmptyState"
-      style="display:flex;flex-direction:column;align-items:center;justify-content:center;
-             padding:5rem 2rem;text-align:center;gap:1rem;">
+      class="d-flex flex-column align-items-center justify-content-center text-center gap-3"
+      style="padding:5rem 2rem;">
       <i class="bi bi-inbox" style="font-size:3rem;color:#ccc;"></i>
-      <div style="font-weight:600;font-size:1rem;color:#555;"
+      <div class="fw-semibold" style="font-size:1rem;color:#555;"
         data-ua="Тут відображатиметься ваша історія імпорту"
         data-en="Your import history will appear here"></div>
       <div style="font-size:.88rem;color:#aaa;max-width:340px;"
@@ -29,16 +29,16 @@
     <div id="historyActiveImport" style="display:none;margin-bottom:.75rem;">
 
       <!-- Main progress card -->
-      <div style="background:#fff;border-radius:12px;border-left:4px solid var(--olx-teal-dark);
-                  box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1.1rem 1.25rem;margin-bottom:.5rem;">
+      <div class="bg-white mb-2" style="border-radius:12px;border-left:4px solid var(--olx-teal-dark);
+                  box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1.1rem 1.25rem;">
         <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
           <div style="flex:1;">
             <!-- File + platform + status -->
-            <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem;">
+            <div class="d-flex align-items-center flex-wrap mb-2 gap-2">
               <i class="bi bi-clock-history" style="color:#f59e0b;"></i>
               <strong id="historyActiveFileName"></strong>
-              <span id="historyActivePlatform" style="display:inline-flex;align-items:center;"></span>
-              <span class="badge-active" style="display:inline-flex;align-items:center;" data-ua="В процесі" data-en="In progress"></span>
+              <span id="historyActivePlatform" class="d-inline-flex align-items-center"></span>
+              <span class="badge-active d-inline-flex align-items-center" data-ua="В процесі" data-en="In progress"></span>
             </div>
             <!-- Processing count -->
             <div style="font-size:.85rem;color:#666;margin-bottom:.35rem;">
@@ -47,7 +47,7 @@
               <span data-ua="оголошень" data-en="listings"></span>
             </div>
             <!-- Success / failed live counts -->
-            <div style="font-size:.82rem;display:flex;gap:1rem;">
+            <div class="d-flex gap-3" style="font-size:.82rem;">
               <span style="color:#2e7d32;">
                 <i class="bi bi-check-circle-fill" style="font-size:.78rem;margin-right:3px;"></i>
                 <span data-ua="Опубліковано:" data-en="Published:"></span>
@@ -62,10 +62,10 @@
           </div>
           <!-- Progress bar + ETA -->
           <div style="min-width:200px;align-self:center;">
-            <div style="background:#e0e0e0;border-radius:4px;height:8px;overflow:hidden;margin-bottom:.3rem;">
+            <div class="overflow-hidden mb-1" style="background:#e0e0e0;border-radius:4px;height:8px;">
               <div id="historyProgressBar" style="width:0%;height:100%;background:var(--olx-teal-dark);border-radius:4px;transition:width .15s linear;"></div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div class="d-flex justify-content-between align-items-center">
               <small style="color:#888;font-size:.78rem;"><span id="historyProgressPercent">0%</span></small>
               <small style="color:#aaa;font-size:.78rem;">
                 <span data-ua="~" data-en="~"></span><span id="historyProgressEta">—</span><span data-ua=" хв" data-en=" min"></span>
@@ -76,7 +76,7 @@
       </div>
 
       <!-- Email notification info block -->
-      <div class="status-block info" style="width:100%;margin-bottom:1rem;box-sizing:border-box;">
+      <div class="status-block info w-100 mb-3" style="box-sizing:border-box;">
         <i class="bi bi-envelope-fill"></i>
         <span data-ua="Після завершення обробки всіх оголошень ми надішлемо вам листа на email."
               data-en="Once all listings are processed, we will send you a confirmation email."></span>
@@ -85,10 +85,10 @@
     </div>
 
     <!-- ── History table ── -->
-    <div id="historyTableWrap" style="display:none;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;">
-      <table style="width:100%;border-collapse:collapse;">
+    <div id="historyTableWrap" class="bg-white overflow-hidden" style="display:none;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);">
+      <table class="w-100" style="border-collapse:collapse;">
         <thead>
-          <tr style="background:#f8f9fa;border-bottom:1px solid #e0e0e0;">
+          <tr class="bg-light" style="border-bottom:1px solid #e0e0e0;">
             <th class="tbl-h" data-ua="Файл" data-en="File"></th>
             <th class="tbl-h" data-ua="Платформа" data-en="Platform"></th>
             <th class="tbl-h" data-ua="Статус" data-en="Status"></th>
@@ -106,9 +106,9 @@
             <td class="tbl-c"><span class="badge-platform prom">PROM.ua</span></td>
             <td class="tbl-c"><span class="badge-success" data-ua="Завершено" data-en="Completed"></span></td>
             <td class="tbl-c">142</td>
-            <td class="tbl-c" style="color:#2e7d32;font-weight:500;">139</td>
-            <td class="tbl-c" style="color:#c62828;font-weight:500;">3</td>
-            <td class="tbl-c" style="white-space:nowrap;">01.04.2026<br><span style="font-size:.78rem;color:#aaa;">14:32</span></td>
+            <td class="tbl-c fw-medium" style="color:#2e7d32;">139</td>
+            <td class="tbl-c fw-medium" style="color:#c62828;">3</td>
+            <td class="tbl-c text-nowrap">01.04.2026<br><span style="font-size:.78rem;color:#aaa;">14:32</span></td>
             <td class="tbl-c"><button class="btn-sm-outline" style="padding:.25rem .75rem;" onclick="showScreen(8)"><i class="bi bi-pencil me-1"></i><span data-ua="Виправити помилки" data-en="Fix errors"></span></button></td>
           </tr>
           <!-- Completed — no errors → no action -->
@@ -117,9 +117,9 @@
             <td class="tbl-c"><span class="badge-platform avto">AVTO.pro</span></td>
             <td class="tbl-c"><span class="badge-success" data-ua="Завершено" data-en="Completed"></span></td>
             <td class="tbl-c">89</td>
-            <td class="tbl-c" style="color:#2e7d32;font-weight:500;">89</td>
+            <td class="tbl-c fw-medium" style="color:#2e7d32;">89</td>
             <td class="tbl-c">0</td>
-            <td class="tbl-c" style="white-space:nowrap;">28.03.2026<br><span style="font-size:.78rem;color:#aaa;">09:15</span></td>
+            <td class="tbl-c text-nowrap">28.03.2026<br><span style="font-size:.78rem;color:#aaa;">09:15</span></td>
             <td class="tbl-c" style="color:#aaa;">—</td>
           </tr>
           <!-- In queue -->
@@ -130,7 +130,7 @@
             <td class="tbl-c">56</td>
             <td class="tbl-c" style="color:#aaa;">—</td>
             <td class="tbl-c" style="color:#aaa;">—</td>
-            <td class="tbl-c" style="white-space:nowrap;">15.03.2026<br><span style="font-size:.78rem;color:#aaa;">11:47</span></td>
+            <td class="tbl-c text-nowrap">15.03.2026<br><span style="font-size:.78rem;color:#aaa;">11:47</span></td>
             <td class="tbl-c" style="color:#aaa;">—</td>
           </tr>
         </tbody>

@@ -4,15 +4,15 @@
 <div id="screen-9" class="screen">
   <div data-component="app-header"></div>
 
-  <div style="flex:1;background:#f8f9fa;padding:1.5rem;overflow-y:auto;">
-    <div style="max-width:900px;margin:0 auto;display:flex;gap:1.5rem;align-items:flex-start;">
+  <div class="bg-light" style="flex:1;padding:1.5rem;overflow-y:auto;">
+    <div class="d-flex align-items-start" style="max-width:900px;margin:0 auto;gap:1.5rem;">
 
       <!-- Sidebar nav -->
-      <div style="width:210px;flex-shrink:0;">
-        <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;
-                    color:#999;font-weight:600;margin-bottom:.75rem;padding:0 .5rem;"
+      <div class="flex-shrink-0" style="width:210px;">
+        <div class="fw-semibold" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;
+                    color:#999;margin-bottom:.75rem;padding:0 .5rem;"
           data-ua="Налаштування" data-en="Settings"></div>
-        <nav style="display:flex;flex-direction:column;gap:2px;">
+        <nav class="d-flex flex-column" style="gap:2px;">
           <button id="settingsNavOlx" class="sett-nav active-sett" onclick="switchSettingsTab('olx')">
             <i class="bi bi-arrow-repeat me-2"></i>
             <span data-ua="Синхронізація з OLX" data-en="OLX Sync"></span>
@@ -33,7 +33,7 @@
       </div>
 
       <!-- Content panels -->
-      <div style="flex:1;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
+      <div class="bg-white" style="flex:1;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
 
         <!-- ── OLX Sync ── -->
         <div id="settingsPanelOlx">
@@ -56,13 +56,13 @@
 
           <!-- Synced state -->
           <div class="cb-host mb-4">
-            <div style="display:flex;align-items:center;gap:.75rem;">
+            <div class="d-flex align-items-center" style="gap:.75rem;">
               <div class="olx-sync-success" style="flex:1;">
                 <i class="bi bi-check-circle-fill"></i>
                 <span data-ua="Підключено: " data-en="Connected: "></span>
                 <strong>mishaborys@gmail.com</strong>
               </div>
-              <button class="btn-sm-outline" onclick="openOAuthModal()" style="flex-shrink:0;padding:.3rem .6rem;" title="Change account">
+              <button class="btn-sm-outline flex-shrink-0" onclick="openOAuthModal()" style="padding:.3rem .6rem;" title="Change account">
                 <i class="bi bi-pencil"></i>
               </button>
             </div>
@@ -96,11 +96,11 @@
               data-ua="Населений пункт *"
               data-en="Location *"></label>
             <div class="dropdown w-100">
-              <button class="form-select text-start d-flex align-items-center justify-content-between w-100"
-                style="background:#fff;" type="button"
+              <button class="form-select text-start d-flex align-items-center justify-content-between w-100 bg-white"
+                type="button"
                 data-bs-toggle="dropdown" data-bs-auto-close="outside">
                 <span id="settingsLocationLabel" style="color:#333;">Київ, Київська область</span>
-                <i class="bi bi-chevron-down" style="font-size:.7rem;color:#aaa;flex-shrink:0;margin-left:.5rem;"></i>
+                <i class="bi bi-chevron-down flex-shrink-0 ms-2" style="font-size:.7rem;color:#aaa;"></i>
               </button>
               <div class="dropdown-menu p-2 w-100" style="max-height:260px;overflow-y:auto;">
                 <input type="text" class="form-control form-control-sm mb-2"
@@ -180,7 +180,7 @@
               data-ua-placeholder="Введіть опис компанії або оголошень..."
               data-en-placeholder="Enter your company or listing description..."
               oninput="document.getElementById('settingsAvtoDescCount').textContent=this.value.length;document.getElementById('settingsAvtoDescCount').style.color=this.value.length<40?'#c62828':'#aaa';"></textarea>
-            <div style="display:flex;justify-content:space-between;margin-top:.35rem;">
+            <div class="d-flex justify-content-between mt-1">
               <small class="text-muted" style="font-size:.75rem;"
                 data-ua="Мінімум 40 символів"
                 data-en="Minimum 40 characters"></small>

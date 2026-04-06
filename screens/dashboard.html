@@ -1,13 +1,13 @@
 <!-- ═══════════════════════════════════════
      SCREEN 6 — ІМПОРТ ОГОЛОШЕНЬ
 ════════════════════════════════════════ -->
-<div id="screen-6" class="screen" style="background:#f8f9fa;">
+<div id="screen-6" class="screen bg-light">
   <div data-component="app-header"></div>
 
-  <div style="flex:1;display:flex;flex-direction:column;align-items:center;padding:2.5rem 2rem;overflow-y:auto;">
+  <div style="flex:1;padding:2.5rem 2rem;overflow-y:auto;" class="d-flex flex-column align-items-center">
 
     <!-- Stepper -->
-    <div style="max-width:680px;width:100%;margin-bottom:1.5rem;">
+    <div class="w-100 mb-4" style="max-width:680px;">
       <div class="import-stepper">
         <div class="import-step-item active" id="importStepDot1" onclick="goToImportStep(1)" style="cursor:pointer;">
           <div class="import-step-circle">1</div>
@@ -27,7 +27,7 @@
     </div>
 
     <!-- ── STEP 1: Platform ── -->
-    <div id="importStepPanel1" style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:2.5rem;max-width:680px;width:100%;">
+    <div id="importStepPanel1" class="bg-white w-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:2.5rem;max-width:680px;">
       <h4 class="fw-bold mb-1"
         data-ua="Оберіть платформу" data-en="Select platform"></h4>
       <p class="text-muted mb-4" style="font-size:.88rem;"
@@ -37,11 +37,11 @@
       <div class="cb-host mb-4">
         <div class="d-flex gap-3">
           <div id="platformCardProm" class="import-platform-card" onclick="selectImportPlatform('prom')" style="flex:1;">
-            <span class="badge-platform prom" style="font-size:.85rem;padding:.3rem .7rem;margin-bottom:.5rem;display:inline-block;">PROM.ua</span>
+            <span class="badge-platform prom d-inline-block mb-2" style="font-size:.85rem;padding:.3rem .7rem;">PROM.ua</span>
             <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Prom.ua" data-en="Import from Prom.ua"></div>
           </div>
           <div id="platformCardAvto" class="import-platform-card" onclick="selectImportPlatform('avto')" style="flex:1;">
-            <span class="badge-platform avto" style="font-size:.85rem;padding:.3rem .7rem;margin-bottom:.5rem;display:inline-block;">AVTO.pro</span>
+            <span class="badge-platform avto d-inline-block mb-2" style="font-size:.85rem;padding:.3rem .7rem;">AVTO.pro</span>
             <div style="font-size:.82rem;color:#888;" data-ua="Імпорт з Avto.pro" data-en="Import from Avto.pro"></div>
           </div>
         </div>
@@ -57,20 +57,20 @@
     </div>
 
     <!-- ── STEP 2: File upload ── -->
-    <div id="importStepPanel2" style="display:none;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:2.5rem;max-width:680px;width:100%;">
+    <div id="importStepPanel2" class="bg-white" style="display:none;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:2.5rem;max-width:680px;width:100%;">
       <h4 class="fw-bold mb-1"
         data-ua="Завантажте файл" data-en="Upload file"></h4>
-      <p class="mb-4" style="font-size:.88rem;display:flex;align-items:center;gap:.5rem;">
+      <p class="mb-4 d-flex align-items-center gap-2" style="font-size:.88rem;">
         <span class="text-muted" data-ua="Платформа:" data-en="Platform:"></span>
         <span id="importSelectedPlatform"></span>
       </p>
 
       <div class="cb-host mb-3">
-        <div class="status-block info" style="width:100%;display:flex;flex-wrap:wrap;gap:.3rem;">
+        <div class="status-block info d-flex flex-wrap w-100" style="gap:.3rem;">
           <i class="bi bi-info-circle-fill"></i>
           <span id="importWarningText"></span>
           <a href="#" onclick="openInstPanel();return false;"
-             style="color:var(--olx-teal-dark);text-decoration:none;font-weight:500;"
+             class="text-decoration-none fw-medium" style="color:var(--olx-teal-dark);"
              data-ua=" Переглянути інструкцію →" data-en=" View instructions →"></a>
         </div>
         <button class="cb" onclick="showComment('import_fileInstructions')"><i class="bi bi-chat-fill"></i></button>
@@ -82,7 +82,7 @@
           ondragover="event.preventDefault()"
           ondrop="simulateImportFile();event.preventDefault()">
           <div id="importDropZoneEmpty">
-            <i class="bi bi-folder2-open" style="font-size:2.5rem;color:#bbb;display:block;margin-bottom:.5rem;"></i>
+            <i class="bi bi-folder2-open d-block mb-2" style="font-size:2.5rem;color:#bbb;"></i>
             <div class="fw-500 mb-1"
               data-ua="Перетягніть файл або оберіть вручну"
               data-en="Drag and drop or choose manually"></div>
@@ -92,9 +92,9 @@
               data-ua="Обрати файл" data-en="Choose file"></button>
           </div>
           <div id="importDropZoneDone" style="display:none;">
-            <i class="bi bi-file-earmark-check" style="font-size:2rem;color:var(--olx-teal-dark);display:block;margin-bottom:.5rem;"></i>
+            <i class="bi bi-file-earmark-check d-block mb-2" style="font-size:2rem;color:var(--olx-teal-dark);"></i>
             <strong id="importFileName"></strong>
-            <div style="font-size:.85rem;color:#666;margin-top:.25rem;"
+            <div class="mt-1" style="font-size:.85rem;color:#666;"
               data-ua="Файл містить: 146 оголошень"
               data-en="File contains: 146 listings"></div>
           </div>
@@ -102,8 +102,8 @@
         <button class="cb" onclick="showComment('importDropZonezone')"><i class="bi bi-chat-fill"></i></button>
       </div>
 
-      <div class="cb-host mb-3" style="display:inline-block;">
-        <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;cursor:pointer;">
+      <div class="cb-host d-inline-block mb-3">
+        <label class="d-flex align-items-center gap-2" style="font-size:.9rem;cursor:pointer;">
           <input type="checkbox" id="importSkipNoPhoto" checked style="width:16px;height:16px;">
           <span data-ua="Не завантажувати оголошення без фото"
                 data-en="Skip listings without photos"></span>
@@ -128,7 +128,7 @@
           <textarea id="importAvtoDescription" class="form-control" rows="3"
             data-ua-placeholder="Введіть опис, який буде доданий до всіх ваших оголошень..."
             data-en-placeholder="Enter a description that will be added to all your listings..."></textarea>
-          <small class="text-muted" style="font-size:.78rem;line-height:1.55;display:block;margin-top:.35rem;"
+          <small class="text-muted d-block" style="font-size:.78rem;line-height:1.55;margin-top:.35rem;"
             data-ua="Файл AVTO.pro не містить описів, тому ми використаємо цей текст для всіх завантажених оголошень. Якщо потрібно — описи можна оновити пізніше через OLX."
             data-en="The AVTO.pro file does not include descriptions, so this text will be used for all imported listings. If needed, you can update descriptions later via OLX."></small>
         </div>
@@ -143,14 +143,14 @@
     </div>
 
     <!-- ── STEP 3: Confirm ── -->
-    <div id="importStepPanel3" style="display:none;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:2.5rem;max-width:680px;width:100%;">
+    <div id="importStepPanel3" class="bg-white" style="display:none;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:2.5rem;max-width:680px;width:100%;">
       <h4 class="fw-bold mb-1"
         data-ua="Підтвердження імпорту" data-en="Confirm import"></h4>
       <p class="text-muted mb-3" style="font-size:.88rem;"
         data-ua="Перевірте параметри і запустіть імпорт."
         data-en="Review the settings and start the import."></p>
 
-      <div style="border:1px solid #e0e0e0;border-radius:10px;padding:.5rem 1rem;margin-bottom:1.5rem;">
+      <div class="mb-4" style="border:1px solid #e0e0e0;border-radius:10px;padding:.5rem 1rem;">
         <div class="import-summary-row">
           <i class="bi bi-collection import-summary-icon"></i>
           <div>
@@ -164,7 +164,7 @@
           <div>
             <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
               data-ua="Файл" data-en="File"></div>
-            <div id="importSummaryFile" style="font-weight:500;"></div>
+            <div id="importSummaryFile" class="fw-medium"></div>
             <div style="font-size:.8rem;color:#888;"
               data-ua="146 оголошень" data-en="146 listings"></div>
           </div>
@@ -182,7 +182,7 @@
           <div>
             <div style="font-size:.75rem;color:#999;margin-bottom:.15rem;"
               data-ua="Валюта файлу" data-en="File currency"></div>
-            <div id="importSummaryCurrency" style="font-size:.9rem;font-weight:500;"></div>
+            <div id="importSummaryCurrency" class="fw-medium" style="font-size:.9rem;"></div>
           </div>
         </div>
         <div class="import-summary-row" id="importSummaryDescWrap" style="display:none;">
@@ -196,20 +196,20 @@
       </div>
 
       <!-- Contact details for this import (collapsible) -->
-      <div class="cb-host" style="margin-bottom:1.5rem;">
+      <div class="cb-host mb-4">
         <div id="importContactCollapse"
-          style="border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;">
+          class="overflow-hidden" style="border:1px solid #e0e0e0;border-radius:10px;">
           <!-- Header row — always visible, click to toggle -->
           <div onclick="toggleImportContact()"
-            style="display:flex;align-items:center;justify-content:space-between;padding:.65rem 1rem;cursor:pointer;user-select:none;background:#fafafa;">
-            <div style="display:flex;align-items:center;gap:.6rem;">
+            class="d-flex align-items-center justify-content-between" style="padding:.65rem 1rem;cursor:pointer;user-select:none;background:#fafafa;">
+            <div class="d-flex align-items-center" style="gap:.6rem;">
               <i class="bi bi-person-circle" style="color:var(--olx-teal-dark);font-size:1.1rem;"></i>
               <span id="importContactSummaryLine" style="font-size:.88rem;color:#333;"></span>
             </div>
             <i id="importContactChevron" class="bi bi-chevron-down" style="font-size:.8rem;color:#888;transition:transform .2s;"></i>
           </div>
           <!-- Expanded edit form -->
-          <div id="importContactForm" style="display:none;padding:1rem;border-top:1px solid #e0e0e0;background:#fff;">
+          <div id="importContactForm" class="bg-white" style="display:none;padding:1rem;border-top:1px solid #e0e0e0;">
             <p style="font-size:.78rem;color:#888;margin-bottom:.75rem;"
               data-ua="Зміни застосовуються лише до цього імпорту і не впливають на дані профілю."
               data-en="Changes apply to this import only and do not affect your profile data."></p>
@@ -248,7 +248,7 @@
 <div id="instPanelOverlay" onclick="closeInstPanel()"
   style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1040;"></div>
 <div id="instPanel" class="slide-panel" style="width:400px;right:-420px;">
-  <div style="background:var(--olx-charcoal);color:#fff;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+  <div class="d-flex align-items-center justify-content-between flex-shrink-0" style="background:var(--olx-charcoal);color:#fff;padding:1rem 1.25rem;">
     <h6 class="mb-0 fw-bold" id="instPanel_title"></h6>
     <button onclick="closeInstPanel()" style="background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;line-height:1;">&times;</button>
   </div>

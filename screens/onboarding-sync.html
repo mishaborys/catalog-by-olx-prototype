@@ -1,23 +1,23 @@
 <!-- ═══════════════════════════════════════
      SCREEN 4 — ОНБОРДИНГ: OLX SYNC
 ════════════════════════════════════════ -->
-<div id="screen-4" class="screen" style="background:#f8f9fa;">
+<div id="screen-4" class="screen bg-light">
   <div data-component="app-header"></div>
 
-  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;">
+  <div class="d-flex flex-column align-items-center justify-content-center" style="flex:1;padding:2rem;">
 
-    <div style="max-width:520px;width:100%;margin-bottom:1.25rem;text-align:center;">
-      <p class="mb-2" style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#aaa;"
+    <div class="text-center w-100" style="max-width:520px;margin-bottom:1.25rem;">
+      <p class="mb-2 fw-bold" style="font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;color:#aaa;"
         data-ua="Початок роботи" data-en="Getting started"></p>
-      <div class="onboarding-progress" style="gap:.5rem;justify-content:center;">
+      <div class="onboarding-progress justify-content-center gap-2">
         <div class="onboarding-step active" onclick="showScreen(4)" style="cursor:pointer;" title="Step 1">1</div>
         <div class="onboarding-step-line"></div>
         <div class="onboarding-step" id="olxSyncStep2" style="cursor:default;" title="Step 2">2</div>
       </div>
     </div>
 
-    <div style="background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
-                padding:2.5rem;max-width:520px;width:100%;">
+    <div class="bg-white w-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);
+                padding:2.5rem;max-width:520px;">
       <h4 class="fw-bold mb-3" data-ua="Синхронізація з OLX" data-en="OLX Account Sync"></h4>
 
       <div class="cb-host mb-4">
@@ -35,13 +35,13 @@
 
       <div id="olxSyncDoneState" style="display:none;">
         <div class="cb-host mb-3">
-          <div style="display:flex;align-items:center;gap:.75rem;">
+          <div class="d-flex align-items-center" style="gap:.75rem;">
             <div class="olx-sync-success" style="flex:1;">
               <i class="bi bi-check-circle-fill"></i>
               <span data-ua="Підключено: " data-en="Connected: "></span>
               <strong>mishaborys@gmail.com</strong>
             </div>
-            <button class="btn-sm-outline" onclick="openOAuthModal()" title="Change account" style="flex-shrink:0;padding:.3rem .6rem;">
+            <button class="btn-sm-outline flex-shrink-0" onclick="openOAuthModal()" title="Change account" style="padding:.3rem .6rem;">
               <i class="bi bi-pencil"></i>
             </button>
           </div>
@@ -65,7 +65,7 @@
   <div class="modal-dialog modal-dialog-centered" style="max-width:420px;">
     <div class="modal-content">
       <div class="modal-body text-center p-5">
-        <div style="font-size:2.2rem;font-weight:800;color:#3d6ee8;letter-spacing:-1px;margin-bottom:1rem;">OLX</div>
+        <div class="mb-3" style="font-size:2.2rem;font-weight:800;color:#3d6ee8;letter-spacing:-1px;">OLX</div>
         <h5 class="fw-bold mb-2" data-ua="Авторизація OLX" data-en="OLX Authorization"></h5>
         <p class="text-muted mb-4" style="font-size:.9rem;"
           data-ua="Симуляція: Ви переходите на OLX.ua для авторизації. Натисніть «Дозволити доступ» щоб продовжити."

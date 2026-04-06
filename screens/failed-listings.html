@@ -4,50 +4,50 @@
 <div id="screen-8" class="screen">
   <div data-component="app-header"></div>
 
-  <div style="flex:1;background:#f8f9fa;padding:1.5rem 2rem;overflow-y:auto;max-width:1100px;margin:0 auto;width:100%;box-sizing:border-box;">
+  <div class="bg-light" style="flex:1;padding:1.5rem 2rem;overflow-y:auto;max-width:1100px;margin:0 auto;width:100%;box-sizing:border-box;">
 
     <!-- Back link -->
     <a href="#" onclick="showScreen(12);return false;"
-      style="color:var(--olx-charcoal);text-decoration:none;font-size:.95rem;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1.25rem;">
+      class="d-inline-flex align-items-center text-decoration-none fw-semibold" style="color:var(--olx-charcoal);font-size:.95rem;gap:.4rem;margin-bottom:1.25rem;">
       <i class="bi bi-arrow-left"></i>
       <span data-ua="Назад" data-en="Back"></span>
     </a>
 
     <!-- Import meta info -->
-    <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1rem 1.25rem;margin-bottom:1rem;">
-      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem;">
+    <div class="bg-white mb-3" style="border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1rem 1.25rem;">
+      <div class="d-flex align-items-center mb-3" style="gap:.6rem;">
         <i class="bi bi-file-earmark-excel" style="color:#217346;font-size:1.1rem;"></i>
         <strong style="font-size:1rem;">prom_export_01042026.xlsx</strong>
         <span class="badge-platform prom">PROM.ua</span>
         <span class="badge-success" data-ua="Завершено" data-en="Completed"></span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:1.5rem;font-size:.85rem;color:#555;">
+      <div class="d-flex flex-wrap gap-4" style="font-size:.85rem;color:#555;">
         <div>
           <div style="font-size:.72rem;color:#999;margin-bottom:.1rem;" data-ua="Старт імпорту" data-en="Import started"></div>
-          <div style="font-weight:500;">01.04.2026 <span style="color:#888;">14:32</span></div>
+          <div class="fw-medium">01.04.2026 <span style="color:#888;">14:32</span></div>
         </div>
         <div>
           <div style="font-size:.72rem;color:#999;margin-bottom:.1rem;" data-ua="Завершено" data-en="Completed"></div>
-          <div style="font-weight:500;">01.04.2026 <span style="color:#888;">14:51</span> <span style="font-size:.78rem;color:#aaa;">(~19 хв)</span></div>
+          <div class="fw-medium">01.04.2026 <span style="color:#888;">14:51</span> <span style="font-size:.78rem;color:#aaa;">(~19 хв)</span></div>
         </div>
         <div>
           <div style="font-size:.72rem;color:#999;margin-bottom:.1rem;" data-ua="Всього" data-en="Total"></div>
-          <div style="font-weight:500;">142</div>
+          <div class="fw-medium">142</div>
         </div>
         <div>
           <div style="font-size:.72rem;color:#999;margin-bottom:.1rem;" data-ua="Успішно" data-en="Success"></div>
-          <div style="font-weight:500;color:#2e7d32;">138</div>
+          <div class="fw-medium" style="color:#2e7d32;">138</div>
         </div>
         <div class="cb-host d-inline-block">
           <div style="font-size:.72rem;color:#999;margin-bottom:.1rem;" data-ua="Помилки" data-en="Failed"></div>
-          <div style="font-weight:500;color:#c62828;"><span id="failedListingsCount">4</span></div>
+          <div class="fw-medium" style="color:#c62828;"><span id="failedListingsCount">4</span></div>
           <button class="cb" style="top:-4px;right:-6px;" onclick="showComment('failedListings_onlyFailed')"><i class="bi bi-chat-fill"></i></button>
         </div>
       </div>
     </div>
 
     <!-- Pagination control -->
-    <div style="display:flex;align-items:center;justify-content:flex-end;gap:.5rem;margin-bottom:.6rem;font-size:.85rem;color:#666;">
+    <div class="d-flex align-items-center justify-content-end gap-2" style="margin-bottom:.6rem;font-size:.85rem;color:#666;">
       <span data-ua="Відображати по:" data-en="Show per page:"></span>
       <select class="form-select" style="width:auto;padding:.25rem .75rem;font-size:.83rem;" onchange="setFailedPageSize(+this.value)">
         <option value="10" selected>10</option>
@@ -57,10 +57,10 @@
     </div>
 
     <!-- Listings table -->
-    <div id="failedListingsTableWrap" style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;">
-      <table style="width:100%;border-collapse:collapse;" id="failedListingsTable">
+    <div id="failedListingsTableWrap" class="bg-white overflow-hidden" style="border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);">
+      <table class="w-100" style="border-collapse:collapse;" id="failedListingsTable">
         <thead>
-          <tr style="background:#f8f9fa;border-bottom:1px solid #e0e0e0;">
+          <tr class="bg-light" style="border-bottom:1px solid #e0e0e0;">
             <th class="tbl-h" style="width:64px;" data-ua="Фото" data-en="Photo"></th>
             <th class="tbl-h" data-ua="Заголовок" data-en="Title"></th>
             <th class="tbl-h">
@@ -76,12 +76,12 @@
         <tbody id="failedListingsTbody">
           <!-- Row 0: normal — Activate fails with toast -->
           <tr id="failedListingRow0" class="tbl-row">
-            <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-wrench" style="color:#999;"></i></div></td>
+            <td class="tbl-c"><div class="d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:#eee;border-radius:6px;"><i class="bi bi-wrench" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Прокладка головки блоку циліндрів</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Не вказана категорія" data-en="Category not specified"></span></td>
-            <td class="tbl-c" style="white-space:nowrap;">450 <span data-ua="грн" data-en="UAH"></span></td>
+            <td class="tbl-c text-nowrap">450 <span data-ua="грн" data-en="UAH"></span></td>
             <td class="tbl-c">
-              <div style="display:flex;gap:.5rem;align-items:center;">
+              <div class="d-flex align-items-center gap-2">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(0)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
                 <button class="btn-sm-outline" style="padding:.35rem .9rem;" onclick="retryFailedListing(0)"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Повторити" data-en="Retry"></span></button>
               </div>
@@ -89,12 +89,12 @@
           </tr>
           <!-- Row 1: two-edit — first save reveals a second error -->
           <tr id="failedListingRow1" class="tbl-row">
-            <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-gear" style="color:#999;"></i></div></td>
+            <td class="tbl-c"><div class="d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:#eee;border-radius:6px;"><i class="bi bi-gear" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Ремінь ГРМ Gates T41072</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Назва занадто довга > 70 символів" data-en="Title too long > 70 chars"></span></td>
-            <td class="tbl-c" style="white-space:nowrap;">280 <span data-ua="грн" data-en="UAH"></span></td>
+            <td class="tbl-c text-nowrap">280 <span data-ua="грн" data-en="UAH"></span></td>
             <td class="tbl-c">
-              <div style="display:flex;gap:.5rem;align-items:center;">
+              <div class="d-flex align-items-center gap-2">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(1)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
                 <button class="btn-sm-outline" style="padding:.35rem .9rem;" onclick="retryFailedListing(1)"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Повторити" data-en="Retry"></span></button>
               </div>
@@ -102,12 +102,12 @@
           </tr>
           <!-- Row 2: 500 Internal Server Error — Retry succeeds without editing -->
           <tr id="failedListingRow2" class="tbl-row">
-            <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-cpu" style="color:#999;"></i></div></td>
+            <td class="tbl-c"><div class="d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:#eee;border-radius:6px;"><i class="bi bi-cpu" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Амортизатор передній Kayaba Excel-G</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Внутрішня помилка сервера (500)" data-en="Internal server error (500)"></span></td>
-            <td class="tbl-c" style="white-space:nowrap;">1 850 <span data-ua="грн" data-en="UAH"></span></td>
+            <td class="tbl-c text-nowrap">1 850 <span data-ua="грн" data-en="UAH"></span></td>
             <td class="tbl-c">
-              <div style="display:flex;gap:.5rem;align-items:center;">
+              <div class="d-flex align-items-center gap-2">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(2)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
                 <button class="btn-sm-outline" style="padding:.35rem .9rem;" onclick="retryFailedListing(2)"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Повторити" data-en="Retry"></span></button>
               </div>
@@ -115,12 +115,12 @@
           </tr>
           <!-- Row 3: normal — Retry fails with toast -->
           <tr id="failedListingRow3" class="tbl-row">
-            <td class="tbl-c"><div style="width:48px;height:48px;background:#f5f5f5;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-image" style="color:#ccc;"></i></div></td>
+            <td class="tbl-c"><div class="d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:#f5f5f5;border-radius:6px;"><i class="bi bi-image" style="color:#ccc;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Фільтр масляний Mann W712/95</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Відсутнє фото" data-en="Missing photo"></span></td>
-            <td class="tbl-c" style="white-space:nowrap;">120 <span data-ua="грн" data-en="UAH"></span></td>
+            <td class="tbl-c text-nowrap">120 <span data-ua="грн" data-en="UAH"></span></td>
             <td class="tbl-c">
-              <div style="display:flex;gap:.5rem;align-items:center;">
+              <div class="d-flex align-items-center gap-2">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(3)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
                 <button class="btn-sm-outline" style="padding:.35rem .9rem;" onclick="retryFailedListing(3)"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Повторити" data-en="Retry"></span></button>
               </div>
@@ -128,8 +128,8 @@
           </tr>
         </tbody>
       </table>
-      <div id="failedListingsEmpty" style="display:none;text-align:center;padding:3rem 2rem;">
-        <i class="bi bi-check-circle-fill" style="font-size:3rem;color:#2e7d32;display:block;margin-bottom:1rem;"></i>
+      <div id="failedListingsEmpty" class="text-center" style="display:none;padding:3rem 2rem;">
+        <i class="bi bi-check-circle-fill d-block mb-3" style="font-size:3rem;color:#2e7d32;"></i>
         <h5 class="fw-bold" style="color:#2e7d32;"
           data-ua="Всі оголошення успішно перенесені на OLX!"
           data-en="All listings successfully transferred to OLX!"></h5>
@@ -139,7 +139,7 @@
 
   <!-- Slide-in edit panel -->
   <div id="failedListingsEditPanel" class="slide-panel">
-    <div style="padding:1.25rem 1.5rem;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between;">
+    <div class="d-flex align-items-center justify-content-between" style="padding:1.25rem 1.5rem;border-bottom:1px solid #eee;">
       <h5 class="fw-bold mb-0" data-ua="Редагування оголошення" data-en="Edit listing"></h5>
       <button onclick="closeFailedListingEdit()" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:#666;">
         <i class="bi bi-x-lg"></i>
@@ -205,7 +205,7 @@
           data-ua-placeholder="Введіть опис..." data-en-placeholder="Enter description..."></textarea>
       </div>
     </div>
-    <div style="padding:1rem 1.5rem;border-top:1px solid #eee;display:flex;gap:.75rem;">
+    <div class="d-flex" style="padding:1rem 1.5rem;border-top:1px solid #eee;gap:.75rem;">
       <div class="cb-host d-inline-block">
         <button class="btn-dark-olx" style="width:auto;padding:.55rem 1.25rem;"
           onclick="saveFailedListingEdit()"
