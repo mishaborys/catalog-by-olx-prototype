@@ -7,6 +7,7 @@
   <div style="flex:1;background:#f8f9fa;padding:1.5rem;overflow-y:auto;">
     <div style="max-width:900px;margin:0 auto;display:flex;gap:1.5rem;align-items:flex-start;">
 
+      <!-- Sidebar nav -->
       <div style="width:210px;flex-shrink:0;">
         <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;
                     color:#999;font-weight:600;margin-bottom:.75rem;padding:0 .5rem;"
@@ -22,7 +23,7 @@
           </button>
           <button id="settingsNavAvto" class="sett-nav" onclick="switchSettingsTab('avto')">
             <i class="bi bi-card-text me-2"></i>
-            <span data-ua="Опис для AVTO.pro" data-en="AVTO.pro Description"></span>
+            <span data-ua="Опис компанії" data-en="Company Description"></span>
           </button>
           <button id="settingsNavPassword" class="sett-nav" onclick="switchSettingsTab('pw')">
             <i class="bi bi-key me-2"></i>
@@ -31,8 +32,10 @@
         </nav>
       </div>
 
+      <!-- Content panels -->
       <div style="flex:1;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:2rem;">
 
+        <!-- ── OLX Sync ── -->
         <div id="settingsPanelOlx">
           <div class="d-flex align-items-center justify-content-between mb-1">
             <h5 class="fw-bold mb-0" data-ua="Синхронізація з OLX" data-en="OLX Sync"></h5>
@@ -42,16 +45,32 @@
           <p class="text-muted mb-4" style="font-size:.88rem;"
             data-ua="Управляйте підключенням між вашим акаунтом Content Manager і OLX."
             data-en="Manage the connection between your Content Manager and OLX accounts."></p>
-          <div class="olx-sync-success mb-4">
-            <i class="bi bi-check-circle-fill"></i>
-            <span data-ua="Синхронізовано з: " data-en="Synced with: "></span>
-            <strong>mishaborys@gmail.com</strong>
+
+          <!-- Description (mirrors onboarding) -->
+          <div class="cb-host mb-4">
+            <p class="text-muted mb-0" style="font-size:.92rem;line-height:1.7;"
+              data-ua="Щоб перенести ваші оголошення на OLX, нам потрібен доступ до вашого акаунту через API. Натисніть кнопку нижче — вас перенаправить на OLX.ua. Авторизуйтесь та підтвердіть доступ."
+              data-en="To migrate your listings to OLX, we need access to your account via API. Click the button below — you will be redirected to OLX.ua. Sign in and confirm access."></p>
+            <button class="cb" onclick="showComment('olxSync_instructions')"><i class="bi bi-chat-fill"></i></button>
           </div>
-          <button class="btn-outline-olx" style="width:auto;padding:.5rem 1.25rem;"
-            onclick="openOAuthModal()"
-            data-ua="Синхронізувати інший акаунт" data-en="Sync another account"></button>
+
+          <!-- Synced state -->
+          <div class="cb-host mb-4">
+            <div style="display:flex;align-items:center;gap:.75rem;">
+              <div class="olx-sync-success" style="flex:1;">
+                <i class="bi bi-check-circle-fill"></i>
+                <span data-ua="Підключено: " data-en="Connected: "></span>
+                <strong>mishaborys@gmail.com</strong>
+              </div>
+              <button class="btn-sm-outline" onclick="openOAuthModal()" style="flex-shrink:0;padding:.3rem .6rem;" title="Change account">
+                <i class="bi bi-pencil"></i>
+              </button>
+            </div>
+            <button class="cb" onclick="showComment('olxSync_emailOrPhone')"><i class="bi bi-chat-fill"></i></button>
+          </div>
         </div>
 
+        <!-- ── Contact Details ── -->
         <div id="settingsPanelContacts" style="display:none;">
           <div class="d-flex align-items-center justify-content-between mb-1">
             <h5 class="fw-bold mb-0" data-ua="Контактні дані" data-en="Contact Details"></h5>
@@ -59,60 +78,122 @@
               onclick="showComment('settings_noImportBtn')"><i class="bi bi-chat-fill"></i></button>
           </div>
           <p class="text-muted mb-4" style="font-size:.88rem;"
-            data-ua="Дані, що використовуються при публікації оголошень."
-            data-en="Data used when publishing listings."></p>
+            data-ua="Ці дані будуть використані для публікації оголошень на OLX."
+            data-en="This information will be used when publishing listings on OLX."></p>
+
+          <!-- Contact name -->
+          <div class="cb-host mb-3">
+            <label class="form-label fw-500 mb-1"
+              data-ua="Контактна особа або назва компанії *"
+              data-en="Contact person or company name *"></label>
+            <input type="text" class="form-control" value="Misha Borys Auto Parts">
+            <button class="cb" onclick="showComment('contacts_api_prefill')"><i class="bi bi-chat-fill"></i></button>
+          </div>
+
+          <!-- Location search dropdown -->
           <div class="mb-3">
             <label class="form-label fw-500 mb-1"
-              data-ua="Контактна особа або назва компанії" data-en="Contact person or company name"></label>
-            <input type="text" class="form-control" value="Misha Borys Auto Parts">
+              data-ua="Населений пункт *"
+              data-en="Location *"></label>
+            <div class="dropdown w-100">
+              <button class="form-select text-start d-flex align-items-center justify-content-between w-100"
+                style="background:#fff;" type="button"
+                data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                <span id="settingsLocationLabel" style="color:#333;">Київ, Київська область</span>
+                <i class="bi bi-chevron-down" style="font-size:.7rem;color:#aaa;flex-shrink:0;margin-left:.5rem;"></i>
+              </button>
+              <div class="dropdown-menu p-2 w-100" style="max-height:260px;overflow-y:auto;">
+                <input type="text" class="form-control form-control-sm mb-2"
+                  data-ua="Пошук..." data-en="Search..."
+                  placeholder="Пошук..."
+                  oninput="filterSettingsLocation(this.value)">
+                <div id="settingsLocationOpts">
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Київ, Київська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Бориспіль, Київська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Бровари, Київська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Біла Церква, Київська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Харків, Харківська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Ізюм, Харківська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Одеса, Одеська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Білгород-Дністровський, Одеська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Ізмаїл, Одеська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Дніпро, Дніпропетровська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Кривий Ріг, Дніпропетровська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Кам'янське, Дніпропетровська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Нікополь, Дніпропетровська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Львів, Львівська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Трускавець, Львівська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Дрогобич, Львівська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Запоріжжя, Запорізька область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Мелітополь, Запорізька область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Вінниця, Вінницька область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Полтава, Полтавська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Суми, Сумська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Чернігів, Чернігівська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Черкаси, Черкаська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Рівне, Рівненська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Луцьк, Волинська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Тернопіль, Тернопільська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Хмельницький, Хмельницька область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Івано-Франківськ, Івано-Франківська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Ужгород, Закарпатська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Чернівці, Чернівецька область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Кропивницький, Кіровоградська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Херсон, Херсонська область</button>
+                  <button class="dropdown-item rounded" onclick="pickSettingsLocation(this)">Миколаїв, Миколаївська область</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-500 mb-1" data-ua="Область" data-en="Region"></label>
-            <select class="form-select">
-              <option selected data-ua="Київська" data-en="Kyiv Region"></option>
-            </select>
+
+          <!-- Phone -->
+          <div class="cb-host mb-4">
+            <label class="form-label fw-500 mb-1" data-ua="Телефон *" data-en="Phone *"></label>
+            <input type="text" class="form-control" value="+380501234567, +380671234567">
+            <small class="text-muted" style="font-size:.75rem;"
+              data-ua="Ви можете вказати кілька номерів через кому"
+              data-en="You can specify multiple numbers separated by comma"></small>
+            <button class="cb" onclick="showComment('contacts_phone_regex')"><i class="bi bi-chat-fill"></i></button>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-500 mb-1" data-ua="Населений пункт" data-en="City"></label>
-            <select class="form-select">
-              <option selected data-ua="Київ" data-en="Kyiv"></option>
-            </select>
-          </div>
-          <div class="mb-4">
-            <label class="form-label fw-500 mb-1" data-ua="Телефон" data-en="Phone"></label>
-            <input type="text" class="form-control" value="+380501234567">
-          </div>
+
           <button class="btn-dark-olx" style="width:auto;padding:.55rem 1.25rem;"
             onclick="toast(currentLang==='ua'?'Збережено':'Saved')"
             data-ua="Зберегти" data-en="Save"></button>
         </div>
 
+        <!-- ── Company Description ── -->
         <div id="settingsPanelAvto" style="display:none;">
           <div class="d-flex align-items-center justify-content-between mb-1">
-            <h5 class="fw-bold mb-0" data-ua="Опис для AVTO.pro" data-en="AVTO.pro Description"></h5>
+            <h5 class="fw-bold mb-0" data-ua="Опис компанії" data-en="Company Description"></h5>
             <button class="cb" style="position:static;transform:none;margin-left:.5rem;"
               onclick="showComment('settings_avtoDesc')"><i class="bi bi-chat-fill"></i></button>
           </div>
           <p class="text-muted mb-4" style="font-size:.88rem;"
-            data-ua="Цей текст автоматично додається до всіх оголошень при імпорті з AVTO.pro."
-            data-en="This text is automatically added to all listings when importing from AVTO.pro."></p>
-          <div class="mb-3">
-            <label class="form-label fw-500 mb-1"
-              data-ua="Текст на початку опису" data-en="Text at the beginning of description"></label>
-            <textarea class="form-control" rows="3"
-              data-ua-placeholder="Введіть текст..." data-en-placeholder="Enter text..."></textarea>
-          </div>
+            data-ua="Цей опис ми використовуємо для імпорту оголошень з AVTO.pro, оскільки файл з цієї платформи не містить описів."
+            data-en="This description is used when importing listings from AVTO.pro, since files from that platform do not include listing descriptions."></p>
+
           <div class="mb-4">
             <label class="form-label fw-500 mb-1"
-              data-ua="Текст наприкінці опису" data-en="Text at the end of description"></label>
-            <textarea class="form-control" rows="3"
-              data-ua-placeholder="Введіть текст..." data-en-placeholder="Enter text..."></textarea>
+              data-ua="Опис компанії *"
+              data-en="Company description *"></label>
+            <textarea id="settingsAvtoDesc" class="form-control" rows="5"
+              data-ua-placeholder="Введіть опис компанії або оголошень..."
+              data-en-placeholder="Enter your company or listing description..."
+              oninput="document.getElementById('settingsAvtoDescCount').textContent=this.value.length;document.getElementById('settingsAvtoDescCount').style.color=this.value.length<40?'#c62828':'#aaa';"></textarea>
+            <div style="display:flex;justify-content:space-between;margin-top:.35rem;">
+              <small class="text-muted" style="font-size:.75rem;"
+                data-ua="Мінімум 40 символів"
+                data-en="Minimum 40 characters"></small>
+              <small id="settingsAvtoDescCount" style="font-size:.75rem;color:#aaa;">0</small>
+            </div>
           </div>
+
           <button class="btn-dark-olx" style="width:auto;padding:.55rem 1.25rem;"
-            onclick="toast(currentLang==='ua'?'Збережено':'Saved')"
+            onclick="saveSettingsAvtoDesc()"
             data-ua="Зберегти" data-en="Save"></button>
         </div>
 
+        <!-- ── Change Password ── -->
         <div id="settingsPanelPassword" style="display:none;">
           <h5 class="fw-bold mb-4" data-ua="Зміна пароля" data-en="Change Password"></h5>
           <div class="mb-3">

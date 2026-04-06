@@ -320,6 +320,31 @@ function pickContactLocation(el) {
   bootstrap.Dropdown.getInstance(el.closest('.dropdown').querySelector('[data-bs-toggle="dropdown"]'))?.hide();
 }
 
+function filterSettingsLocation(query) {
+  document.querySelectorAll('#settingsLocationOpts .dropdown-item').forEach(btn => {
+    btn.parentElement.style.display =
+      btn.textContent.toLowerCase().includes(query.toLowerCase()) ? '' : 'none';
+  });
+}
+
+function pickSettingsLocation(el) {
+  const label = document.getElementById('settingsLocationLabel');
+  label.textContent = el.textContent;
+  label.style.color = '';
+  bootstrap.Dropdown.getInstance(el.closest('.dropdown').querySelector('[data-bs-toggle="dropdown"]'))?.hide();
+}
+
+function saveSettingsAvtoDesc() {
+  const ta = document.getElementById('settingsAvtoDesc');
+  if (!ta) return;
+  const val = ta.value.trim();
+  if (val.length < 40) {
+    toast(currentLang === 'ua' ? 'Опис має містити щонайменше 40 символів' : 'Description must be at least 40 characters', 'error');
+    return;
+  }
+  toast(currentLang === 'ua' ? 'Збережено' : 'Saved');
+}
+
 function submitContactDetails() {
   const name     = document.getElementById('contactName').value.trim();
   const location = document.getElementById('contactLocationLabel').textContent.trim();
@@ -800,13 +825,21 @@ function renderAppHeader(screenId) {
   return `
   <div class="app-header">
     <span class="app-logo" onclick="showScreen(12)" style="cursor:pointer;">Content manager<span class="dot">.</span><span class="by"> by OLX</span></span>
-    <div style="display:flex;align-items:center;gap:1.5rem;">
+    <div style="display:flex;align-items:center;gap:1.25rem;">
+      <a class="hdr-nav-link" onclick="showScreen(12)" style="cursor:pointer;">
+        <i class="bi bi-clock-history me-1" style="font-size:.82rem;"></i><span data-ua="Історія імпорту" data-en="Import History"></span>
+      </a>
+      <a class="hdr-nav-link" onclick="showScreen(6)" style="cursor:pointer;">
+        <i class="bi bi-upload me-1" style="font-size:.82rem;"></i><span data-ua="Новий імпорт" data-en="New import"></span>
+      </a>
       <div class="hdr-dropdown">
         <button class="hdr-dropdown-btn" onclick="toggleDrop('${dropId}')">
+          <i class="bi bi-person-circle" style="font-size:1rem;"></i>
           <span data-ua="Мій профіль" data-en="My Profile"></span>
           <i class="bi bi-chevron-down" style="font-size:.7rem;"></i>
         </button>
         <div class="hdr-dropdown-menu" id="${dropId}">
+          <div style="padding:.5rem .75rem .35rem;font-size:.78rem;color:#aaa;border-bottom:1px solid #f0f0f0;margin-bottom:.3rem;">mishaborys@gmail.com</div>
           <div class="hdr-drop-item" onclick="showScreen(9);closeDrop()">
             <i class="bi bi-gear me-2"></i><span data-ua="Налаштування" data-en="Settings"></span>
           </div>
