@@ -368,6 +368,10 @@ body.comments-hidden .cb { display: none !important; }
   display:inline-block; background:#fff3e0; color:#e65100;
   border-radius:4px; padding:.15rem .45rem; font-size:.72rem; font-weight:600;
 }
+.badge-inprogress {
+  display:inline-block; background:var(--olx-teal-light); color:var(--olx-charcoal);
+  border-radius:4px; padding:.15rem .45rem; font-size:.72rem; font-weight:600;
+}
 .err-badge {
   display:inline-block; background:#ffebee; color:#b71c1c;
   border-radius:4px; padding:.15rem .5rem; font-size:.78rem; white-space:nowrap;
