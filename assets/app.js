@@ -86,7 +86,7 @@ const COMMENTS = {
   },
   import_contactOverride: {
     ua: 'Логіка: Контактні дані за замовчуванням підтягуються з профілю користувача. На кроці підтвердження їх можна змінити — але тільки для поточного імпорту. Дефолтні дані профілю залишаються незмінними. Зміна зберігається лише в контексті цього запиту до API.',
-    en: 'Logic: Default contact details are pulled from the user profile. On the confirmation step, they can be edited — but only for this import. The profile defaults are not affected. The change is scoped to this single API request only.'
+    en: 'Logic: Default contact details are pulled from the user profile. On the confirmation step, they can be edited — but only for this import. The profile defaults are not affected. The edited values are sent only with this specific import request and are not saved anywhere.'
   },
   importProgress_redirect: {
     ua: 'Зміна: Після натискання "Імпортувати" — одразу переходимо на цю сторінку. Показуємо назву файлу і прогрес.',
@@ -437,11 +437,6 @@ function toggleImportContact() {
   chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
 }
 
-// Called when user clicks "Застосувати" inside the expanded form
-function applyImportContact() {
-  refreshImportContactSummary();
-  toggleImportContact();
-}
 
 function validateAndGoToImportStep2() {
   if (!selectedImportPlatform) {

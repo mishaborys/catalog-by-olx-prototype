@@ -214,21 +214,17 @@
             <div class="mb-2">
               <label class="form-label fw-500 mb-1" style="font-size:.85rem;"
                 data-ua="Контактна особа" data-en="Contact name"></label>
-              <input type="text" id="importContactName" class="form-control form-control-sm">
+              <input type="text" id="importContactName" class="form-control form-control-sm" oninput="refreshImportContactSummary()">
             </div>
             <div class="mb-2">
               <label class="form-label fw-500 mb-1" style="font-size:.85rem;"
                 data-ua="Населений пункт" data-en="Location"></label>
-              <input type="text" id="importContactLocation" class="form-control form-control-sm">
+              <input type="text" id="importContactLocation" class="form-control form-control-sm" oninput="refreshImportContactSummary()">
             </div>
             <div class="mb-2">
               <label class="form-label fw-500 mb-1" style="font-size:.85rem;"
                 data-ua="Телефон" data-en="Phone"></label>
-              <input type="text" id="importContactPhone" class="form-control form-control-sm">
-            </div>
-            <div class="d-flex justify-content-end">
-              <button class="btn-ghost" style="width:auto;font-size:.82rem;padding:.3rem .85rem;" onclick="applyImportContact()"
-                data-ua="Застосувати" data-en="Apply"></button>
+              <input type="text" id="importContactPhone" class="form-control form-control-sm" oninput="refreshImportContactSummary()">
             </div>
           </div>
         </div>
