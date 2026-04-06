@@ -199,7 +199,12 @@ function toggleNav() {
 }
 function refreshNavHighlight() {
   document.querySelectorAll('.nav-item-s').forEach(el => {
-    el.classList.toggle('current', +el.dataset.screen === currentScreen);
+    const screenMatch = +el.dataset.screen === currentScreen;
+    if (!screenMatch) { el.classList.remove('current'); return; }
+    // For screen 12 there are two nav entries — match by state
+    if (el.dataset.state === 'empty')  { el.classList.toggle('current', !importHistoryHasActive); return; }
+    if (el.dataset.state === 'active') { el.classList.toggle('current',  importHistoryHasActive); return; }
+    el.classList.add('current');
   });
 }
 
