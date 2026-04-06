@@ -36,11 +36,11 @@
         </div>
         <div>
           <div style="font-size:.72rem;color:#999;margin-bottom:.1rem;" data-ua="Успішно" data-en="Success"></div>
-          <div style="font-weight:500;color:#2e7d32;">139</div>
+          <div style="font-weight:500;color:#2e7d32;">138</div>
         </div>
         <div class="cb-host d-inline-block">
           <div style="font-size:.72rem;color:#999;margin-bottom:.1rem;" data-ua="Помилки" data-en="Failed"></div>
-          <div style="font-weight:500;color:#c62828;"><span id="failedListingsCount">3</span></div>
+          <div style="font-weight:500;color:#c62828;"><span id="failedListingsCount">4</span></div>
           <button class="cb" style="top:-4px;right:-6px;" onclick="showComment('failedListings_onlyFailed')"><i class="bi bi-chat-fill"></i></button>
         </div>
       </div>
@@ -74,6 +74,7 @@
           </tr>
         </thead>
         <tbody id="failedListingsTbody">
+          <!-- Row 0: normal — Activate fails with toast -->
           <tr id="failedListingRow0" class="tbl-row">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-wrench" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Прокладка головки блоку циліндрів</td>
@@ -82,10 +83,11 @@
             <td class="tbl-c">
               <div style="display:flex;gap:.5rem;align-items:center;">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(0)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
-                <button class="btn-sm-outline" style="padding:.35rem .9rem;"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Активувати" data-en="Activate"></span></button>
+                <button class="btn-sm-outline" style="padding:.35rem .9rem;" onclick="retryFailedListing(0)"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Активувати" data-en="Activate"></span></button>
               </div>
             </td>
           </tr>
+          <!-- Row 1: two-edit — first save reveals a second error -->
           <tr id="failedListingRow1" class="tbl-row">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-gear" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Ремінь ГРМ Gates T41072</td>
@@ -94,19 +96,33 @@
             <td class="tbl-c">
               <div style="display:flex;gap:.5rem;align-items:center;">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(1)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
-                <button class="btn-sm-outline" style="padding:.35rem .9rem;"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Активувати" data-en="Activate"></span></button>
+                <button class="btn-sm-outline" style="padding:.35rem .9rem;" onclick="retryFailedListing(1)"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Активувати" data-en="Activate"></span></button>
               </div>
             </td>
           </tr>
+          <!-- Row 2: 500 Internal Server Error — Activate succeeds without editing -->
           <tr id="failedListingRow2" class="tbl-row">
+            <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-cpu" style="color:#999;"></i></div></td>
+            <td class="tbl-c" style="font-size:.88rem;">Амортизатор передній Kayaba Excel-G</td>
+            <td class="tbl-c"><span class="err-badge" data-ua="Внутрішня помилка сервера (500)" data-en="Internal server error (500)"></span></td>
+            <td class="tbl-c" style="white-space:nowrap;">1 850 <span data-ua="грн" data-en="UAH"></span></td>
+            <td class="tbl-c">
+              <div style="display:flex;gap:.5rem;align-items:center;">
+                <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(2)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
+                <button class="btn-sm-outline" style="padding:.35rem .9rem;" onclick="retryFailedListing(2)"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Активувати" data-en="Activate"></span></button>
+              </div>
+            </td>
+          </tr>
+          <!-- Row 3: normal — Activate fails with toast -->
+          <tr id="failedListingRow3" class="tbl-row">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#f5f5f5;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-image" style="color:#ccc;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Фільтр масляний Mann W712/95</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Відсутнє фото" data-en="Missing photo"></span></td>
             <td class="tbl-c" style="white-space:nowrap;">120 <span data-ua="грн" data-en="UAH"></span></td>
             <td class="tbl-c">
               <div style="display:flex;gap:.5rem;align-items:center;">
-                <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(2)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
-                <button class="btn-sm-outline" style="padding:.35rem .9rem;"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Активувати" data-en="Activate"></span></button>
+                <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(3)"><i class="bi bi-pencil me-1"></i><span data-ua="Редагувати" data-en="Edit"></span></button>
+                <button class="btn-sm-outline" style="padding:.35rem .9rem;" onclick="retryFailedListing(3)"><i class="bi bi-arrow-clockwise me-1"></i><span data-ua="Активувати" data-en="Activate"></span></button>
               </div>
             </td>
           </tr>

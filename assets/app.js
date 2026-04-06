@@ -667,13 +667,32 @@ function startImportProgress() {
 /* ════════════════════════════════
    SCREEN 8 — FAILED LISTINGS
 ════════════════════════════════ */
+// Row index → current error. Updated dynamically for the two-edit flow.
 const FAILED_LISTING_ERRORS = [
-  { ua: 'Не вказана категорія',              en: 'Category not specified'       },
-  { ua: 'Назва занадто довга > 70 символів', en: 'Title too long > 70 chars'    },
-  { ua: 'Відсутнє фото',                     en: 'Missing photo'                }
+  { ua: 'Не вказана категорія',              en: 'Category not specified',       retry: false, is500: false },
+  { ua: 'Назва занадто довга > 70 символів', en: 'Title too long > 70 chars',    retry: false, is500: false },
+  { ua: 'Внутрішня помилка сервера (500)',   en: 'Internal server error (500)',   retry: false, is500: true  },
+  { ua: 'Відсутнє фото',                     en: 'Missing photo',                retry: false, is500: false },
 ];
-let failedListingOpenRow  = null;
-let failedListingsRemaining = 3;
+// Secondary error shown after first edit of row 1 (two-edit scenario)
+const FAILED_ROW1_SECOND_ERROR = { ua: 'Невірна ціна — нижче мінімально допустимої', en: 'Invalid price — below the minimum allowed' };
+let failedListingOpenRow   = null;
+let failedListingsRemaining = 4;
+let failedRow1EditCount    = 0; // tracks how many times row 1 has been saved
+
+function _removeFailed(rowEl) {
+  rowEl.style.transition = 'opacity .4s';
+  rowEl.style.opacity = '0';
+  setTimeout(() => {
+    rowEl.remove();
+    failedListingsRemaining--;
+    document.getElementById('failedListingsCount').textContent = failedListingsRemaining;
+    if (failedListingsRemaining === 0) {
+      document.getElementById('failedListingsTable').style.display = 'none';
+      document.getElementById('failedListingsEmpty').style.display = 'block';
+    }
+  }, 420);
+}
 
 function openFailedListingEdit(idx) {
   failedListingOpenRow = idx;
@@ -692,23 +711,51 @@ function closeFailedListingEdit() {
 }
 
 function saveFailedListingEdit() {
-  const row = document.getElementById('failedListingRow' + failedListingOpenRow);
+  const idx = failedListingOpenRow;
+  const row = document.getElementById('failedListingRow' + idx);
   if (!row) return;
   closeFailedListingEdit();
+
+  // Row 1: two-edit scenario — first save reveals a second error
+  if (idx === 1 && failedRow1EditCount === 0) {
+    failedRow1EditCount = 1;
+    FAILED_LISTING_ERRORS[1] = { ...FAILED_ROW1_SECOND_ERROR, retry: false, is500: false };
+    const badge = row.querySelector('.err-badge');
+    if (badge) {
+      badge.setAttribute('data-ua', FAILED_ROW1_SECOND_ERROR.ua);
+      badge.setAttribute('data-en', FAILED_ROW1_SECOND_ERROR.en);
+    }
+    applyLang();
+    toast(currentLang === 'ua'
+      ? '⚠ Виявлено ще одну помилку — виправте і збережіть знову.'
+      : '⚠ Another error found — fix it and save again.', 'error');
+    return;
+  }
+
+  // All other cases: success
   toast(currentLang === 'ua'
     ? '✓ Оголошення пройшло валідацію. Тепер ви можете побачити його в акаунті OLX.'
     : '✓ Listing passed validation. You can now see it in your OLX account.');
-  row.style.transition = 'opacity .4s';
-  row.style.opacity = '0';
-  setTimeout(() => {
-    row.remove();
-    failedListingsRemaining--;
-    document.getElementById('failedListingsCount').textContent = failedListingsRemaining;
-    if (failedListingsRemaining === 0) {
-      document.getElementById('failedListingsTable').style.display = 'none';
-      document.getElementById('failedListingsEmpty').style.display = 'block';
-    }
-  }, 420);
+  _removeFailed(row);
+}
+
+// Called by the "Активувати" (retry) button
+function retryFailedListing(idx) {
+  const err = FAILED_LISTING_ERRORS[idx];
+
+  // 500 error: simulate successful retry
+  if (err.is500) {
+    const row = document.getElementById('failedListingRow' + idx);
+    toast(currentLang === 'ua'
+      ? '✓ Оголошення успішно активоване на OLX.'
+      : '✓ Listing successfully activated on OLX.');
+    _removeFailed(row);
+    return;
+  }
+
+  // All others: stay in list, show error as toast
+  const msg = currentLang === 'ua' ? err.ua : err.en;
+  toast((currentLang === 'ua' ? 'Помилка: ' : 'Error: ') + msg, 'error');
 }
 
 function onFailedListingTitleChange() {
