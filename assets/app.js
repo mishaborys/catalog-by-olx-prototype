@@ -734,8 +734,8 @@ function saveFailedListingEdit() {
 
   // All other cases: success
   toast(currentLang === 'ua'
-    ? '✓ Оголошення пройшло валідацію. Тепер ви можете побачити його в акаунті OLX.'
-    : '✓ Listing passed validation. You can now see it in your OLX account.');
+    ? 'Готово! Оголошення імпортовано і вже з\'явилось у вашому акаунті на OLX.'
+    : 'Done! The listing has been imported and is now visible in your OLX account.');
   _removeFailed(row);
 }
 
@@ -747,8 +747,8 @@ function retryFailedListing(idx) {
   if (err.is500) {
     const row = document.getElementById('failedListingRow' + idx);
     toast(currentLang === 'ua'
-      ? '✓ Оголошення успішно активоване на OLX.'
-      : '✓ Listing successfully activated on OLX.');
+      ? 'Готово! Оголошення імпортовано і вже з\'явилось у вашому акаунті на OLX.'
+      : 'Done! The listing has been imported and is now visible in your OLX account.');
     _removeFailed(row);
     return;
   }
