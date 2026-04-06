@@ -26,32 +26,59 @@
     </div>
 
     <!-- ── Active import in progress ── -->
-    <div id="historyActiveImport" style="display:none;
-      background:#fff;border-radius:12px;border-left:4px solid var(--olx-teal-dark);
-      box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1rem 1.25rem;margin-bottom:1rem;">
-      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-        <div>
-          <div class="d-flex align-items-center gap-2 mb-1">
-            <i class="bi bi-clock-history" style="color:#f59e0b;"></i>
-            <strong id="historyActiveFileName"></strong>
-            <span id="historyActivePlatform"></span>
-            <span class="badge-status" data-ua="В процесі" data-en="In progress"></span>
+    <div id="historyActiveImport" style="display:none;margin-bottom:.75rem;">
+
+      <!-- Main progress card -->
+      <div style="background:#fff;border-radius:12px;border-left:4px solid var(--olx-teal-dark);
+                  box-shadow:0 2px 8px rgba(0,0,0,.07);padding:1.1rem 1.25rem;margin-bottom:.5rem;">
+        <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
+          <div style="flex:1;">
+            <!-- File + platform + status -->
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-clock-history" style="color:#f59e0b;"></i>
+              <strong id="historyActiveFileName"></strong>
+              <span id="historyActivePlatform"></span>
+              <span class="badge-status" data-ua="В процесі" data-en="In progress"></span>
+            </div>
+            <!-- Processing count + ETA -->
+            <div style="font-size:.85rem;color:#666;margin-bottom:.35rem;">
+              <span data-ua="Обробляється:" data-en="Processing:"></span>
+              <span id="historyProgressCount">0</span> / 146
+              <span data-ua="оголошень" data-en="listings"></span>
+              <span style="color:#aaa;margin-left:.4rem;">·</span>
+              <span style="margin-left:.4rem;" data-ua="Залишилось ~" data-en="~"></span><span id="historyProgressEta">—</span><span data-ua=" хв" data-en=" min"></span>
+            </div>
+            <!-- Success / failed live counts -->
+            <div style="font-size:.82rem;display:flex;gap:1rem;">
+              <span style="color:#2e7d32;">
+                <i class="bi bi-check-circle-fill" style="font-size:.78rem;margin-right:3px;"></i>
+                <span data-ua="Опубліковано:" data-en="Published:"></span>
+                <strong id="historyProgressSuccess">0</strong>
+              </span>
+              <span style="color:#c62828;">
+                <i class="bi bi-x-circle-fill" style="font-size:.78rem;margin-right:3px;"></i>
+                <span data-ua="Помилки:" data-en="Failed:"></span>
+                <strong id="historyProgressFailed">0</strong>
+              </span>
+            </div>
           </div>
-          <div style="font-size:.85rem;color:#666;">
-            <span data-ua="Обробляється:" data-en="Processing:"></span>
-            <span id="historyProgressCount">0</span> / 146
-            <span data-ua="оголошень" data-en="listings"></span>
+          <!-- Progress bar -->
+          <div style="min-width:180px;align-self:center;">
+            <div style="background:#e0e0e0;border-radius:4px;height:8px;overflow:hidden;margin-bottom:.25rem;">
+              <div id="historyProgressBar" style="width:0%;height:100%;background:var(--olx-teal-dark);border-radius:4px;transition:width .15s linear;"></div>
+            </div>
+            <small style="color:#888;font-size:.78rem;"><span id="historyProgressPercent">0%</span></small>
           </div>
-        </div>
-        <div style="min-width:200px;">
-          <div style="background:#e0e0e0;border-radius:4px;height:8px;overflow:hidden;margin-bottom:.25rem;">
-            <div id="historyProgressBar" style="width:0%;height:100%;background:var(--olx-teal-dark);border-radius:4px;transition:width .15s linear;"></div>
-          </div>
-          <small style="color:#888;font-size:.78rem;">
-            <span id="historyProgressPercent">0%</span>
-          </small>
         </div>
       </div>
+
+      <!-- Email notification info block -->
+      <div class="status-block info" style="width:100%;margin-bottom:1rem;box-sizing:border-box;">
+        <i class="bi bi-envelope-fill"></i>
+        <span data-ua="Після завершення обробки всіх оголошень ми надішлемо вам листа на email."
+              data-en="Once all listings are processed, we will send you a confirmation email."></span>
+      </div>
+
     </div>
 
     <!-- ── History table ── -->
@@ -61,42 +88,47 @@
           <tr style="background:#f8f9fa;border-bottom:1px solid #e0e0e0;">
             <th class="tbl-h" data-ua="Файл" data-en="File"></th>
             <th class="tbl-h" data-ua="Платформа" data-en="Platform"></th>
+            <th class="tbl-h" data-ua="Статус" data-en="Status"></th>
             <th class="tbl-h" data-ua="Всього" data-en="Total"></th>
             <th class="tbl-h" data-ua="Успішно" data-en="Success"></th>
-            <th class="tbl-h" data-ua="Не вдалось" data-en="Failed"></th>
-            <th class="tbl-h" data-ua="Дата" data-en="Date"></th>
+            <th class="tbl-h" data-ua="Помилки" data-en="Failed"></th>
+            <th class="tbl-h" data-ua="Дата додавання" data-en="Added at"></th>
             <th class="tbl-h" data-ua="Дії" data-en="Actions"></th>
           </tr>
         </thead>
         <tbody>
+          <!-- Completed — has errors → "View errors" link active -->
           <tr class="tbl-row">
             <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>prom_export_01042026.xlsx</td>
             <td class="tbl-c"><span class="badge-platform prom">PROM.ua</span></td>
+            <td class="tbl-c"><span style="display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;color:#2e7d32;font-weight:500;"><i class="bi bi-check-circle-fill"></i><span data-ua="Завершено" data-en="Completed"></span></span></td>
             <td class="tbl-c">142</td>
             <td class="tbl-c" style="color:#2e7d32;font-weight:500;">139</td>
             <td class="tbl-c" style="color:#c62828;font-weight:500;">3</td>
-            <td class="tbl-c">01.04.2026</td>
-            <td class="tbl-c"><a class="tbl-link" onclick="showScreen(8)"
-              data-ua="Переглянути помилки" data-en="View errors"></a></td>
+            <td class="tbl-c" style="white-space:nowrap;">01.04.2026<br><span style="font-size:.78rem;color:#aaa;">14:32</span></td>
+            <td class="tbl-c"><a class="tbl-link" onclick="showScreen(8)" data-ua="Переглянути помилки" data-en="View errors"></a></td>
           </tr>
+          <!-- Completed — no errors → no action -->
           <tr class="tbl-row">
             <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>avto_export_28032026.xlsx</td>
             <td class="tbl-c"><span class="badge-platform avto">AVTO.pro</span></td>
+            <td class="tbl-c"><span style="display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;color:#2e7d32;font-weight:500;"><i class="bi bi-check-circle-fill"></i><span data-ua="Завершено" data-en="Completed"></span></span></td>
             <td class="tbl-c">89</td>
             <td class="tbl-c" style="color:#2e7d32;font-weight:500;">89</td>
             <td class="tbl-c">0</td>
-            <td class="tbl-c">28.03.2026</td>
+            <td class="tbl-c" style="white-space:nowrap;">28.03.2026<br><span style="font-size:.78rem;color:#aaa;">09:15</span></td>
             <td class="tbl-c" style="color:#aaa;">—</td>
           </tr>
+          <!-- In queue -->
           <tr class="tbl-row">
             <td class="tbl-c"><i class="bi bi-file-earmark-excel" style="color:#217346;margin-right:6px;"></i>prom_export_15032026.xlsx</td>
             <td class="tbl-c"><span class="badge-platform prom">PROM.ua</span></td>
+            <td class="tbl-c"><span style="display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;color:#888;font-weight:500;"><i class="bi bi-hourglass-split"></i><span data-ua="В черзі" data-en="In queue"></span></span></td>
             <td class="tbl-c">56</td>
-            <td class="tbl-c" style="color:#2e7d32;font-weight:500;">54</td>
-            <td class="tbl-c" style="color:#c62828;font-weight:500;">2</td>
-            <td class="tbl-c">15.03.2026</td>
-            <td class="tbl-c"><a class="tbl-link" onclick="showScreen(8)"
-              data-ua="Переглянути помилки" data-en="View errors"></a></td>
+            <td class="tbl-c" style="color:#aaa;">—</td>
+            <td class="tbl-c" style="color:#aaa;">—</td>
+            <td class="tbl-c" style="white-space:nowrap;">15.03.2026<br><span style="font-size:.78rem;color:#aaa;">11:47</span></td>
+            <td class="tbl-c" style="color:#aaa;">—</td>
           </tr>
         </tbody>
       </table>

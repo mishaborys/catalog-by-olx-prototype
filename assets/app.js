@@ -548,19 +548,40 @@ function initHistoryScreen() {
 
 function startHistoryProgress() {
   if (historyProgressInterval) clearInterval(historyProgressInterval);
-  let n = 0;
+  const TOTAL = 146;
+  // Simulated: ~5% of processed listings fail
+  const FAIL_RATE = 0.05;
+  let n = 0; // total processed so far
   const bar     = document.getElementById('historyProgressBar');
   const count   = document.getElementById('historyProgressCount');
   const percent = document.getElementById('historyProgressPercent');
+  const eta     = document.getElementById('historyProgressEta');
+  const success = document.getElementById('historyProgressSuccess');
+  const failed  = document.getElementById('historyProgressFailed');
   if (!bar) return;
   bar.style.width = '0%';
+  const startTime = Date.now();
   historyProgressInterval = setInterval(() => {
     n += Math.floor(Math.random() * 4) + 1;
     if (n >= 87) { n = 87; clearInterval(historyProgressInterval); }
-    const pct = Math.round(n / 146 * 100);
+    const pct = Math.round(n / TOTAL * 100);
     bar.style.width = pct + '%';
     if (count)   count.textContent   = n;
     if (percent) percent.textContent = pct + '%';
+    // Estimate remaining time based on elapsed rate
+    const elapsed = (Date.now() - startTime) / 1000; // seconds
+    if (n > 0 && n < TOTAL) {
+      const secsPerItem = elapsed / n;
+      const remaining = Math.ceil((TOTAL - n) * secsPerItem);
+      if (eta) eta.textContent = remaining < 60 ? `< 1` : Math.round(remaining / 60);
+    } else if (eta) {
+      eta.textContent = '—';
+    }
+    // Live success / failed counts
+    const failedCount   = Math.round(n * FAIL_RATE);
+    const successCount  = n - failedCount;
+    if (success) success.textContent = successCount;
+    if (failed)  failed.textContent  = failedCount;
   }, 70);
 }
 
