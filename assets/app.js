@@ -725,6 +725,19 @@ function setFailedListingCondition(c) {
   document.getElementById('conditionNewBtn').classList.toggle('active-cur', c === 'new');
 }
 
+function setFailedPageSize(n) {
+  [10, 50, 100].forEach(v => {
+    const btn = document.getElementById('pgBtn' + v);
+    if (!btn) return;
+    const active = v === n;
+    btn.style.background    = active ? 'var(--olx-charcoal)' : '#fff';
+    btn.style.color         = active ? '#fff' : 'var(--olx-charcoal)';
+    btn.style.borderColor   = 'var(--olx-charcoal)';
+  });
+  // In a real implementation this would re-render the table page.
+  // Here it's a prototype — no actual data pagination needed.
+}
+
 /* ════════════════════════════════
    SCREEN 9 — SETTINGS
 ════════════════════════════════ */

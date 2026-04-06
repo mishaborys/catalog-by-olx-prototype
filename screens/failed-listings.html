@@ -46,6 +46,14 @@
       </div>
     </div>
 
+    <!-- Pagination control -->
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:.5rem;margin-bottom:.6rem;font-size:.85rem;color:#666;">
+      <span data-ua="Відображати по:" data-en="Show per page:"></span>
+      <button onclick="setFailedPageSize(10)" id="pgBtn10" class="btn-sm-outline" style="padding:.2rem .55rem;font-size:.8rem;background:var(--olx-charcoal);color:#fff;border-color:var(--olx-charcoal);">10</button>
+      <button onclick="setFailedPageSize(50)" id="pgBtn50" class="btn-sm-outline" style="padding:.2rem .55rem;font-size:.8rem;">50</button>
+      <button onclick="setFailedPageSize(100)" id="pgBtn100" class="btn-sm-outline" style="padding:.2rem .55rem;font-size:.8rem;">100</button>
+    </div>
+
     <!-- Listings table -->
     <div id="failedListingsTableWrap" style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;">
       <table style="width:100%;border-collapse:collapse;" id="failedListingsTable">
@@ -64,39 +72,51 @@
           </tr>
         </thead>
         <tbody id="failedListingsTbody">
+          <!-- Row 0: normal failed listing -->
           <tr id="failedListingRow0" class="tbl-row">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-wrench" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Прокладка головки блоку циліндрів</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Не вказана категорія" data-en="Category not specified"></span></td>
             <td class="tbl-c" style="white-space:nowrap;">450 <span data-ua="грн" data-en="UAH"></span></td>
             <td class="tbl-c">
-              <div style="display:flex;gap:.5rem;align-items:center;">
+              <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(0)" data-ua="Редагувати" data-en="Edit"></button>
-                <button class="btn-ghost" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" data-ua="Спробувати знову" data-en="Retry"></button>
+                <button class="btn-sm-outline" style="padding:.35rem .9rem;" data-ua="Спробувати знову" data-en="Retry"></button>
               </div>
             </td>
           </tr>
+          <!-- Row 1: normal failed listing -->
           <tr id="failedListingRow1" class="tbl-row">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-gear" style="color:#999;"></i></div></td>
             <td class="tbl-c" style="font-size:.88rem;">Ремінь ГРМ Gates T41072</td>
             <td class="tbl-c"><span class="err-badge" data-ua="Назва занадто довга > 70 символів" data-en="Title too long > 70 chars"></span></td>
             <td class="tbl-c" style="white-space:nowrap;">280 <span data-ua="грн" data-en="UAH"></span></td>
             <td class="tbl-c">
-              <div style="display:flex;gap:.5rem;align-items:center;">
+              <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(1)" data-ua="Редагувати" data-en="Edit"></button>
-                <button class="btn-ghost" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" data-ua="Спробувати знову" data-en="Retry"></button>
+                <button class="btn-sm-outline" style="padding:.35rem .9rem;" data-ua="Спробувати знову" data-en="Retry"></button>
               </div>
             </td>
           </tr>
-          <tr id="failedListingRow2" class="tbl-row">
+          <!-- Row 2: still failing after edit attempt — re-validation failed -->
+          <tr id="failedListingRow2" class="tbl-row" style="background:#fff8f8;">
             <td class="tbl-c"><div style="width:48px;height:48px;background:#f5f5f5;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-image" style="color:#ccc;"></i></div></td>
-            <td class="tbl-c" style="font-size:.88rem;">Фільтр масляний Mann W712/95</td>
+            <td class="tbl-c" style="font-size:.88rem;">
+              Фільтр масляний Mann W712/95
+              <div style="margin-top:.3rem;">
+                <span style="font-size:.75rem;color:#c62828;display:inline-flex;align-items:center;gap:.25rem;">
+                  <i class="bi bi-exclamation-circle-fill"></i>
+                  <span data-ua="Повторна спроба не вдалась — OLX відхилив оголошення"
+                        data-en="Retry failed — OLX rejected the listing"></span>
+                </span>
+              </div>
+            </td>
             <td class="tbl-c"><span class="err-badge" data-ua="Відсутнє фото" data-en="Missing photo"></span></td>
             <td class="tbl-c" style="white-space:nowrap;">120 <span data-ua="грн" data-en="UAH"></span></td>
             <td class="tbl-c">
-              <div style="display:flex;gap:.5rem;align-items:center;">
+              <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;">
                 <button class="btn-dark-olx" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" onclick="openFailedListingEdit(2)" data-ua="Редагувати" data-en="Edit"></button>
-                <button class="btn-ghost" style="width:auto;padding:.35rem .9rem;font-size:.82rem;" data-ua="Спробувати знову" data-en="Retry"></button>
+                <button class="btn-sm-outline" style="padding:.35rem .9rem;" data-ua="Спробувати знову" data-en="Retry"></button>
               </div>
             </td>
           </tr>
@@ -183,10 +203,10 @@
       <div class="cb-host d-inline-block">
         <button class="btn-dark-olx" style="width:auto;padding:.55rem 1.25rem;"
           onclick="saveFailedListingEdit()"
-          data-ua="Зберегти зміни" data-en="Save changes"></button>
+          data-ua="Зберегти і активувати" data-en="Save and activate"></button>
         <button class="cb" onclick="showComment('failedListings_saveEdit')"><i class="bi bi-chat-fill"></i></button>
       </div>
-      <button class="btn-outline-olx" style="width:auto;padding:.5rem 1rem;"
+      <button class="btn-ghost" style="width:auto;padding:.5rem 1rem;"
         onclick="closeFailedListingEdit()"
         data-ua="Скасувати" data-en="Cancel"></button>
     </div>
