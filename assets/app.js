@@ -137,7 +137,7 @@ function showScreen(id, tab) {
 /* ════════════════════════════════
    COMMENTS TOGGLE
 ════════════════════════════════ */
-let commentsVisible = true;
+let commentsVisible = false;
 function toggleComments() {
   commentsVisible = !commentsVisible;
   document.body.classList.toggle('comments-hidden', !commentsVisible);
@@ -1009,7 +1009,8 @@ async function loadScreens() {
 
   refreshNavHighlight();
   applyLang();
-  document.getElementById('comments-btn').classList.add('active');
+  document.body.classList.add('comments-hidden');
+  document.getElementById('comments-btn').classList.remove('active');
 }
 
 loadScreens();
