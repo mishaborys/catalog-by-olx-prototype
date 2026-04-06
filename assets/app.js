@@ -560,6 +560,7 @@ function initHistoryScreen() {
 
   if (importHistoryHasActive) {
     emptyState.style.display  = 'none';
+    emptyState.classList.remove('d-flex');
     activeCard.style.display  = 'block';
     tableWrap.style.display   = 'block';
     // Set file name from current import
@@ -571,6 +572,7 @@ function initHistoryScreen() {
     startHistoryProgress();
   } else {
     emptyState.style.display  = 'flex';
+    emptyState.classList.add('d-flex');
     activeCard.style.display  = 'none';
     tableWrap.style.display   = 'none';
   }
