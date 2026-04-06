@@ -988,6 +988,7 @@ async function loadScreens() {
     'forgot-password',
     'design-system',
     'import-history',
+    'developer-docs',
   ];
   const fetches = SCREEN_FILES.map(name =>
     fetch(`screens/${name}.html`).then(r => r.text())

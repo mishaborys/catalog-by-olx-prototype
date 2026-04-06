@@ -347,6 +347,29 @@ body.comments-hidden .cb { display: none !important; }
   color:#888; text-transform:uppercase; letter-spacing:.4px;
   text-align:left;
 }
+
+/* ─── DEVELOPER DOCS ─── */
+.doc-block {
+  background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.07);
+  padding:1.5rem 1.75rem; margin-bottom:1.25rem;
+}
+.doc-block-title {
+  font-size:1rem; font-weight:700; color:var(--olx-charcoal);
+  border-left:3px solid var(--olx-teal-dark); padding-left:.75rem;
+  margin-bottom:.85rem;
+}
+.doc-sub-title {
+  font-size:.8rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.5px; color:#aaa; margin-top:1rem; margin-bottom:.4rem;
+}
+.doc-list {
+  margin:0; padding-left:1.25rem; color:#444; font-size:.88rem; line-height:1.75;
+}
+.doc-list li { margin-bottom:.2rem; }
+.doc-list code {
+  font-size:.82rem; background:#f0f0f0; border-radius:4px;
+  padding:.1rem .35rem; color:var(--olx-charcoal);
+}
 .tbl-c { padding:.75rem 1rem; font-size:.88rem; vertical-align:middle; }
 .tbl-row { border-bottom:1px solid #f0f0f0; transition:background .15s; }
 .tbl-row:last-child { border-bottom:none; }

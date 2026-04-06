@@ -1,0 +1,354 @@
+<!-- ═══════════════════════════════════════
+     SCREEN 13 — DEVELOPER DOCUMENTATION
+════════════════════════════════════════ -->
+<div id="screen-13" class="screen bg-light">
+  <div data-component="app-header"></div>
+
+  <div style="flex:1;overflow-y:auto;padding:2rem 2.5rem;max-width:960px;margin:0 auto;width:100%;box-sizing:border-box;">
+
+    <div class="mb-4">
+      <h3 class="fw-bold mb-1">Developer Documentation</h3>
+      <p class="text-muted" style="font-size:.92rem;">Logic, flows, and screen-by-screen behaviour for <strong>Content Manager by OLX</strong>. Use this as the single source of truth when implementing.</p>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- OVERVIEW -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Product Overview</div>
+      <p>Content Manager by OLX is a web tool that allows sellers on competitor platforms (AVTO.pro, PROM.ua) to import their listings to OLX. The user uploads a file exported from a competitor platform, maps any required fields, and the system publishes the listings to their connected OLX account.</p>
+      <ul class="doc-list">
+        <li>Single-page app — all screens live in one HTML shell, loaded dynamically from <code>screens/</code>.</li>
+        <li>Bilingual — Ukrainian (UA) and English (EN). Switching is global and instant. Text lives in <code>data-ua</code> / <code>data-en</code> attributes; <code>applyLang()</code> applies them on every screen change.</li>
+        <li>Design tokens: <code>--olx-charcoal</code> (#044142), <code>--olx-teal-dark</code> (#0EA9A0), <code>--olx-teal-light</code> (#CAFCFA), <code>--olx-yellow-dark</code> (#FFD13C).</li>
+        <li>Bootstrap 5.3 for layout and utilities; custom component classes in <code>assets/styles.css</code>.</li>
+        <li>Comment bubbles (<code>.cb</code>) throughout the prototype expose design notes via a modal. Toggle visibility with the global comments button.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- NAVIGATION -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Global Navigation & Header</div>
+      <ul class="doc-list">
+        <li><strong>Logo click</strong> → always navigates to Import History (screen 12).</li>
+        <li><strong>Header links</strong>: "Import History" → screen 12; "New Import" → screen 6 (import wizard).</li>
+        <li><strong>"My Profile" dropdown</strong> shows the user's registered email at the top (read-only), then Settings and Sign Out.</li>
+        <li>Header is rendered via <code>renderAppHeader(screenId)</code> and mounted into any element with <code>data-component="app-header"</code>.</li>
+        <li>Auth screens (Register, Login, Forgot Password, Email Verification) show the split-panel layout (left brand panel + right form). They do not show the app header.</li>
+        <li>Post-auth screens (onboarding, import, history, settings) show the full app header.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 1 — REGISTER -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 1 — Registration</div>
+      <ul class="doc-list">
+        <li>Fields: Email, Password (with strength meter), Confirm Password.</li>
+        <li>Password strength bar: 4 segments, colour-coded. Rules: min 8 chars, at least one uppercase, one lowercase, one digit.</li>
+        <li>On success → navigates to Email Verification (screen 3).</li>
+        <li>Left panel: brand copy + 3 feature bullets.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 2 — LOGIN -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 2 — Login</div>
+      <ul class="doc-list">
+        <li>Fields: Email, Password (toggle visibility).</li>
+        <li>Forgot Password link → screen 10.</li>
+        <li>On success → navigates to Import History (screen 12).</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 10 — FORGOT PASSWORD -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 10 — Forgot Password</div>
+      <ul class="doc-list">
+        <li>Single email field. On submit → shows inline success state (no separate screen): "Check your inbox" message replaces the form.</li>
+        <li>Back to Login link always visible.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 3 — EMAIL VERIFICATION -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 3 — Email Verification</div>
+      <ul class="doc-list">
+        <li>Shows the registered email address inline: "Email sent to <strong>user@example.com</strong>" — on one line.</li>
+        <li>60-second countdown before the "Resend" button becomes active. Countdown and button are centred; the rest of the text is left-aligned.</li>
+        <li>On "Confirm" (simulated) → navigates to Onboarding OLX Sync (screen 4).</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 4 — ONBOARDING: OLX SYNC -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 4 — Onboarding: OLX Sync (Step 1 of 2)</div>
+      <ul class="doc-list">
+        <li>Label above stepper: "Getting Started". Numbered stepper (1 → 2), centred. Step 2 is locked until OAuth completes.</li>
+        <li>Explains why OLX API access is needed. CTA: "Grant OLX Access" → opens OAuth simulation modal.</li>
+        <li>OAuth modal simulates redirect to OLX.ua. On "Allow Access" → success state shows connected email + edit (pencil) button inline. "Next →" button appears. Step 2 dot unlocks.</li>
+        <li>Pencil button → re-opens OAuth modal to change the connected account.</li>
+        <li>Step dots are clickable only when their step is reached. Step 2 cannot be accessed before OAuth completes.</li>
+        <li>On "Next →" → screen 5.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 5 — ONBOARDING: CONTACTS -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 5 — Onboarding: Contacts (Step 2 of 2)</div>
+      <ul class="doc-list">
+        <li>3 fields only: Contact Name / Company, Location (searchable dropdown), Phone.</li>
+        <li><strong>Location dropdown</strong>: Bootstrap dropdown with a live search input. 33 Ukrainian cities pre-loaded. Selecting a city closes the dropdown and updates the label.</li>
+        <li><strong>Phone</strong>: single text field, supports multiple numbers comma-separated. Hint: "You can specify multiple numbers separated by comma."</li>
+        <li>All fields pre-filled with data pulled from the OLX account via API (design note comment on field).</li>
+        <li>Buttons: Ghost "← Back" (→ screen 4), Primary "Done" → validates all fields → navigates to Import History (screen 12).</li>
+        <li>Step 1 dot is clickable (marked done with checkmark), Step 2 is active.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 12 — IMPORT HISTORY -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 12 — Import History (Main Dashboard)</div>
+      <p>This is the main screen of the application. Users land here after onboarding and after every import.</p>
+
+      <div class="doc-sub-title">Two states</div>
+      <ul class="doc-list">
+        <li><strong>Empty state</strong>: shown when user has no imports yet. Large inbox icon, descriptive text, no table. "+ New Import" button is always visible in the header area.</li>
+        <li><strong>Active / populated state</strong>: shown after first import starts. Active import card appears at the top, history table below.</li>
+      </ul>
+
+      <div class="doc-sub-title">Active Import Card</div>
+      <ul class="doc-list">
+        <li>Left border teal accent. Shows: file name, platform badge chip, "In progress" badge (teal).</li>
+        <li>Processing counter: "Processing: N / 146 listings".</li>
+        <li>Live counters: Published (green) and Failed (red), updated every ~70ms during simulation.</li>
+        <li>Progress bar (right side) with percentage and estimated time remaining (calculated from elapsed rate).</li>
+        <li>The active import does <strong>not</strong> appear in the history table — it is added to the table only when complete.</li>
+      </ul>
+
+      <div class="doc-sub-title">Email notification info block</div>
+      <ul class="doc-list">
+        <li><code>.status-block.info</code> below the active card: "Once all listings are processed, we will send you a confirmation email."</li>
+      </ul>
+
+      <div class="doc-sub-title">History Table columns</div>
+      <ul class="doc-list">
+        <li>File, Platform (badge chip), Status (badge), Total, Success, Failed, Added at (date + time on two lines), Actions.</li>
+        <li>Status badges: <code>.badge-success</code> "Completed", <code>.badge-status</code> "In queue". Active imports are never in this table.</li>
+        <li>Actions: "Fix errors" button (<code>.btn-sm-outline</code> with pencil icon) — shown only for completed rows with failed > 0. Rows with 0 failures or "In queue" show "—".</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 6 — IMPORT WIZARD -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 6 — New Import Wizard</div>
+      <p>3-step wizard. Stepper is always pinned at the top. Steps unlock progressively.</p>
+
+      <div class="doc-sub-title">Step 1 — Platform</div>
+      <ul class="doc-list">
+        <li>Two platform cards: PROM.ua, AVTO.pro — each with a <code>.badge-platform</code> chip. Click to select (card gets <code>.selected</code> class).</li>
+        <li>Buttons: Ghost "Cancel" (→ history screen), Primary "Next →".</li>
+        <li>"Next" validates that a platform is selected; shows error toast if not.</li>
+        <li>Selecting a platform unlocks Step 2 dot in the stepper.</li>
+      </ul>
+
+      <div class="doc-sub-title">Step 2 — File Upload</div>
+      <ul class="doc-list">
+        <li>Header shows: "Platform: [badge chip]".</li>
+        <li><code>.status-block.info</code> block: "First download your listings from [Platform]." with "View instructions →" link that opens the slide panel.</li>
+        <li>Instructions slide panel: opens from the right (400px), platform-specific step-by-step guide.</li>
+        <li>Drop zone: click or drag to "upload". On file attached — zone gets <code>.has-file</code> class (teal border + teal-light background), shows file name + "File contains: 146 listings".</li>
+        <li>Checkbox: "Skip listings without photos" (checked by default).</li>
+        <li><strong>AVTO.pro only</strong>: extra fields appear — Currency select (UAH / USD / EUR, default USD), Company Description textarea (required, min 40 chars).</li>
+        <li>Buttons: Ghost "← Back", Primary "Next →". "Next" validates: file attached; if AVTO.pro — description not empty and ≥ 40 chars.</li>
+        <li>Attaching a file unlocks Step 3 dot.</li>
+      </ul>
+
+      <div class="doc-sub-title">Step 3 — Confirm</div>
+      <ul class="doc-list">
+        <li>Summary card: Platform (badge), File name + listing count, Photos setting, Currency (AVTO.pro only), Description (AVTO.pro only).</li>
+        <li>Contact details collapsible block: shows Name · Location · Phone in one collapsed line. Expand to edit all three fields inline. Changes apply to this import only — profile data is not modified. Summary line updates live as user types.</li>
+        <li>Buttons: Ghost "← Back", Primary "Import to OLX →" → calls <code>startImport()</code>.</li>
+        <li><code>startImport()</code> sets <code>importHistoryHasActive = true</code> and navigates to screen 12 (history) which starts live progress animation.</li>
+      </ul>
+
+      <div class="doc-sub-title">Stepper behaviour</div>
+      <ul class="doc-list">
+        <li>Active step: teal circle with number. Done step: teal circle with checkmark icon. Future step: grey circle.</li>
+        <li>Completed step dots are clickable (navigate back). Future step dots are not clickable.</li>
+        <li>Navigating back via a stepper dot does not reset data already entered.</li>
+        <li>Resetting the wizard (<code>resetImportWizard()</code>) clears platform selection, file, and AVTO.pro fields.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 8 — FAILED LISTINGS -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 8 — Failed Listings</div>
+      <p>Accessible from "Fix errors" button in the history table. Shows only listings that failed — not all OLX account listings.</p>
+
+      <div class="doc-sub-title">Import meta block</div>
+      <ul class="doc-list">
+        <li>File name, platform badge, status badge (<code>.badge-success</code>).</li>
+        <li>Metadata row: Import started (date + time), Completed (date + time + duration), Total, Success, Failed.</li>
+      </ul>
+
+      <div class="doc-sub-title">Table</div>
+      <ul class="doc-list">
+        <li>Columns: Photo (48×48 thumbnail), Title, Error reason (<code>.err-badge</code>), Price, Actions.</li>
+        <li>Pagination: select box (10 / 50 / 100 per page). Prototype — UI only, no actual data slicing.</li>
+      </ul>
+
+      <div class="doc-sub-title">Row actions</div>
+      <ul class="doc-list">
+        <li><strong>"Edit" (primary)</strong>: opens slide-in panel with editable fields. Save button: "Save and import" → attempts re-import. On success: toast + row fades out and is removed. Count in meta block decrements.</li>
+        <li><strong>"Retry" (outlined)</strong>: attempts re-activation without editing. Behaviour depends on error type (see below).</li>
+      </ul>
+
+      <div class="doc-sub-title">Error scenarios (prototype)</div>
+      <ul class="doc-list">
+        <li><strong>Row 0 — "Category not specified"</strong>: Retry → row stays, error toast shown. Edit → success, row removed.</li>
+        <li><strong>Row 1 — "Title too long"</strong>: First save → a <em>second</em> error appears ("Invalid price — below the minimum allowed"), row stays with updated error badge. Second save → success, row removed. Demonstrates multi-error flow.</li>
+        <li><strong>Row 2 — "Internal server error (500)"</strong>: Retry → success without editing, row removed. This represents transient backend errors that resolve on retry.</li>
+        <li><strong>Row 3 — "Missing photo"</strong>: Retry → row stays, error toast. Edit → success, row removed.</li>
+        <li>When all rows are removed → table is hidden, success empty state shown.</li>
+      </ul>
+
+      <div class="doc-sub-title">Edit slide panel</div>
+      <ul class="doc-list">
+        <li>Error reason shown in red alert at the top.</li>
+        <li>Fields: Category, Part type, Brand, Manufacturer, Part code, Condition (toggle buttons), Listing title (with 0/70 char counter), Description.</li>
+        <li>Footer: Primary "Save and import", Ghost "Cancel".</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- SCREEN 9 — SETTINGS -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Screen 9 — Settings</div>
+      <p>Left sidebar nav + content panel. Four tabs.</p>
+
+      <div class="doc-sub-title">OLX Sync</div>
+      <ul class="doc-list">
+        <li>Shows connection status: "Connected: [email]" in <code>.olx-sync-success</code> block.</li>
+        <li>Pencil button next to it → re-opens OAuth modal to switch account.</li>
+        <li>Descriptive text adapted for already-connected state: explains how to change the account, not how to connect.</li>
+      </ul>
+
+      <div class="doc-sub-title">Contact Details</div>
+      <ul class="doc-list">
+        <li>Same 3 fields as onboarding step 2: Contact name, Location (searchable dropdown), Phone.</li>
+        <li>Pre-filled from user profile. These are the default values used across all imports.</li>
+        <li>Save → toast confirmation. Changes are global (affect all future imports).</li>
+      </ul>
+
+      <div class="doc-sub-title">Company Description</div>
+      <ul class="doc-list">
+        <li>Single textarea. Used as listing description for AVTO.pro imports (AVTO.pro files contain no descriptions).</li>
+        <li>Min 40 characters. Live char counter turns red below threshold. Save validates minimum.</li>
+        <li>This is the default; can be overridden per-import on the wizard Step 3 confirmation screen.</li>
+      </ul>
+
+      <div class="doc-sub-title">Change Password</div>
+      <ul class="doc-list">
+        <li>Current password + New password (with strength meter). Save → toast confirmation.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- CONTACT DATA HIERARCHY -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Contact Data Hierarchy</div>
+      <ul class="doc-list">
+        <li><strong>Level 1 — Profile defaults</strong>: set in Settings → Contact Details. Used for all imports.</li>
+        <li><strong>Level 2 — Per-import override</strong>: editable on Step 3 of the import wizard. Applies only to that specific import request. Does not affect profile defaults.</li>
+        <li>The wizard pre-fills Level 2 fields from Level 1 on each new import.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- AVTO.PRO SPECIFICS -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">AVTO.pro — Platform-specific Logic</div>
+      <ul class="doc-list">
+        <li>AVTO.pro export files do not include listing descriptions or currency information.</li>
+        <li><strong>Currency</strong>: user selects file currency in Step 2 (UAH / USD / EUR, default USD). Shown in Step 3 summary. Used for price conversion on import.</li>
+        <li><strong>Description</strong>: required text field in Step 2 (min 40 chars). Applied to all imported listings from this file. Can be pre-set globally in Settings → Company Description.</li>
+        <li>Both fields are shown only when AVTO.pro is selected. Hidden for PROM.ua.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- TOASTS -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Toast Notifications</div>
+      <ul class="doc-list">
+        <li>API: <code>toast(message, type)</code>. Types: default (success/info), <code>'error'</code>.</li>
+        <li>Style: white card, 4px left border (teal for default, red for error), drop shadow. Appears top-centre. Auto-dismisses after 5 seconds.</li>
+        <li>Multiple toasts stack vertically.</li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────────── -->
+    <!-- DESIGN SYSTEM CLASSES -->
+    <!-- ─────────────────────────────── -->
+    <div class="doc-block">
+      <div class="doc-block-title">Key Custom CSS Classes</div>
+      <table style="width:100%;border-collapse:collapse;font-size:.85rem;">
+        <thead>
+          <tr class="bg-light" style="border-bottom:1px solid #e0e0e0;">
+            <th class="tbl-h">Class</th>
+            <th class="tbl-h">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tbl-row"><td class="tbl-c"><code>.btn-dark-olx</code></td><td class="tbl-c">Primary CTA button — charcoal background, full width by default.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.btn-outline-olx</code></td><td class="tbl-c">Secondary outlined button.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.btn-ghost</code></td><td class="tbl-c">Tertiary / Cancel / Back — no border, no background.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.btn-sm-outline</code></td><td class="tbl-c">Small outlined button for use inside tables / inline.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.status-block.info</code></td><td class="tbl-c">Info block — teal-tinted background, icon + text.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.status-block.warning</code></td><td class="tbl-c">Warning block — amber-tinted.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.status-block.error</code></td><td class="tbl-c">Error block — red-tinted.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.badge-platform.prom / .avto</code></td><td class="tbl-c">Platform chip — PROM.ua (purple) / AVTO.pro (blue).</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.badge-success</code></td><td class="tbl-c">Green status badge — "Completed".</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.badge-active</code></td><td class="tbl-c">Teal status badge — "In progress".</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.badge-status</code></td><td class="tbl-c">Orange status badge — "In queue".</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.badge-info</code></td><td class="tbl-c">Blue badge — informational.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.err-badge</code></td><td class="tbl-c">Red badge for listing error reasons in failed listings table.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.olx-sync-success</code></td><td class="tbl-c">Green connected-account block with checkmark icon.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.import-platform-card</code></td><td class="tbl-c">Platform selection card in wizard Step 1. Adds <code>.selected</code> on pick.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.import-upload-zone</code></td><td class="tbl-c">File drop zone. Adds <code>.has-file</code> when file attached.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.slide-panel</code></td><td class="tbl-c">Right-side slide-in panel (400px). Adds <code>.open</code> to show.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.cb-host</code></td><td class="tbl-c">Wrapper for comment bubble. <code>.cb</code> is the bubble button inside it.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.tbl-h / .tbl-c / .tbl-row</code></td><td class="tbl-c">Table header cell / body cell / row styles.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.sett-nav / .active-sett</code></td><td class="tbl-c">Settings sidebar nav item / active state.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.onboarding-step / .done / .active</code></td><td class="tbl-c">Onboarding stepper dot states.</td></tr>
+          <tr class="tbl-row"><td class="tbl-c"><code>.import-step-item / .done / .active</code></td><td class="tbl-c">Import wizard stepper dot states.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
